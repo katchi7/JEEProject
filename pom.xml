@@ -17,6 +17,15 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.jboss.spec/jboss-javaee-6.0 -->
+        <dependency>
+            <groupId>org.jboss.spec</groupId>
+            <artifactId>jboss-javaee-6.0</artifactId>
+            <version>3.0.3.Final</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
