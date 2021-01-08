@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>
-    Hello to the registring page
+    Hello to the registering page
 </h1>
 <br/>
 <% if(request.getAttribute("form")==null || (!((InsricptionForm)request.getAttribute("form")).getErrors().isEmpty())) {%>
@@ -24,7 +24,7 @@
 </form>
 
 <%}else {%>
-    <h2>You're registred as ${requestScope.user.fname} ${requestScope.user.lname}</h2>
+    <h2>You're registered as ${requestScope.user.fname} ${requestScope.user.lname}</h2>
 <%}%>
 </body>
 </html>

@@ -6,9 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InsricptionForm {
-    private static final String CHAMP_NOM = "lname";
-    private static final String CHAMP_PRENOM = "fname";
+public class ConnexionForm {
     private static final String CHAMP_EMAIL = "email";
     private static final String CHAMP_PASSWORD = "password";
     private String resultat;
@@ -19,10 +17,10 @@ public class InsricptionForm {
     }
 
     public User inscrireUtilisateur(HttpServletRequest request){
+
         String email = getValeurChamp(request,CHAMP_EMAIL);
-        String nom = getValeurChamp(request,CHAMP_NOM);
+
         String password = getValeurChamp(request,CHAMP_PASSWORD);
-        String prenom = getValeurChamp(request,CHAMP_PRENOM);
         User utilisateur = new User();
         try {
             validationEmail( email );
@@ -34,24 +32,9 @@ public class InsricptionForm {
         try {
             validationMotsDePasse( password );
         } catch ( Exception e ) {
-            setErreur( CHAMP_PASSWORD, e.getMessage() );
+            setErreur( CHAMP_PASSWORD, e.getMessage());
         }
         utilisateur.setPassword( password );
-
-        try {
-            validationNom(nom);
-        } catch ( Exception e ) {
-            setErreur( CHAMP_NOM, e.getMessage() );
-        }
-        utilisateur.setLname( nom );
-
-        try {
-            validationNom(prenom);
-        } catch ( Exception e ) {
-            setErreur( CHAMP_PRENOM, e.getMessage() );
-        }
-        utilisateur.setFname( prenom );
-
 
         if ( errors.isEmpty() ) {
             resultat = "Succès de l'inscription.";
@@ -80,18 +63,12 @@ public class InsricptionForm {
     }
     // Methode de validation de mot de passe
     private void validationMotsDePasse( String motDePasse) throws Exception {
-        if ( motDePasse != null ) {
-            if ( motDePasse.length() < 3 ) {
+        if ( motDePasse != null && !motDePasse.trim().equals("null") ) {
+            if ( motDePasse.trim().length() < 3 ) {
                 throw new Exception( "Les mots de passe doivent contenir au moins 3 caractères." );
             }
         } else {
             throw new Exception( "Merci de saisir et confirmer votre mot de passe." );
-        }
-    }
-    //Methode de validation du nom et prenom
-    private void validationNom( String nom ) throws Exception {
-        if ( nom != null && nom.length() < 3 ) {
-            throw new Exception( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
         }
     }
 

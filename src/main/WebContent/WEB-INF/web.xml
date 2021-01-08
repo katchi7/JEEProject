@@ -11,4 +11,12 @@
         <servlet-name>Register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+    <servlet>
+    <servlet-name>Connexion</servlet-name>
+    <servlet-class>com.ensias.ProjetJee.Connexion</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
 </web-app>
