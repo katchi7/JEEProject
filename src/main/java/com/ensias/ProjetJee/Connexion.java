@@ -5,10 +5,7 @@ import com.ensias.Forms.ConnexionForm;
 
 import javax.mail.Session;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 public class Connexion extends HttpServlet {
@@ -29,11 +26,14 @@ public class Connexion extends HttpServlet {
         ConnexionForm form = new ConnexionForm();
         User utilisateur = form.inscrireUtilisateur(req);
         HttpSession session = req.getSession();
-
         req.setAttribute("form",form);
         req.setAttribute("user",utilisateur);
-        if(form.getErrors().isEmpty()) session.setAttribute("user",utilisateur);
-
+        if(form.getErrors().isEmpty()){
+            session.setAttribute("user",utilisateur);
+            Cookie cookie = new Cookie("JSESSIONID",session.getId());
+            cookie.setMaxAge(60 * 60 * 24 * 365);
+            resp.addCookie(cookie);
+        }
         this.getServletContext().getRequestDispatcher(ROOT+JSP).forward(req,resp);
 
     }

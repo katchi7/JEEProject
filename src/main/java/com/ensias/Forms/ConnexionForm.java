@@ -17,9 +17,7 @@ public class ConnexionForm {
     }
 
     public User inscrireUtilisateur(HttpServletRequest request){
-
         String email = getValeurChamp(request,CHAMP_EMAIL);
-
         String password = getValeurChamp(request,CHAMP_PASSWORD);
         User utilisateur = new User();
         try {
@@ -35,13 +33,11 @@ public class ConnexionForm {
             setErreur( CHAMP_PASSWORD, e.getMessage());
         }
         utilisateur.setPassword( password );
-
         if ( errors.isEmpty() ) {
             resultat = "Succès de l'inscription.";
         } else {
             resultat = "Échec de l'inscription.";
         }
-
         return utilisateur;
     }
     private String getValeurChamp(HttpServletRequest request,String champ){
