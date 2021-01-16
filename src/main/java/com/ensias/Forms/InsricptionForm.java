@@ -18,7 +18,6 @@ public class InsricptionForm {
     
     private String resultat;
     private Map<String,String> errors = new HashMap<>();
-    private Map<String,String> classes = new HashMap<>();
     public Map<String, String> getErrors() {
         return errors;
     }
@@ -173,17 +172,12 @@ public class InsricptionForm {
 
     private void setErreur( String champ, String message ) {
         errors.put( champ, message );
-        setErrClasse(champ);
+        
     }
 
     public String getResultat() {
         return resultat;
     }
     
-    public void setErrClasse(String champ){
-    	classes.put(champ, "err");
-    }
-    public Map<String,String> getClasses(){
-    	return classes;
-    }
+    
 }
