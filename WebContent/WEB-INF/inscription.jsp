@@ -25,7 +25,7 @@
             </div>
         </nav>
     </header>
-
+    <% if(request.getAttribute("form")==null || (!((InsricptionForm)request.getAttribute("form")).getErrors().isEmpty())) {%>
     <div class="principal">
         <div class="container">
             <div class="row py-5 mt-4 align-items-center">
@@ -36,7 +36,7 @@
                     <h1>Créer votre compte</h1>
 
                 </div>
-				<% if(request.getAttribute("form")==null || (!((InsricptionForm)request.getAttribute("form")).getErrors().isEmpty())) {%>
+				
                 <div class="col-md-7 col-lg-6 ml-auto">
                     <form action="register" method = "POST">
                         <div class="row">
@@ -291,7 +291,25 @@
                     </form>
                 </div>
                 <%}else{ %>
-                	<h1>Y're Registrated as ${user.fname} ${user.lname} </h1>
+                    <div class="principal">
+                        <div class="container">
+                            <div class="row py-5 mt-4 align-items-center">
+                            
+                                <div class="col-md-5 pr-lg-5 mb-5 mb-md-0" >
+                                    <p class="logo"><a><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="400" alt="ENSIAS-DOC" class="img-fluid mb-3 d-md-block"></a></p>
+                                    <img src="inc/images/study.png" alt="" class="img-fluid mb-3 d-none d-md-block">
+                                </div>
+                
+                                <div class="col-md-7 col-lg-6 ml-auto">
+                                    <h2>Bonjour chère ${user.lname} ${user.fname},</h2><br/>
+                                    <p class="first-connect">Bienvenue dans votre espace étudiant, vous faites maintenant parti de la famille <span class="first-connect">ENSIAS-DOC</span>. Afin d'accéder à votre compte et de 
+                                        bénéficier d'une expérience inédite dans l'e-learning, veuillez se connecter en cliquant sur le boutton ci-dessous.
+                                    </p>
+                                    <a href="login" class="btn btn-success btn-lg active" role="button" title="Lien 1">Se connecter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 <%} %>
             </div>
         </div>

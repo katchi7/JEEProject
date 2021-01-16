@@ -41,3 +41,12 @@ span.icones-form{
 .champs-form{
 	border-bottom-right-radius: 12px;
 }
+
+p.first-connect{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+}
+span.first-connect{
+    font-weight: bold;
+    font-style: italic;
+}
