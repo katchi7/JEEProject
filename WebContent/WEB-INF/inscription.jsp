@@ -16,7 +16,7 @@
     <header class="header">
         <nav class="navbar">
             <div class="container">
-            <a class="navbar-brand" href="index.jsp"><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
+            <a class="navbar-brand" href="/"><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
             <div>
                 <a class="btn btn-outline-primary mr-2" href="#"><span><i class="fas fa-user"></i></span>&nbsp;&nbsp;Log In</a>
                 <a class="btn btn-primary" href="#"><span><i class="fas fa-user-plus"></i></span>&nbsp;&nbsp;Sign Up</a></div>
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="col-md-7 col-lg-6 ml-auto">
-                    <form action="#">
+                    <form action="register" method = "POST">
                         <div class="row">
 
                             <!-- Prénom -->
