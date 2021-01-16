@@ -28,7 +28,7 @@ public class Inscription  extends HttpServlet {
         User utilisateur =  form.inscrireUtilisateur(req);
 
         req.setAttribute("user",utilisateur);
-
+       
         req.setAttribute("form",form);
 
         this.getServletContext().getRequestDispatcher(ROOT+JSP).forward(req,resp);
