@@ -14,7 +14,9 @@ select.form-control {
     height: 52px;
     padding-left: 0.5rem;
 }
-
+.err{
+	color : red !important;
+}
 div.principal{
     background-color: rgb(36, 71, 138, 0.3);
 }

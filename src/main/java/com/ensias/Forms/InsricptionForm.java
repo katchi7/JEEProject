@@ -7,13 +7,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InsricptionForm {
-    private static final String CHAMP_NOM = "lname";
-    private static final String CHAMP_PRENOM = "fname";
+    private static final String CHAMP_NOM = "nom";
+    private static final String CHAMP_PRENOM = "prenom";
     private static final String CHAMP_EMAIL = "email";
     private static final String CHAMP_PASSWORD = "password";
+    private static final String CHAMP_PHONE = "phone";
+    private static final String CHAMP_NV = "niveau";
+    private static final String CHAMP_FILIERE = "filiere";
+    private static final String CHAMP_CONFIRM_PASSWORD = "passwordConfirmation";
+    
     private String resultat;
     private Map<String,String> errors = new HashMap<>();
-
+    private Map<String,String> classes = new HashMap<>();
     public Map<String, String> getErrors() {
         return errors;
     }
@@ -23,20 +28,33 @@ public class InsricptionForm {
         String nom = getValeurChamp(request,CHAMP_NOM);
         String password = getValeurChamp(request,CHAMP_PASSWORD);
         String prenom = getValeurChamp(request,CHAMP_PRENOM);
+        String confirm_password = getValeurChamp(request,CHAMP_CONFIRM_PASSWORD);
+        String filiere = getValeurChamp(request,CHAMP_FILIERE);
+        String niveau = getValeurChamp(request,CHAMP_NV);
+        String phone = getValeurChamp(request,CHAMP_PHONE);
+        
         User utilisateur = new User();
+        //Validation de l'email
         try {
             validationEmail( email );
         } catch ( Exception e ) {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
         utilisateur.setEmail( email );
-
+        
         try {
             validationMotsDePasse( password );
         } catch ( Exception e ) {
             setErreur( CHAMP_PASSWORD, e.getMessage() );
         }
-        utilisateur.setPassword( password );
+        try {
+        	ConfirmMotDePasse(confirm_password,password);
+        	utilisateur.setPassword( password );
+        }catch(Exception e) {
+        	setErreur(CHAMP_CONFIRM_PASSWORD,e.getMessage());
+        	utilisateur.setPassword( null );
+        }
+        
 
         try {
             validationNom(nom);
@@ -51,14 +69,32 @@ public class InsricptionForm {
             setErreur( CHAMP_PRENOM, e.getMessage() );
         }
         utilisateur.setFname( prenom );
-
-
+        try {
+            validationNum(phone);
+        } catch ( Exception e ) {
+            setErreur( CHAMP_PHONE, e.getMessage() );
+        }
+        utilisateur.setNum(phone);
+        try {
+            validationFiliere(filiere);
+        } catch ( Exception e ) {
+            setErreur( CHAMP_FILIERE, e.getMessage() );
+        }
+        utilisateur.setFiliere(filiere);
+        try {
+            validationNV(niveau);
+        } catch ( Exception e ) {
+            setErreur( CHAMP_NV, e.getMessage() );
+        }
+        utilisateur.setNiveau(niveau);
+        
         if ( errors.isEmpty() ) {
             resultat = "Succès de l'inscription.";
         } else {
             resultat = "Échec de l'inscription.";
         }
-
+        
+        
         return utilisateur;
     }
     private String getValeurChamp(HttpServletRequest request,String champ){
@@ -94,13 +130,60 @@ public class InsricptionForm {
             throw new Exception( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
         }
     }
+    //Validateur Num
+    public void validationNum(String num) throws Exception {
+    	String patterns 
+        = "^(\\+\\d{1,3}( )?)?((\\(\\d{3}\\))|\\d{3})[- .]?\\d{3}[- .]?\\d{4}$" 
+        + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?){2}\\d{3}$" 
+        + "|^(\\+\\d{1,3}( )?)?(\\d{3}[ ]?)(\\d{2}[ ]?){2}\\d{2}$";
+    	if((num != null)&&num.matches(patterns)) {
+    		return;
+    	}else {
+    		throw new Exception("Vous devez rentrer un numero valide");
+    	}
+    }
+    //validateur filiere
+    public void validationFiliere(String filiere) throws Exception {
+    	if(filiere == null) {
+    		throw new Exception("Vous devez choisir une filiere");
+    	}
+    }
+    //Confirmateur mot de passe
+    public void  ConfirmMotDePasse(String confirmPassword,String Password) throws Exception{
+    	if(confirmPassword!=null) {
+    		if(confirmPassword.equals(Password)) {
+    			return;
+    		}else {
+    			throw new Exception("Vous n'avez pas entré le meme mot de passe");
+    		}
+    	
+    	}else {
+    		throw new Exception("Vous devez entrer le mot de passe a nouveau");
+    	}
+    	
+    }
+    
+    //Methode de validation du niveau
+    public void validationNV(String NV) throws Exception {
+    	if(NV == null) {
+    		throw new Exception("Vous devez choisir un niveau");
+    	}
+    }
 
 
     private void setErreur( String champ, String message ) {
         errors.put( champ, message );
+        setErrClasse(champ);
     }
 
     public String getResultat() {
         return resultat;
+    }
+    
+    public void setErrClasse(String champ){
+    	classes.put(champ, "err");
+    }
+    public Map<String,String> getClasses(){
+    	return classes;
     }
 }

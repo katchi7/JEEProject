@@ -6,7 +6,9 @@ public class User {
     private String lname;
     private String email;
     private String password;
-
+    private String num;
+    private String niveau;
+    private String filiere;
     public String getPassword() {
         return password;
     }
@@ -37,5 +39,29 @@ public class User {
 
     public void setFname(String fname) {
         this.fname = fname;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    public String getFiliere() {
+        return filiere;
+    }
+
+    public void setFiliere(String filiere) {
+        this.filiere = filiere;
+    }
+
+    public String getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(String niveau) {
+        this.niveau = niveau;
     }
 }
