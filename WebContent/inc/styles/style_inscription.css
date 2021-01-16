@@ -31,3 +31,11 @@ div.principal{
 p.logo{
     text-align: center;
 }
+
+span.icones-form{
+	border-top-left-radius: 25%;
+}
+
+.champs-form{
+	border-bottom-right-radius: 12px;
+}

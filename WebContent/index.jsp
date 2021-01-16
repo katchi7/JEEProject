@@ -91,7 +91,7 @@
                       <img class="mx-auto rounded-circle" src="inc/images/1.jpg" alt="" />
                       <h4>Aarab Oussama</h4>
                       <p class="text-muted"></p>
-                      <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-google"></i></a>
+                      <a class="btn btn-dark btn-social mx-2" href="mailto:oussama_aarab@um5.ac.ma"><i class="fab fa-google"></i></a>
                       <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/Oussama.Aarab.07"><i class="fab fa-facebook-f"></i></a>
                       <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/oussama-aarab/"><i class="fab fa-linkedin-in"></i></a>
                   </div>

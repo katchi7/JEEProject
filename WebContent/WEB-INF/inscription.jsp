@@ -16,7 +16,7 @@
     <header class="header">
         <nav class="navbar">
             <div class="container">
-            <a class="navbar-brand" href="#"><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
+            <a class="navbar-brand" href="index.jsp"><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
             <div>
                 <a class="btn btn-outline-primary mr-2" href="#"><span><i class="fas fa-user"></i></span>&nbsp;&nbsp;Log In</a>
                 <a class="btn btn-primary" href="#"><span><i class="fas fa-user-plus"></i></span>&nbsp;&nbsp;Sign Up</a></div>
@@ -42,52 +42,52 @@
                             <!-- Prénom -->
                             <div class="input-group col-lg-6 mb-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0 icones-form">
                                         <i class="fa fa-user text-muted"></i>
                                     </span>
                                 </div>
-                                <input id="prenom" type="text" name="prenom" placeholder="Prénom" class="form-control bg-white border-left-0 border-md">
+                                <input id="prenom" type="text" name="prenom" placeholder="Prénom" class="form-control bg-white border-left-0 border-md champs-form">
                             </div>
 
                             <!-- Nom -->
                             <div class="input-group col-lg-6 mb-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0 icones-form">
                                         <i class="fa fa-user text-muted"></i>
                                     </span>
                                 </div>
-                                <input id="nom" type="text" name="nom" placeholder="Nom" class="form-control bg-white border-left-0 border-md">
+                                <input id="nom" type="text" name="nom" placeholder="Nom" class="form-control bg-white border-left-0 border-md champs-form">
                             </div>
 
                             <!-- Adresse email -->
                             <div class="input-group col-lg-12 mb-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0 icones-form">
                                         <i class="fa fa-envelope text-muted"></i>
                                     </span>
                                 </div>
-                                <input id="email" type="email" name="email" placeholder="Adresse Email" class="form-control bg-white border-left-0 border-md">
+                                <input id="email" type="email" name="email" placeholder="Adresse Email" class="form-control bg-white border-left-0 border-md champs-form">
                             </div>
 
                             <!-- Numéro de téléphone -->
                             <div class="input-group col-lg-12 mb-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0 icones-form">
                                         <i class="fa fa-phone-square text-muted"></i>
                                     </span>
                                 </div>
-                                <input id="phone" type="tel" name="phone" placeholder="Numéro de téléphone" class="form-control bg-white border-md border-left-0 pl-3">
+                                <input id="phone" type="tel" name="phone" placeholder="Numéro de téléphone" class="form-control bg-white border-md border-left-0 pl-3 champs-form">
                             </div>.
 
 
                             <!-- Niveau d'étude -->
                             <div class="input-group col-lg-12 mb-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-black-tie text-muted"></i>
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0 icones-form">
+                                        <i class="fas fa-graduation-cap text-muted"></i>
                                     </span>
                                 </div>
-                                <select id="niveau" name="niveau" class="form-control custom-select bg-white border-left-0 border-md">
+                                <select id="niveau" name="niveau" class="form-control custom-select bg-white border-left-0 border-md champs-form">
                                     <option value="" disabled selected>Niveau d'étude</option>
                                     <option value="1A">1er année</option>
                                     <option value="2A">2ème année</option>
@@ -98,11 +98,11 @@
                             <!-- Filière -->
                             <div class="input-group col-lg-12 mb-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-black-tie text-muted"></i>
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0 icones-form">
+                                        <i class="far fa-map text-muted"></i>
                                     </span>
                                 </div>
-                                <select id="filiere" name="filiere" class="form-control custom-select bg-white border-left-0 border-md">
+                                <select id="filiere" name="filiere" class="form-control custom-select bg-white border-left-0 border-md champs-form">
                                     <option value="" disabled selected>Choix du filière</option>
                                     <option value="GL">Génie Logiciel</option>
                                     <option value="IWIM">Ingénierie du Web et Informatique Mobile</option>
@@ -118,26 +118,26 @@
                             <!-- Mot de passe -->
                             <div class="input-group col-lg-6 mb-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0 icones-form">
                                         <i class="fa fa-lock text-muted"></i>
                                     </span>
                                 </div>
-                                <input id="password" type="password" name="password" placeholder="Mot de passe" class="form-control bg-white border-left-0 border-md">
+                                <input id="password" type="password" name="password" placeholder="Mot de passe" class="form-control bg-white border-left-0 border-md champs-form">
                             </div>
 
                             <!-- Confiramation du mot de passe -->
                             <div class="input-group col-lg-6 mb-4">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text bg-white px-4 border-md border-right-0">
+                                    <span class="input-group-text bg-white px-4 border-md border-right-0 icones-form">
                                         <i class="fa fa-lock text-muted"></i>
                                     </span>
                                 </div>
-                                <input id="passwordConfirmation" type="text" name="passwordConfirmation" placeholder="Confirmation du mot de passe" class="form-control bg-white border-left-0 border-md">
+                                <input id="passwordConfirmation" type="text" name="passwordConfirmation" placeholder="Confirmation du mot de passe" class="form-control bg-white border-left-0 border-md champs-form">
                             </div>
 
                             <!-- Submit Button -->
                             <div class="form-group col-lg-12 mx-auto mb-0">
-                                <a href="#" class="btn btn-primary btn-block py-2">
+                                <a href="#" class="btn btn-primary btn-block py-2 rounded">
                                     <span class="font-weight-bold">Créer un compte</span>
                                 </a>
                             </div>
