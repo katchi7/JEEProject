@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="inc/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
+<<<<<<< HEAD
     <link rel="stylesheet" href="inc/style.css">
+=======
+    <link rel="stylesheet" href="inc/styles/style_index.css">
+>>>>>>> 463592f... eclipse
     <link rel="icon" href="inc/icons/logo.ico">
   </head>
   <body>
