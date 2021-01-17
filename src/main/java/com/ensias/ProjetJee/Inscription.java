@@ -27,7 +27,8 @@ public class Inscription  extends HttpServlet {
         InsricptionForm form = new InsricptionForm();
         User utilisateur =  form.inscrireUtilisateur(req);
 
-        req.setAttribute("user",utilisateur);
+        req.setAttribute("user",utilisateur);;
+        
        
         req.setAttribute("form",form);
 
