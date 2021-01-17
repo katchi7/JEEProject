@@ -16,6 +16,26 @@
 <body>
 
     <c:import url="/WEB-INF/header.jsp"></c:import>
+    <% if(session.getAttribute("user")!=null) {%>
+    <div class="principal">
+                        <div class="container">
+                            <div class="row py-5 align-items-center">
+                            
+                                <div class="col-md-5 pr-lg-5 mb-5 mb-md-0" >
+                                    <p class="logo"><a><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="400" alt="ENSIAS-DOC" class="img-fluid mb-3 d-md-block"></a></p>
+                                    <img src="inc/images/study.png" alt="" class="img-fluid mb-3 d-none d-md-block">
+                                </div>
+                
+                                <div class="col-md-7 col-lg-6 ml-auto">
+                                    <h2>Bonjour ${user.lname} ${user.fname},</h2><br/>
+                                    <p class="first-connect">Vous faites deja partie de la famille <span class="first-connect">ENSIAS-DOC</span>. Pour se deconnecter, cliquez sur le boutton ci-dessous.
+                                    </p>
+                                    <a href="logout" class="btn btn-danger btn-lg active" role="button" title="Lien 1">Se deconnecter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    <%}else{%>
     <% if(request.getAttribute("form")==null || (!((InsricptionForm)request.getAttribute("form")).getErrors().isEmpty())) {%>
     <div class="principal">
         <div class="container">
@@ -301,7 +321,7 @@
                             </div>
                         </div>
                     </div>
-                <%} %>
+                <%}} %>
             </div>
         </div>
     </div>
