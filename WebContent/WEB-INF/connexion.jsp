@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="inc/bootstrap/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" type="text/css" href="inc/styles/style_inscription.css">
-    <link rel="icon" href="logo.ico">
+    <link rel="icon" href="inc/icons/logo.ico">
 </head>
 <body>
 

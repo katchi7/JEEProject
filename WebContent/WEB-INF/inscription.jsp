@@ -187,7 +187,7 @@
                                     </span>
                                 </div>
                                 <select id="filiere" name="filiere" value = "${requestScope.user.filiere}" class="form-control custom-select bg-white border-left-0 border-md champs-form">
-                                    <option value="" disabled ${requestScope.user.filiere==null?"selected":""}>Choix du filière</option>
+                                    <option value="" disabled ${requestScope.user.filiere==null?"selected":""}>Choix de filière</option>
                                     <option value="GL" ${requestScope.user.filiere=="GL"?"selected":""}>Génie Logiciel</option>
                                     <option value="IWIM" ${requestScope.user.filiere=="IWIM"?"selected":""}>Ingénierie du Web et Informatique Mobile</option>
                                     <option value="eMBI" ${requestScope.user.filiere=="eMBI"?"selected":""}>e-Management et Business Intelligence</option>
@@ -293,7 +293,7 @@
                 <%}else{ %>
                     <div class="principal">
                         <div class="container">
-                            <div class="row py-5 mt-4 align-items-center">
+                            <div class="row py-5 align-items-center">
                             
                                 <div class="col-md-5 pr-lg-5 mb-5 mb-md-0" >
                                     <p class="logo"><a><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="400" alt="ENSIAS-DOC" class="img-fluid mb-3 d-md-block"></a></p>
@@ -301,8 +301,8 @@
                                 </div>
                 
                                 <div class="col-md-7 col-lg-6 ml-auto">
-                                    <h2>Bonjour chère ${user.lname} ${user.fname},</h2><br/>
-                                    <p class="first-connect">Bienvenue dans votre espace étudiant, vous faites maintenant parti de la famille <span class="first-connect">ENSIAS-DOC</span>. Afin d'accéder à votre compte et de 
+                                    <h2>Bonjour ${user.lname} ${user.fname},</h2><br/>
+                                    <p class="first-connect">Bienvenue dans votre espace étudiant, vous faites maintenant partie de la famille <span class="first-connect">ENSIAS-DOC</span>. Afin d'accéder à votre compte et de 
                                         bénéficier d'une expérience inédite dans l'e-learning, veuillez se connecter en cliquant sur le boutton ci-dessous.
                                     </p>
                                     <a href="login" class="btn btn-success btn-lg active" role="button" title="Lien 1">Se connecter</a>
