@@ -6,4 +6,8 @@
 ![ScreenShot](https://i.ibb.co/K5qwTzt/enregistrement.png)
 
 \
+<<<<<<< HEAD
 test
+=======
+\
+>>>>>>> e8d534c (Test)
