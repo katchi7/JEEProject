@@ -1,7 +1,7 @@
 <%@ page import="com.ensias.Forms.InsricptionForm" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,16 +15,7 @@
 </head>
 <body>
 
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-            <a class="navbar-brand" href="/"><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
-            <div>
-                <a class="btn btn-outline-primary mr-2" href="login"><span><i class="fas fa-user"></i></span>&nbsp;&nbsp;Log In</a>
-                <a class="btn btn-primary" href="register"><span><i class="fas fa-user-plus"></i></span>&nbsp;&nbsp;Sign Up</a></div>
-            </div>
-        </nav>
-    </header>
+    <c:import url="/WEB-INF/header.jsp"></c:import>
     <% if(request.getAttribute("form")==null || (!((InsricptionForm)request.getAttribute("form")).getErrors().isEmpty())) {%>
     <div class="principal">
         <div class="container">
@@ -315,11 +306,7 @@
         </div>
     </div>
 
-    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-        <div class="container text-center">
-          <small>Copyright &copy; 2021 <br> ENSIAS-DOC</small>
-        </div>
-    </footer>
+    <c:import url="/WEB-INF/footer.jsp"></c:import>
 
 </body>
 </html>

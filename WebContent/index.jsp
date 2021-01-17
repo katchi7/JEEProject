@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,26 +19,9 @@
     <link rel="icon" href="inc/icons/logo.ico">
   </head>
   <body>
-    
+    <c:import url="/WEB-INF/header.jsp"></c:import>
     <div>
-      <header>
-        <nav class="navbar">
-          <div class="container">
-            <a class="navbar-brand" href="/"><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
-              <%if(session.getAttribute("user")==null){%>
-            <div>
-              <a class="btn btn-outline-primary mr-2" href="login"><span><i class="fas fa-user"></i></span>&nbsp;&nbsp;Log In</a>
-              <a class="btn btn-primary" href="register"><span><i class="fas fa-user-plus"></i></span>&nbsp;&nbsp;Sign Up</a></div>
-          </div>
-            <!--Si l'utilisateur est conecté-->
-            <%}else{%>
-            <div>
-                <span><i class="fas fa-user-circle"></i> </span><strong><!--Activate when database is instanciated ${sessionScope.user.fname} ${sessionScope.user.lname}--> Aabane Abderrahim</strong>
-                <a class="btn btn-danger" href="logout"><span><i class="fas fa-sign-out-alt"></i></span>&nbsp;&nbsp;Logout</a></div>
-            </div>
-            <%}%>
-        </nav>
-      </header>
+      
     
       <section class="py-5 overflow-hidden"><div class="container py-5">
           <div class="row">
@@ -130,11 +114,7 @@
       </div>
   </section>
   
-    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-      <div class="container text-center">
-        <small>Copyright &copy; 2021 <br> ENSIAS-DOC</small>
-      </div>
-    </footer>
+    <c:import url="/WEB-INF/footer.jsp"></c:import>
     <script src="inc/js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="inc/js/main.js"></script>
   </body>

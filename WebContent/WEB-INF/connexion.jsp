@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,16 +13,7 @@
 </head>
 <body>
 
-    <header class="header">
-        <nav class="navbar">
-            <div class="container">
-            <a class="navbar-brand" href="/"><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
-            <div>
-                <a class="btn btn-outline-primary mr-2" href="login"><span><i class="fas fa-user"></i></span>&nbsp;&nbsp;Log In</a>
-                <a class="btn btn-primary" href="register"><span><i class="fas fa-user-plus"></i></span>&nbsp;&nbsp;Sign Up</a></div>
-            </div>
-        </nav>
-    </header>
+    <c:import url="/WEB-INF/header.jsp"></c:import>
 
     <div class="principal">
         <div class="container">
@@ -35,34 +27,34 @@
                 </div>
 
                 <div class="col-md-7 col-lg-6 ml-auto">
-                    <form action="#">
+                    <form action="login" method = "POST">
                         <div class="row">
                             <h1>Espace étudiant</h1><br/><br/><br/>
                             <!-- Adresse email -->
                             <div class="input-group col-lg-12 mb-4">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-envelope text-muted"></i>
+                                        <i class="fa fa-envelope text-muted ${requestScope.form.errors.email==null?"":"err"}"></i>
                                     </span>
                                 </div>
-                                <input id="email" type="email" name="email" placeholder="Adresse Email" class="form-control bg-white border-left-0 border-md">
+                                <input id="email" type="email" name="email" placeholder="Adresse Email" class="form-control bg-white border-left-0 border-md " value="${requestScope.user.email}">
                             </div>
 
                             <!-- Mot de passe -->
                             <div class="input-group col-lg-6 mb-4">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                        <i class="fa fa-lock text-muted"></i>
+                                        <i class="fa fa-lock text-muted ${requestScope.form.errors.password==null?"":"err"}""></i>
                                     </span>
                                 </div>
-                                <input id="password" type="password" name="password" placeholder="Mot de passe" class="form-control bg-white border-left-0 border-md">
+                                <input id="password" type="password" name="password" placeholder="Mot de passe" class="form-control bg-white border-left-0 border-md" value="${requestScope.user.password}">
                             </div>
 
                             <!-- Submit Button -->
                             <div class="form-group col-lg-12 mx-auto mb-0">
-                                <a href="#" class="btn btn-primary btn-block py-2">
+                                <button type="submit" href="#" class="btn btn-primary btn-block py-2">
                                     <span class="font-weight-bold">Se connecter</span>
-                                </a>
+                                </button>
                             </div>
                             
                             <!-- Already Registered -->
@@ -79,11 +71,7 @@
         </div>
     </div>
 
-    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-        <div class="container text-center">
-          <small>Copyright &copy; 2021 <br> ENSIAS-DOC</small>
-        </div>
-    </footer>
+    <c:import url="/WEB-INF/footer.jsp"></c:import>
 
 </body>
 </html>
