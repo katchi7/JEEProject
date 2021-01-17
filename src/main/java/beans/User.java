@@ -1,14 +1,34 @@
 package beans;
 
+import java.nio.charset.StandardCharsets;
+import com.google.common.hash.Hashing;
 
 public class User {
+	private int id ;
     private String fname;
     private String lname;
     private String email;
-    private String password;
+	private String password;
     private String num;
     private String niveau;
     private String filiere;
+    private boolean administrator;
+    
+    public String  getPasswordAsHash() {
+        	return Hashing.sha256().hashString(this.password, StandardCharsets.UTF_8).toString();
+        }
+        public boolean isAdministrator() {
+        	return this.administrator;
+        }
+        public void setAdministrator(boolean admin) {
+        	this.administrator = admin;
+        }
+        public int getId() {
+    		return id;
+    	}
+    	public void setId(int id) {
+    		this.id = id;
+    	}
     public String getPassword() {
         return password;
     }
