@@ -19,6 +19,7 @@ public class ConnexionForm {
     public User inscrireUtilisateur(HttpServletRequest request){
         String email = getValeurChamp(request,CHAMP_EMAIL);
         String password = getValeurChamp(request,CHAMP_PASSWORD);
+        System.out.print("Password : "+password+"k");
         User utilisateur = new User();
         try {
             validationEmail( email );
@@ -49,7 +50,7 @@ public class ConnexionForm {
 
     //Methode de validation d'email
     private void validationEmail( String email ) throws Exception {
-        if ( email != null ) {
+        if ( email != null && !email.equals("null") ) {
             if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
                 throw new Exception( "Merci de saisir une adresse mail valide." );
             }
@@ -59,6 +60,7 @@ public class ConnexionForm {
     }
     // Methode de validation de mot de passe
     private void validationMotsDePasse( String motDePasse) throws Exception {
+    	
         if ( motDePasse != null && !motDePasse.trim().equals("null") ) {
             if ( motDePasse.trim().length() < 3 ) {
                 throw new Exception( "Les mots de passe doivent contenir au moins 3 caractères." );

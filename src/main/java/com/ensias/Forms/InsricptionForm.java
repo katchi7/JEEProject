@@ -3,6 +3,8 @@ package com.ensias.Forms;
 import beans.User;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +17,23 @@ public class InsricptionForm {
     private static final String CHAMP_NV = "niveau";
     private static final String CHAMP_FILIERE = "filiere";
     private static final String CHAMP_CONFIRM_PASSWORD = "passwordConfirmation";
+    private static final ArrayList<String> NIVEAUX = new ArrayList<String>();
+    static {
+    	NIVEAUX.add("1A");
+    	NIVEAUX.add("2A");
+    	NIVEAUX.add("3A");
+    }
+    private static final ArrayList<String> FILIERES = new ArrayList<String>();
+    static {
+    	FILIERES.add("GL");
+    	FILIERES.add("IWIM");
+    	FILIERES.add("eMBI");
+    	FILIERES.add("Iel");
+    	FILIERES.add("ISEM");
+    	FILIERES.add("SSI");
+    	FILIERES.add("2IA");
+    	FILIERES.add("IF");
+    }
     
     private String resultat;
     private Map<String,String> errors = new HashMap<>();
@@ -64,6 +83,7 @@ public class InsricptionForm {
 
         try {
             validationNom(prenom);
+            
         } catch ( Exception e ) {
             setErreur( CHAMP_PRENOM, e.getMessage() );
         }
@@ -105,7 +125,7 @@ public class InsricptionForm {
 
     //Methode de validation d'email
     private void validationEmail( String email ) throws Exception {
-        if ( email != null ) {
+        if ( email != null && !email.equals("null") ) {
             if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
                 throw new Exception( "Merci de saisir une adresse mail valide." );
             }
@@ -115,7 +135,7 @@ public class InsricptionForm {
     }
     // Methode de validation de mot de passe
     private void validationMotsDePasse( String motDePasse) throws Exception {
-        if ( motDePasse != null ) {
+        if ( motDePasse != null && !motDePasse.equals("null") ) {
             if ( motDePasse.length() < 3 ) {
                 throw new Exception( "Les mots de passe doivent contenir au moins 3 caractères." );
             }
@@ -125,7 +145,7 @@ public class InsricptionForm {
     }
     //Methode de validation du nom et prenom
     private void validationNom( String nom ) throws Exception {
-        if ( nom != null && nom.length() < 3 ) {
+        if ( nom == null || nom.equals("null") || nom.length() < 3 ) {
             throw new Exception( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
         }
     }
@@ -143,13 +163,13 @@ public class InsricptionForm {
     }
     //validateur filiere
     public void validationFiliere(String filiere) throws Exception {
-    	if(filiere == null) {
+    	if(filiere == null && !filiere.equals("null")) {
     		throw new Exception("Vous devez choisir une filiere");
-    	}
+    	}if(!FILIERES.contains(filiere)) throw new Exception("Vous devez choisir une des filieres proposées");
     }
     //Confirmateur mot de passe
     public void  ConfirmMotDePasse(String confirmPassword,String Password) throws Exception{
-    	if(confirmPassword!=null) {
+    	if(confirmPassword!=null && !confirmPassword.equals("null")) {
     		if(confirmPassword.equals(Password)) {
     			return;
     		}else {
@@ -164,9 +184,10 @@ public class InsricptionForm {
     
     //Methode de validation du niveau
     public void validationNV(String NV) throws Exception {
-    	if(NV == null) {
+    	if(NV == null && NV.equals("null")) {
     		throw new Exception("Vous devez choisir un niveau");
-    	}
+    	}if(!NIVEAUX.contains(NV)) throw new Exception("Vous devez choisir un des niveaux proposés");
+    	 
     }
 
 

@@ -12,6 +12,7 @@ import java.io.IOException;
 public class Inscription  extends HttpServlet {
     public static String ROOT = "/WEB-INF/";
     public static String JSP = "inscription.jsp";
+    public static String AFTER_LOGGING = "/";
     @Override
     public void init() throws ServletException {
         super.init();
@@ -19,7 +20,10 @@ public class Inscription  extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher(ROOT+JSP).forward(req,resp);
+    	if(req.getSession().getAttribute("user")!=null) resp.sendRedirect(AFTER_LOGGING);
+    	else {
+    		this.getServletContext().getRequestDispatcher(ROOT+JSP).forward(req,resp);
+    	}
     }
 
     @Override
