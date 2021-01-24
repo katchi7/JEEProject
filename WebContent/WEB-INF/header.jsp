@@ -1,3 +1,6 @@
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+
 <header>
         <nav class="navbar">
           <div class="container">
@@ -10,8 +13,13 @@
             <!--Si l'utilisateur est conecté-->
             <%}else{%>
             <div>
-                <span><i class="fas fa-user-circle"></i> </span><strong>${sessionScope.user.fname} ${sessionScope.user.lname}</strong>
-                <a class="btn btn-danger" href="logout"><span><i class="fas fa-sign-out-alt"></i></span>&nbsp;&nbsp;Logout</a></div>
+                <span>
+                <c:choose>
+                <c:when test="${sessionScope.user.administrator}"><i class="fas fa-user-shield"></i></c:when>
+                <c:otherwise><i class="fas fa-user-circle"></i> </c:otherwise>
+                </c:choose>
+                </span><strong>${sessionScope.user.fname} ${sessionScope.user.lname}</strong>
+                <a class="btn btn-danger" href="logout"><span><i class="fas fa-sign-out-alt"></i></span>&nbsp;&nbsp;Logout</a>
             </div>
             <%}%>
         </nav>

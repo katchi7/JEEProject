@@ -24,7 +24,7 @@ public class ConnexionForm {
     public User inscrireUtilisateur(HttpServletRequest request){
         String email = getValeurChamp(request,CHAMP_EMAIL);
         String password = getValeurChamp(request,CHAMP_PASSWORD);
-        System.out.print("Password : "+password+"k");
+        
         User utilisateur = new User();
         try {
             validationEmail( email );
@@ -45,7 +45,7 @@ public class ConnexionForm {
         } else {
             resultat = "Échec de l'inscription.";
         }
-        if(user ==null) return utilisateur;
+        if(user ==null || !errors.isEmpty()) return utilisateur;
         utilisateur = null;
         return user;
         
@@ -72,7 +72,7 @@ public class ConnexionForm {
     private void validationMotsDePasse( User utilisateur) throws Exception {
     	String motDePasse = utilisateur.getPassword();
         if ( motDePasse != null && !motDePasse.trim().equals("null") ) {
-            if(!utilisateur.getPasswordAsHash().equals(user.getPassword())) throw new Exception( "Mot de passe invalide." );
+            if(user !=null && !utilisateur.getPasswordAsHash().equals(user.getPassword())) throw new Exception( "Mot de passe invalide." );
         } else {
             throw new Exception( "Merci de saisir votre mot de passe." );
         }

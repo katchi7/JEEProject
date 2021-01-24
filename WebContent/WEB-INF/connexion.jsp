@@ -31,17 +31,33 @@
                         <div class="row">
                             <h1>Espace étudiant</h1><br/><br/><br/>
                             <!-- Adresse email -->
-                            <div class="input-group col-lg-12 mb-4">
+                            <div class = "mb-4 ">
+                            <div class="input-group col-lg-12 pl-0 ">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-white px-4 border-md border-right-0">
                                         <i class="fa fa-envelope text-muted ${requestScope.form.errors.email==null?"":"err"}"></i>
                                     </span>
                                 </div>
-                                <input id="email" type="email" name="email" placeholder="Adresse Email" class="form-control bg-white border-left-0 border-md " value="${requestScope.user.email}">
+                                <input id="email" type="email" name="email" placeholder="Adresse Email" class="form-control bg-white border-left-0 border-md " value="${requestScope.user.email}"><br/>
+                                
                             </div>
+                            
+                            <!-- Messages des erreurs -->
+                            <div class = "err mt-1 ml-2">
+                            	<c:choose>
+                            		<c:when test="${requestScope.form.errors.email!=null}">
+										<i class="fas fa-exclamation-circle"></i> ${requestScope.form.errors.email}                            		
+                            		</c:when>
+                            	</c:choose>
+        							
+      						</div>
+      						</div>
 
                             <!-- Mot de passe -->
-                            <div class="input-group col-lg-6 mb-4">
+                            <div class = "mb-4 ">
+                            
+                            
+                            <div class="input-group col-lg-12 pl-0">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-white px-4 border-md border-right-0">
                                         <i class="fa fa-lock text-muted ${requestScope.form.errors.password==null?"":"err"}""></i>
@@ -49,6 +65,16 @@
                                 </div>
                                 <input id="password" type="password" name="password" placeholder="Mot de passe" class="form-control bg-white border-left-0 border-md" value="${requestScope.user.password}">
                             </div>
+                            <!-- Messages des erreurs -->
+                            <div class = "err mt-1 ml-2">
+                            	<c:choose>
+                            		<c:when test="${requestScope.form.errors.password!=null}">
+										<i class="fas fa-exclamation-circle"></i> ${requestScope.form.errors.password}                            		
+                            		</c:when>
+                            	</c:choose>
+        							
+      						</div>
+      						</div>
 
                             <!-- Submit Button -->
                             <div class="form-group col-lg-12 mx-auto mb-0">

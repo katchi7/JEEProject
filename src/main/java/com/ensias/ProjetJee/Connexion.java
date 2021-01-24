@@ -37,7 +37,7 @@ public class Connexion extends HttpServlet {
         req.setAttribute("form",form);
         req.setAttribute("user",utilisateur);
         if(form.getErrors().isEmpty()){
-        	System.out.println("User PASSWORD : "+utilisateur.getPassword()+" USER PASSWORD HASH256 : "+ utilisateur.getPasswordAsHash());
+        	
             session.setAttribute("user",utilisateur);
             Cookie cookie = new Cookie("JSESSIONID",session.getId());
             cookie.setMaxAge(60 * 60 * 24 * 365);
