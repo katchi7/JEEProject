@@ -10,7 +10,7 @@
             <!--Si l'utilisateur est conecté-->
             <%}else{%>
             <div>
-                <span><i class="fas fa-user-circle"></i> </span><strong><!--Activate when database is instanciated ${sessionScope.user.fname} ${sessionScope.user.lname}--> Aabane Abderrahim</strong>
+                <span><i class="fas fa-user-circle"></i> </span><strong>${sessionScope.user.fname} ${sessionScope.user.lname}</strong>
                 <a class="btn btn-danger" href="logout"><span><i class="fas fa-sign-out-alt"></i></span>&nbsp;&nbsp;Logout</a></div>
             </div>
             <%}%>

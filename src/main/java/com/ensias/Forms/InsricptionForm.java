@@ -1,6 +1,7 @@
 package com.ensias.Forms;
 
-import beans.User;
+import com.ensias.beans.User;
+import com.ensias.dao.DAOUser;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +18,7 @@ public class InsricptionForm {
     private static final String CHAMP_NV = "niveau";
     private static final String CHAMP_FILIERE = "filiere";
     private static final String CHAMP_CONFIRM_PASSWORD = "passwordConfirmation";
+    
     private static final ArrayList<String> NIVEAUX = new ArrayList<String>();
     static {
     	NIVEAUX.add("1A");
@@ -37,6 +39,12 @@ public class InsricptionForm {
     
     private String resultat;
     private Map<String,String> errors = new HashMap<>();
+    private DAOUser daoUser;
+    
+    public InsricptionForm(DAOUser daoUser){
+    	this.daoUser = daoUser;
+    }
+    
     public Map<String, String> getErrors() {
         return errors;
     }
@@ -58,7 +66,7 @@ public class InsricptionForm {
         } catch ( Exception e ) {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
-        utilisateur.setEmail( email );
+        utilisateur.setEmail( email.trim().toLowerCase() );
         
         try {
             validationMotsDePasse( password );
@@ -113,7 +121,7 @@ public class InsricptionForm {
             resultat = "Échec de l'inscription.";
         }
         
-        
+        if(this.getErrors().isEmpty()) this.daoUser.Create(utilisateur);
         return utilisateur;
     }
     private String getValeurChamp(HttpServletRequest request,String champ){
@@ -128,6 +136,8 @@ public class InsricptionForm {
         if ( email != null && !email.equals("null") ) {
             if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
                 throw new Exception( "Merci de saisir une adresse mail valide." );
+            }if(this.daoUser.findUser(email)!=null) {
+            	throw new Exception( "Cette adresse existe deja." );
             }
         } else {
             throw new Exception( "Merci de saisir une adresse mail." );

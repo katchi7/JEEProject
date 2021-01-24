@@ -1,4 +1,4 @@
-package beans;
+package com.ensias.beans;
 
 import java.nio.charset.StandardCharsets;
 
@@ -16,12 +16,12 @@ public class User {
     private String filiere;
     
    
-        public int getId() {
-    		return id;
-    	}
-    	public void setId(int id) {
-    		this.id = id;
-    	}
+    public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
     public String getPassword() {
         return password;
     }

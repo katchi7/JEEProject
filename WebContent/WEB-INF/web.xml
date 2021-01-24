@@ -28,6 +28,9 @@
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    <listener>
+    	<listener-class>com.ensias.config.InitDaoFactory</listener-class>
+    </listener>
    
 
 </web-app>

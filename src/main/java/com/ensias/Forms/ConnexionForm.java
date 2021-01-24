@@ -1,6 +1,7 @@
 package com.ensias.Forms;
 
-import beans.User;
+import com.ensias.beans.User;
+import com.ensias.dao.DAOUser;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -11,11 +12,15 @@ public class ConnexionForm {
     private static final String CHAMP_PASSWORD = "password";
     private String resultat;
     private Map<String,String> errors = new HashMap<>();
-
+    private DAOUser daoUser = null;
+    private User user = null;
+    public ConnexionForm(DAOUser dao){
+    	daoUser = dao;
+    }
     public Map<String, String> getErrors() {
         return errors;
     }
-
+    
     public User inscrireUtilisateur(HttpServletRequest request){
         String email = getValeurChamp(request,CHAMP_EMAIL);
         String password = getValeurChamp(request,CHAMP_PASSWORD);
@@ -27,19 +32,23 @@ public class ConnexionForm {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
         utilisateur.setEmail( email );
+        utilisateur.setPassword( password );
 
         try {
-            validationMotsDePasse( password );
+            validationMotsDePasse( utilisateur );
         } catch ( Exception e ) {
             setErreur( CHAMP_PASSWORD, e.getMessage());
         }
-        utilisateur.setPassword( password );
+        
         if ( errors.isEmpty() ) {
             resultat = "Succès de l'inscription.";
         } else {
             resultat = "Échec de l'inscription.";
         }
-        return utilisateur;
+        if(user ==null) return utilisateur;
+        utilisateur = null;
+        return user;
+        
     }
     private String getValeurChamp(HttpServletRequest request,String champ){
         String valeur = request.getParameter(champ);
@@ -51,22 +60,21 @@ public class ConnexionForm {
     //Methode de validation d'email
     private void validationEmail( String email ) throws Exception {
         if ( email != null && !email.equals("null") ) {
-            if ( !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
-                throw new Exception( "Merci de saisir une adresse mail valide." );
+            user = this.daoUser.findUser(email);
+            if(user==null) {
+            	throw new Exception( "Email introuvable.");
             }
         } else {
             throw new Exception( "Merci de saisir une adresse mail." );
         }
     }
     // Methode de validation de mot de passe
-    private void validationMotsDePasse( String motDePasse) throws Exception {
-    	
+    private void validationMotsDePasse( User utilisateur) throws Exception {
+    	String motDePasse = utilisateur.getPassword();
         if ( motDePasse != null && !motDePasse.trim().equals("null") ) {
-            if ( motDePasse.trim().length() < 3 ) {
-                throw new Exception( "Les mots de passe doivent contenir au moins 3 caractères." );
-            }
+            if(!utilisateur.getPasswordAsHash().equals(user.getPassword())) throw new Exception( "Mot de passe invalide." );
         } else {
-            throw new Exception( "Merci de saisir et confirmer votre mot de passe." );
+            throw new Exception( "Merci de saisir votre mot de passe." );
         }
     }
 
