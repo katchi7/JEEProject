@@ -25,6 +25,7 @@ public class InitDaoFactory implements ServletContextListener {
          ServletContext servletContext = sce.getServletContext();
          
          this.daoFactory = DaoFactory.getInstance();
+         System.out.print(daoFactory);
          servletContext.setAttribute(ATT_DAO_FACTORY, daoFactory);
          
     }
