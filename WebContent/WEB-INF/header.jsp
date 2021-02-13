@@ -4,7 +4,7 @@
 <header>
         <nav class="navbar">
           <div class="container">
-            <a class="navbar-brand" href="/"><img src="inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
+            <a class="navbar-brand" href="/"><img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
               <%if(session.getAttribute("user")==null){%>
             <div>
               <a class="btn btn-outline-primary mr-2" href="login"><span><i class="fas fa-user"></i></span>&nbsp;&nbsp;Log In</a>
@@ -19,7 +19,7 @@
                 <c:otherwise><i class="fas fa-user-circle"></i> </c:otherwise>
                 </c:choose>
                 </span><strong>${sessionScope.user.fname} ${sessionScope.user.lname}</strong>
-                <a class="btn btn-danger" href="logout"><span><i class="fas fa-sign-out-alt"></i></span>&nbsp;&nbsp;Logout</a>
+                <a class="btn btn-danger" href="/logout"><span><i class="fas fa-sign-out-alt"></i></span>&nbsp;&nbsp;Logout</a>
             </div>
             <%}%>
         </nav>
