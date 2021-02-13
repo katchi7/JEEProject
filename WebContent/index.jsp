@@ -10,13 +10,13 @@
     <meta name="author" content="">
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="inc/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/inc/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
 
-    <link rel="stylesheet" href="inc/style.css">
-    <link rel="stylesheet" href="inc/styles/style_index.css">
-    <link rel="icon" href="inc/icons/logo.ico">
+    <link rel="stylesheet" href="/inc/style.css">
+    <link rel="stylesheet" href="/inc/styles/style_index.css">
+    <link rel="icon" href="/inc/icons/logo.ico">
   </head>
   <body>
     <c:import url="/WEB-INF/header.jsp"></c:import>
@@ -25,7 +25,7 @@
     
       <section class="py-5 overflow-hidden"><div class="container py-5">
           <div class="row">
-            <div class="position-relative col-12 col-lg-6 order-last order-lg-first mt-5 mt-lg-0"><img class="img-fluid position-relative mx-auto rounded w-100" style="z-index:10" src="inc/images/education.jpg" alt=""><img class="img-fluid position-absolute" width="160" height="160" style="top:0; left:0; margin-left: -48px; margin-top: -48px;" src="metis-assets/elements/blob-tear.svg" alt=""><img class="img-fluid position-absolute" width="160" height="160" style="right:0; bottom:0; margin-right: -48px; margin-bottom: -48px;" src="metis-assets/elements/blob-tear.svg" alt=""></div>
+            <div class="position-relative col-12 col-lg-6 order-last order-lg-first mt-5 mt-lg-0"><img class="img-fluid position-relative mx-auto rounded w-100" style="z-index:10" src="/inc/images/education.jpg" alt=""><img class="img-fluid position-absolute" width="160" height="160" style="top:0; left:0; margin-left: -48px; margin-top: -48px;" src="metis-assets/elements/blob-tear.svg" alt=""><img class="img-fluid position-absolute" width="160" height="160" style="right:0; bottom:0; margin-right: -48px; margin-bottom: -48px;" src="metis-assets/elements/blob-tear.svg" alt=""></div>
             <div class="col-12 col-lg-6 py-5">
               <div class="row">
                 <div class="col-12 col-lg-8 mx-auto">

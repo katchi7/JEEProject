@@ -28,9 +28,27 @@
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Home</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/ensiasdocs/home</url-pattern>
+    </servlet-mapping>
     <listener>
     	<listener-class>com.ensias.config.InitDaoFactory</listener-class>
     </listener>
+    
+    <filter>
+    	<filter-name>Auth</filter-name>
+    	<filter-class>com.ensias.Filters.AuthFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+    	<filter-name>Auth</filter-name>
+    	<url-pattern>/ensiasdocs/*</url-pattern>
+    </filter-mapping>
    
 
 </web-app>
