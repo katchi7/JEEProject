@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 
 <header>
-        <nav class="navbar">
+        <nav class="navbar haut">
           <div class="container">
             <a class="navbar-brand" href="/"><img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
               <%if(session.getAttribute("user")==null){%>
