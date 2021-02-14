@@ -10,6 +10,7 @@ public class Module {
 	private String elm_annee;
 	private String elm_semester;
 	private Date date_exam;
+	private String elm_description;
 	
 	
 	public Module() {
@@ -62,6 +63,12 @@ public class Module {
 	}
 	public void setDate_exam(Date date) {
 		this.date_exam = date;
+	}
+	public String getElm_description(String elm_dsc) {
+		return this.elm_description;
+	}
+	public void setElm_description(String elm_dsc) {
+		this.elm_description = elm_dsc;
 	}
 	
 	

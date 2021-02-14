@@ -64,16 +64,13 @@
               <div class =”container”>
                   <div class="row">
                        <c:forEach items = "${ modules }" var="module" >
-              <div class ="container align-self-center">
-                  <div class="row justify-content-center">
-
-                      <div class="col-lg-3 col-md-6 col-sm-12 carte">
-                          <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-                              <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 1</div>
+              <div class="col-lg-3 col-md-6 col-sm-12 carte">
+                          <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                              <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 2</div>
                               <div class="card-body">
-                                <h5 class="card-title">${module.elm_name}</h5>
-                                <p class="card-text">${module.elm_module}</p>
-                                <div class="card-footer bg-transparent border-dark"><center><a href="module/${module.elm_id}" class="btn btn-primary">Accéder</a></center></div>
+                                <h5 class="card-title">${module.elm_name }]</h5>
+                                <p class="card-text">${module.elm_module }</p>
+                                <div class="card-footer bg-transparent border-dark"><center><a href="module/${module.elm_id }" class="btn btn-primary">Accéder</a></center></div>
                               </div>
                           </div>
                       </div>

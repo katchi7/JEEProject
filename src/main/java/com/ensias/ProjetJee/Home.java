@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ensias.beans.User;
+import com.ensias.dao.DaoFactory;
+import com.ensias.dao.ModuleDao;
 import com.ensias.beans.Module;
 
 /**
@@ -17,6 +19,8 @@ import com.ensias.beans.Module;
 public class Home extends HttpServlet {
 	 public static String ROOT = "/WEB-INF/";
 	 public static String JSP = "Home.jsp";
+	 
+	 ModuleDao daoModule;
 	    
 	 private static final String ATT_DAO_FACTORY = "daofactory";
 	private static final long serialVersionUID = 1L;
@@ -27,6 +31,14 @@ public class Home extends HttpServlet {
     public Home() {
         super();
     }
+    
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        //Get the Dao
+        daoModule = ((DaoFactory) this.getServletContext().getAttribute(ATT_DAO_FACTORY)).getModuleDao();
+    }
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -47,11 +59,7 @@ public class Home extends HttpServlet {
 	}
 	
 	private ArrayList<Module> getUserModules(User user) {
-		ArrayList<Module> modules = new ArrayList<Module>();
-		for(int i=0;i<5;i++) {
-			modules.add(generateModule());
-		}
-		
+		ArrayList<Module> modules = daoModule.findModuleByUser(user);
 		return modules;
 	}
 	//TEMP
