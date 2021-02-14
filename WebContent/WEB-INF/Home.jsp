@@ -18,17 +18,6 @@
 </head>
 <body>
 <c:import url="/WEB-INF/header.jsp"></c:import>
-<<<<<<< HEAD
-<div class ="container">
-<c:forEach items ="${ modules }" var = "module">
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${module.elm_name}</h5>
-    <p class="card-text">${module.elm_module}</p>
-    <a href="module/${module.elm_id}" class="btn btn-primary">Go somewhere</a>
-  </div>
-=======
 <div class="row">
   <div class="col-3 menu-gauche">
       <center>
@@ -71,66 +60,18 @@
               </div>
               <div class =”container”>
                   <div class="row">
+                       <c:forEach items = "${ modules }" var="module" >
                       <div class="col-lg-3 col-md-6 col-sm-12 carte">
                           <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
                               <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 1</div>
                               <div class="card-body">
-                                <h5 class="card-title">Titre module</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <div class="card-footer bg-transparent border-dark"><center><a href="#" class="btn btn-primary">Accéder</a></center></div>
+                                <h5 class="card-title">${module.elm_name}</h5>
+                                <p class="card-text">${module.elm_module}</p>
+                                <div class="card-footer bg-transparent border-dark"><center><a href="module/${module.elm_id}" class="btn btn-primary">Accéder</a></center></div>
                               </div>
                           </div>
                       </div>
-                      <div class="col-lg-3 col-md-6 col-sm-12 carte">
-                          <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-                              <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 2</div>
-                              <div class="card-body">
-                                <h5 class="card-title">Titre module</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <div class="card-footer bg-transparent border-dark"><center><a href="#" class="btn btn-primary">Accéder</a></center></div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-sm-12 carte">
-                          <div class="card bg-light mb-3" style="max-width: 18rem;">
-                              <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 3</div>
-                              <div class="card-body">
-                                <h5 class="card-title">Titre module</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <div class="card-footer bg-transparent border-secondary"><center><a href="#" class="btn btn-primary">Accéder</a></center></div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-sm-12 carte">
-                          <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-                              <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 4</div>
-                              <div class="card-body">
-                                <h5 class="card-title">Titre module</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <div class="card-footer bg-transparent border-secondary"><center><a href="#" class="btn btn-primary">Accéder</a></center></div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-sm-12 carte">
-                          <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                              <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 5</div>
-                              <div class="card-body">
-                                <h5 class="card-title">Titre module</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <div class="card-footer bg-transparent border-secondary"><center><a href="#" class="btn btn-primary">Accéder</a></center></div>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-lg-3 col-md-6 col-sm-12 carte">
-                          <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-                              <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 6</div>
-                              <div class="card-body">
-                                <h5 class="card-title">Titre module</h5>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                <div class="card-footer bg-transparent border-secondary"><center><a href="#" class="btn btn-primary">Accéder</a></center></div>
-                              </div>
-                          </div>
-                      </div>
+                      </c:forEach>
                   </div>
               </div>
               <nav aria-label="Page navigation example">
@@ -150,9 +91,7 @@
       </div>
     
 </section>
->>>>>>> 2f76dcbb4496cbd7413e01290695cba0990fd7b4
 </div>
-</c:forEach>
 
 </div>
 <c:import url="/WEB-INF/footer.jsp"></c:import>
