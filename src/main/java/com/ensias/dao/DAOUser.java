@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.ensias.beans.User;
 
@@ -28,9 +29,29 @@ public class DAOUser {
 		try {
 			connection = factory.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO "+TABLE_NAME+"("+F_NAME+","+L_NAME+","+EMAIL+","+PASSWORD+","+ADMIN+ ","+NUM+","+NV+","+FILIERE+")"
-					+ "VALUES ('" +user.getFname()+"','"+user.getLname()+"','"+user.getEmail()+"','"+user.getPasswordAsHash()+"',?,'"+user.getNum()+"','"+user.getNiveau()+"','"+user.getFiliere()+"');");
+					+ "VALUES ('" +user.getFname()+"','"+user.getLname()+"','"+user.getEmail()+"','"+user.getPasswordAsHash()+"',?,'"+user.getNum()+"','"+user.getNiveau()+"','"+user.getFiliere()+"');",PreparedStatement.RETURN_GENERATED_KEYS);
 			preparedStatement.setBoolean(1, user.isAdministrator());
 			preparedStatement.execute();
+			ResultSet set = preparedStatement.getGeneratedKeys();
+			set.next();
+			user.setId(set.getInt(1));
+			preparedStatement = connection.prepareStatement("SELECT elm_id from element WHERE elm_annee=?");
+			preparedStatement.setString(1, user.getNiveau());
+			set = preparedStatement.executeQuery();
+			ArrayList<Integer> element_ids = new ArrayList<>() ;
+			
+			while(set.next()) {
+				element_ids.add(set.getInt("elm_id"));
+			}
+			if(element_ids.size()>0) {
+			String Statement = "INSERT INTO inscrit VALUES";
+			for(int i : element_ids) {
+				Statement += "('"+i+"','"+user.getId()+"'),";
+			}
+			Statement = Statement.substring(0,Statement.lastIndexOf(','))+";";
+			preparedStatement = connection.prepareStatement(Statement);
+			preparedStatement.execute();
+			}
 			connection.close();
 			return true;
 		} catch (SQLException e) {

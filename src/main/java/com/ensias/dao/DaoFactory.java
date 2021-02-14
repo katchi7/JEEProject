@@ -78,4 +78,8 @@ public class DaoFactory {
     public DAOUser getDaoUser() {
     	return new DAOUser(this);
     }
+    
+    public ModuleDao getModuleDao() {
+    	return new ModuleDao(this);
+    }
 }
