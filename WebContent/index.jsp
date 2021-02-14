@@ -25,7 +25,7 @@
     
       <section class="py-5 overflow-hidden"><div class="container py-5">
           <div class="row">
-            <div class="position-relative col-12 col-lg-6 order-last order-lg-first mt-5 mt-lg-0"><img class="img-fluid position-relative mx-auto rounded w-100" style="z-index:10" src="/inc/images/education.jpg" alt=""><img class="img-fluid position-absolute" width="160" height="160" style="top:0; left:0; margin-left: -48px; margin-top: -48px;" src="metis-assets/elements/blob-tear.svg" alt=""><img class="img-fluid position-absolute" width="160" height="160" style="right:0; bottom:0; margin-right: -48px; margin-bottom: -48px;" src="metis-assets/elements/blob-tear.svg" alt=""></div>
+            <div class="position-relative col-12 col-lg-6 order-last order-lg-first mt-5 mt-lg-0"><img class="img-fluid position-relative mx-auto rounded w-100" style="z-index:10" src="/inc/images/education.jpg" alt=""></div>
             <div class="col-12 col-lg-6 py-5">
               <div class="row">
                 <div class="col-12 col-lg-8 mx-auto">
