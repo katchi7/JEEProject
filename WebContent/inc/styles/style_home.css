@@ -88,3 +88,16 @@
   .card{
     background: url("images/1.jpg");
   }
+
+  .menu-centre:hover{
+    background-color: rgb(228, 216, 166);
+  }
+  
+  a{
+    color: black;
+    font-weight: bold;
+  }
+  
+  .on{
+    background-color: rgb(228, 216, 166);
+  }
