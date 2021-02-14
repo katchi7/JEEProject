@@ -64,7 +64,7 @@ public class Module {
 	public void setDate_exam(Date date) {
 		this.date_exam = date;
 	}
-	public String getElm_description(String elm_dsc) {
+	public String getElm_description() {
 		return this.elm_description;
 	}
 	public void setElm_description(String elm_dsc) {

@@ -4,6 +4,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <% ArrayList<Module> modules =(ArrayList<Module>) request.getAttribute("modules"); %>
+<% String[] bgs = new String[]{"bg-success","bg-light","bg-warning","bg-info","bg-info","bg-dark"}; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,17 +64,19 @@
               </div>
               <div class =”container”>
                   <div class="row">
+                  <% int i=0; %>
                        <c:forEach items = "${ modules }" var="module" >
               <div class="col-lg-3 col-md-6 col-sm-12 carte">
-                          <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                          <div class="card <%= bgs[i%bgs.length] %> mb-3" style="max-width: 18rem;">
                               <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 2</div>
                               <div class="card-body">
                                 <h5 class="card-title">${module.elm_name }]</h5>
-                                <p class="card-text">${module.elm_module }</p>
+                                <p class="card-text">${module.elm_description}</p>
                                 <div class="card-footer bg-transparent border-dark"><center><a href="module/${module.elm_id }" class="btn btn-primary">Accéder</a></center></div>
                               </div>
                           </div>
                       </div>
+                      <% i++; %>
                       </c:forEach>
                   </div>
               </div>
