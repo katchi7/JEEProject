@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <% ArrayList<Module> modules =(ArrayList<Module>) request.getAttribute("modules"); %>
 <% String[] bgs = new String[]{"bg-success","bg-light","bg-warning","bg-info","bg-info","bg-dark"}; %>
+<% String[] txt = new String[]{"","text-white"}; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="60%" height="141.747" viewBox="0 0 153 141.747" style="margin-bottom: 10px;margin-top: 5%;">
               <path id="user-circle-solid" d="M76.5,8C34.24,8,0,39.722,0,78.874s34.24,70.874,76.5,70.874S153,118.026,153,78.874,118.76,8,76.5,8Zm0,27.435c14.992,0,27.145,11.26,27.145,25.149S91.492,85.732,76.5,85.732,49.355,74.473,49.355,60.584,61.508,35.435,76.5,35.435Zm0,98.309a61.1,61.1,0,0,1-45.191-19.49,34.812,34.812,0,0,1,30.384-17.09,8.1,8.1,0,0,1,2.19.314,41.346,41.346,0,0,0,25.233,0,8.1,8.1,0,0,1,2.19-.314,34.812,34.812,0,0,1,30.384,17.09A61.1,61.1,0,0,1,76.5,133.744Z" transform="translate(0 -8)" fill="rgba(0,0,0,0.52)"/>
           </svg>
-          <p><h2>User Name</h2></p>
+          <p><h2>${sessionScope.user.fname} ${sessionScope.user.lname}</h2></p>
       </center>
         
       <nav class ="navbar menu-gauche-centre" >
@@ -62,24 +63,26 @@
                       
                   </center>
               </div>
-              <div class =”container”>
-                  <div class="row">
-                  <% int i=0; %>
+              <div class ="container align-self-center">
+                    <div class="row justify-content-center">
+                    <% int i=0; %>
                        <c:forEach items = "${ modules }" var="module" >
-              <div class="col-lg-3 col-md-6 col-sm-12 carte">
-                          <div class="card <%= bgs[i%bgs.length] %> mb-3" style="max-width: 18rem;">
-                              <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 2</div>
-                              <div class="card-body">
-                                <h5 class="card-title">${module.elm_name }]</h5>
-                                <p class="card-text">${module.elm_description}</p>
-                                <div class="card-footer bg-transparent border-dark"><center><a href="module/${module.elm_id }" class="btn btn-primary">Accéder</a></center></div>
-                              </div>
-                          </div>
-                      </div>
-                      <% i++; %>
-                      </c:forEach>
-                  </div>
-              </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 carte">
+                            <div class="card  <%= i!=1?txt[1]:txt[0] %> <%= bgs[i%bgs.length] %> mb-3" style="max-width: 18rem;">
+                                <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 1</div>
+                                <div class="card-body">
+                                  <h5 class="card-title">${module.elm_name }</h5>
+                                  <p class="card-text">${module.elm_description }</p>
+                                  <div class="card-footer bg-transparent border-dark"><center><a href="module/${module.elm_id}" class="btn btn-primary">Accéder</a></center></div>
+                                </div>
+                               
+                            </div>
+                            <% i++; %>
+                      
+                        </div>
+                        </c:forEach>
+                    
+                    </div>
               <nav aria-label="Page navigation example">
                   <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
