@@ -23,8 +23,8 @@
   </head>
   <body>
   <c:import url="/WEB-INF/header.jsp"></c:import>
-  <div class="row">
-    <div class="col-2 menu-gauche">
+  <div class="row vh-100" style="width: 100%;">
+    <div class="col-2 menu-gauche" style="height: 100%;">
         <center>
             <svg xmlns="http://www.w3.org/2000/svg" width="60%" height="141.747" viewBox="0 0 153 141.747" style="margin-bottom: 10px;margin-top: 5%;">
                 <path id="user-circle-solid" d="M76.5,8C34.24,8,0,39.722,0,78.874s34.24,70.874,76.5,70.874S153,118.026,153,78.874,118.76,8,76.5,8Zm0,27.435c14.992,0,27.145,11.26,27.145,25.149S91.492,85.732,76.5,85.732,49.355,74.473,49.355,60.584,61.508,35.435,76.5,35.435Zm0,98.309a61.1,61.1,0,0,1-45.191-19.49,34.812,34.812,0,0,1,30.384-17.09,8.1,8.1,0,0,1,2.19.314,41.346,41.346,0,0,0,25.233,0,8.1,8.1,0,0,1,2.19-.314,34.812,34.812,0,0,1,30.384,17.09A61.1,61.1,0,0,1,76.5,133.744Z" transform="translate(0 -8)" fill="rgba(0,0,0,0.52)"/>
@@ -91,7 +91,7 @@
                     </div>
                     </div>
                 </div>
-                <nav aria-label="Page navigation example">
+                <nav class="page-nbr" aria-label="Page navigation example">
                     <ul class="pagination justify-content-center">
                       <li class="page-item disabled">
                         <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
