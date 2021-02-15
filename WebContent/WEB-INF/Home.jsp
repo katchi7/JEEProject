@@ -106,10 +106,6 @@
                 </nav>
             </div>
         </div>
-      
-  </section>
-  </div>
-  
   </div>
   <c:import url="/WEB-INF/footer.jsp"></c:import>
   </body>
