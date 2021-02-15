@@ -45,6 +45,22 @@
         <url-pattern>/ensiasdocs/home</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>Download</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Download</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Download</servlet-name>
+        <url-pattern>/ensiasdocs/download/*</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>Document</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.DocServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Document</servlet-name>
+        <url-pattern>/ensiasdocs/document/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Error</servlet-name>
         <servlet-class>com.ensias.ProjetJee.Errors</servlet-class>
     </servlet>

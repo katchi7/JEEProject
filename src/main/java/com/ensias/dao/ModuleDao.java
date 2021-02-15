@@ -137,5 +137,38 @@ public class ModuleDao {
 		return docs;
 		
 	}
+public Document findDocumentsById(int id){
+		
+		
+		Connection conn = null;
+		try {
+			conn = factory.getConnection();
+			PreparedStatement stm = conn.prepareStatement("SELECT * FROM document WHERE doc_id=?;");
+			stm.setInt(1, id);
+			ResultSet set = stm.executeQuery();
+			if(set.next()) {
+				Document doc = new Document();
+				doc.setDoc_id(set.getInt("doc_id"));
+				doc.setDoc_name(set.getString("doc_name"));
+				doc.setDoc_mime(set.getString("doc_mime"));
+				doc.setDoc_path(set.getString("doc_path"));
+				doc.setDoc_type(set.getString("doc_type"));
+				doc.setDoc_elm(set.getInt("doc_elm"));
+				return doc;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+		
+	}
 
 }

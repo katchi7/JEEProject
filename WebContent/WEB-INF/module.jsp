@@ -33,7 +33,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="60%" height="141.747" viewBox="0 0 153 141.747" style="margin-bottom: 10px;margin-top: 5%;">
                   <path id="user-circle-solid" d="M76.5,8C34.24,8,0,39.722,0,78.874s34.24,70.874,76.5,70.874S153,118.026,153,78.874,118.76,8,76.5,8Zm0,27.435c14.992,0,27.145,11.26,27.145,25.149S91.492,85.732,76.5,85.732,49.355,74.473,49.355,60.584,61.508,35.435,76.5,35.435Zm0,98.309a61.1,61.1,0,0,1-45.191-19.49,34.812,34.812,0,0,1,30.384-17.09,8.1,8.1,0,0,1,2.19.314,41.346,41.346,0,0,0,25.233,0,8.1,8.1,0,0,1,2.19-.314,34.812,34.812,0,0,1,30.384,17.09A61.1,61.1,0,0,1,76.5,133.744Z" transform="translate(0 -8)" fill="rgba(0,0,0,0.52)"/>
                 </svg>
-                <p><h2>${sessionScope.user.fname } ${sessionScope.user.fname }</h2></p>
+                <p><h2>${sessionScope.user.fname } ${sessionScope.user.lname }</h2></p>
               </center>
                   
               <nav class ="navbar menu-gauche-centre" >                              
@@ -67,10 +67,10 @@
                               <h5 class="type-title"><i class="fas fa-hand-point-right" style="margin-right: 7px;"></i>${type}</h5>
                               <c:forEach items = "${ requestScope.docs }" var = "doc" >
                               <div class="bloc-file">
-                                <a class ="file-title" href="${doc.doc_path}"><i class="fas fa-file-pdf" style="margin-right: 7px;"></i>${ doc.doc_name}</a>
+                                <a class ="file-title" href="/ensiasdocs/document/${ doc.doc_id }"><i class="fas fa-file-pdf" style="margin-right: 7px;"></i>${ doc.doc_name}</a>
                                 <div style="float:right;">
-                                  <button class="button-show btn-telecharger"><i class="fa fa-download" style="margin-right: 5px;"></i><span>Télécharger </span></button>
-                                  <button class="button-show btn-visualiser"><i class="fas fa-eye" style="margin-right: 5px;"></i><span>Visualiser </span></button>
+                                  <a href="/ensiasdocs/download/${ doc.doc_id }" ><button  class="button-show btn-telecharger"><i class="fa fa-download" style="margin-right: 5px;"></i><span>Télécharger </span></button></a>
+                                  <a href="/ensiasdocs/document/${ doc.doc_id }" ><button class="button-show btn-visualiser"><i class="fas fa-eye" style="margin-right: 5px;"></i><span>Visualiser </span></button></a>
                                 </div>
                               </div>
                               </c:forEach>
@@ -78,7 +78,6 @@
                             </div>
                         </div>
                     </div>
-                   
                  
               </div>
     
