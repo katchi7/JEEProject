@@ -21,6 +21,7 @@ public class ModuleInfo extends HttpServlet {
 		// TODO Auto-generated method stub
 		String id = request.getRequestURI().split("/")[3];
 		response.getWriter().append("Served at: "+id);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/module.jsp").forward(request,response);
 	}
 
 	
