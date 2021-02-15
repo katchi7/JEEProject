@@ -35,7 +35,7 @@ public class DAOUser {
 			ResultSet set = preparedStatement.getGeneratedKeys();
 			set.next();
 			user.setId(set.getInt(1));
-			preparedStatement = connection.prepareStatement("SELECT elm_id from element JOIN filiere_element ON id_elm = elm_id WHERE elm_annee=? and id_fil = ?");
+			preparedStatement = connection.prepareStatement("SELECT elm_id from element JOIN filiere_element ON id_elm = elm_id WHERE elm_annee=? and id_fil = ?;");
 			preparedStatement.setString(1, user.getNiveau());
 			preparedStatement.setString(2, user.getFiliere());
 			set = preparedStatement.executeQuery();
