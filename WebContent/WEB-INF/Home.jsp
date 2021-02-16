@@ -63,7 +63,7 @@
     </div>
     <div class="col-10 corps_globale">
       <div class="container corps_home">
-        <div class="container align-self-center">
+        <div class="container align-self-center" >
           <div class="row justify-content-center">
         <center>
           <img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="340" style="margin-bottom: 20px;"><br />
@@ -82,7 +82,7 @@
       </div>
 
       <div class="container align-self-center">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="padding-top: 100px;">
           <% int i=0; %>
             <c:forEach items="${ modules }" var="module">
               <div class="col-lg-3 col-md-6 col-sm-12 carte">

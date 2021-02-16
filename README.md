@@ -7,4 +7,8 @@
 \
 \
 \
-![ScreenShot](https://i.ibb.co/fvwHQ2w/Login.png)
+![ScreenShot](https://i.ibb.co/VvQSKvb/login.png)
+\
+\
+\
+![ScreenShot](https://i.ibb.co/1KLFPCn/validation.png)
