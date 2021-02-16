@@ -78,6 +78,8 @@
                 <c:forEach items="${ requestScope.types }" var="type">
                   <h5 class="type-title"><i class="fas fa-hand-point-right" style="margin-right: 7px;"></i>${type}</h5>
                   <c:forEach items="${ requestScope.docs }" var="doc">
+                  <c:choose>
+                  <c:when test="${doc.doc_type == type }">
                     <div class="bloc-file">
                       <a class="file-title" href="/ensiasdocs/document/${ doc.doc_id }"><i class="fas fa-file-pdf"
                           style="margin-right: 7px;"></i>${ doc.doc_name}</a>
@@ -88,7 +90,10 @@
                         <a href="/ensiasdocs/document/${ doc.doc_id }"><button class="button-show btn-visualiser"><i
                               class="fas fa-eye" style="margin-right: 5px;"></i><span>Visualiser </span></button></a>
                       </div>
+                      
                     </div>
+                    </c:when>
+                    </c:choose>
                   </c:forEach>
                 </c:forEach>
               </div>
