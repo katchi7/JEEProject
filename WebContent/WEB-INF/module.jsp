@@ -47,13 +47,13 @@
 
       <nav class="navbar menu-gauche-centre">
         <div class="col-lg-12 col-md-12 col-sm-12 menu-centre on">
-          <a class="nav-link" href="#"> <i class="fab fa-leanpub"></i> Module </a>
+          <a class="nav-link" href="/ensiasdocs/home"> <i class="fab fa-leanpub"></i> Module </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 menu-centre">
           <a class="nav-link" href="#"> <i class="fas fa-calendar-alt"></i> Calendrier </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 menu-centre">
-          <a class="nav-link" href="#"> <i class="fas fa-user"></i> Profile </a>
+          <a class="nav-link" href="/ensiasdocs/profile"> <i class="fas fa-user"></i> Profile </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 menu-centre">
           <a class="nav-link" href="#"> <i class="fas fa-file-alt"></i> To Do </a>
