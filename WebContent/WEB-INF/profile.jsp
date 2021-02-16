@@ -83,8 +83,8 @@
       
                     <div class="col-4" style="margin-top: 30px;">
                       <center>
-                        <h2>Oussama Aarab</h2>
-                        <h4>Génie logiciel</h4>
+                        <h2>${sessionScope.user.fname } ${sessionScope.user.lname }</h2>
+                        <h4>${sessionScope.user.filiere }</h4>
                       </center>
       
                     </div>
@@ -94,16 +94,16 @@
                 <div class="container corps-profile">
                   <div class="row justify-content-center">
                     <div class="col-5" style="margin-right: 20px;padding-left: 50px;">
-                      <p><span class="info">Nom &nbsp;&nbsp; : </span><span>&nbsp;&nbsp; AARAB</span></p>
-                      <p><span class="info">Prénom &nbsp;&nbsp; : </span><span>&nbsp;&nbsp; OUSSAMA</span></p>
+                      <p><span class="info">Nom &nbsp;&nbsp; : </span><span>&nbsp;&nbsp; ${sessionScope.user.lname }</span></p>
+                      <p><span class="info">Prénom &nbsp;&nbsp; : </span><span>&nbsp;&nbsp; ${sessionScope.user.fname }</span></p>
                       <p><span class="info">Adresse email &nbsp;&nbsp; : </span><span>&nbsp;&nbsp;
-                          oussama_aarab@um5.ac.ma</span></p>
+                         ${sessionScope.user.email }</span></p>
                     </div>
                     <div class="col-5">
-                      <p><span class="info">Niveau universitaire &nbsp;&nbsp; : </span><span>&nbsp;&nbsp; 2ème année</span>
+                      <p><span class="info">Niveau universitaire &nbsp;&nbsp; : </span><span>&nbsp;&nbsp; ${sessionScope.user.niveau }</span>
                       </p>
-                      <p><span class="info">Filière &nbsp;&nbsp; : </span><span>&nbsp;&nbsp; Génie logiciel</span></p>
-                      <p><span class="info">N° de téléphone &nbsp;&nbsp; : </span><span>&nbsp;&nbsp; 06 77 77 77 77</span></p>
+                      <p><span class="info">Filière &nbsp;&nbsp; : </span><span>&nbsp;&nbsp; ${sessionScope.user.filiere }</span></p>
+                      <p><span class="info">N° de téléphone &nbsp;&nbsp; : </span><span>&nbsp;&nbsp; ${sessionScope.user.num }</span></p>
                     </div>
                   </div>
                 </div>

@@ -61,6 +61,14 @@
         <url-pattern>/ensiasdocs/document/*</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Profile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/ensiasdocs/profile</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Error</servlet-name>
         <servlet-class>com.ensias.ProjetJee.Errors</servlet-class>
     </servlet>
