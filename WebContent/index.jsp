@@ -20,10 +20,10 @@
   </head>
   <body>
     <c:import url="/WEB-INF/header.jsp"></c:import>
-    <div>
+    <div class="min-vh-100">
       
     
-      <section class="py-5 overflow-hidden"><div class="container py-5">
+      <section class="py-5 overflow-hidden "><div class="container py-5">
           <div class="row">
             <div class="position-relative col-12 col-lg-6 order-last order-lg-first mt-5 mt-lg-0"><img class="img-fluid position-relative mx-auto rounded w-100" style="z-index:10" src="/inc/images/education.jpg" alt=""></div>
             <div class="col-12 col-lg-6 py-5">
@@ -61,58 +61,59 @@
           </div>
         </div>
       </section>
+      <section class="page-section bg-light" id="team">
+        <div class="container equipe">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Notre équipe</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="inc/images/1.jpg" alt="" />
+                        <h4>Aarab Oussama</h4>
+                        <p class="text-muted"></p>
+                        <a class="btn btn-dark btn-social mx-2" href="mailto:oussama_aarab@um5.ac.ma"><i class="fab fa-google"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/Oussama.Aarab.07"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/oussama-aarab/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="inc/images/2.jpg" alt="" />
+                        <h4>Aabane Abderrahim</h4>
+                        <p class="text-muted"></p>
+                        <a class="btn btn-dark btn-social mx-2" href="mailto:abderrahim-aabane@um5.ac.ma"><i class="fab fa-google"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/abderrahim.ronaldox"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/abderrahim-aabane-680b80195/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="inc/images/3.jpg" alt="" />
+                        <h4>Anfar Asmaa</h4>
+                        <p class="text-muted"></p>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-google"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/asmae.ar.35"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/asmaa-anfar-00482b197/"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="inc/images/4.jpg" alt="" />
+                        <h4>Loumedene Salma</h4>
+                        <p class="text-muted"></p>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-google"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     </div>
     
 
-    <section class="page-section bg-light" id="team">
-      <div class="container equipe">
-          <div class="text-center">
-              <h2 class="section-heading text-uppercase">Notre équipe</h2>
-          </div>
-          <div class="row">
-              <div class="col-lg-3">
-                  <div class="team-member">
-                      <img class="mx-auto rounded-circle" src="inc/images/1.jpg" alt="" />
-                      <h4>Aarab Oussama</h4>
-                      <p class="text-muted"></p>
-                      <a class="btn btn-dark btn-social mx-2" href="mailto:oussama_aarab@um5.ac.ma"><i class="fab fa-google"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/Oussama.Aarab.07"><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/oussama-aarab/"><i class="fab fa-linkedin-in"></i></a>
-                  </div>
-              </div>
-              <div class="col-lg-3">
-                  <div class="team-member">
-                      <img class="mx-auto rounded-circle" src="inc/images/2.jpg" alt="" />
-                      <h4>Aabane Abderrahim</h4>
-                      <p class="text-muted"></p>
-                      <a class="btn btn-dark btn-social mx-2" href="mailto:abderrahim-aabane@um5.ac.ma"><i class="fab fa-google"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/abderrahim.ronaldox"><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/abderrahim-aabane-680b80195/"><i class="fab fa-linkedin-in"></i></a>
-                  </div>
-              </div>
-              <div class="col-lg-3">
-                  <div class="team-member">
-                      <img class="mx-auto rounded-circle" src="inc/images/3.jpg" alt="" />
-                      <h4>Anfar Asmaa</h4>
-                      <p class="text-muted"></p>
-                      <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-google"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/asmae.ar.35"><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/asmaa-anfar-00482b197/"><i class="fab fa-linkedin-in"></i></a>
-                  </div>
-              </div>
-              <div class="col-lg-3">
-                  <div class="team-member">
-                      <img class="mx-auto rounded-circle" src="inc/images/4.jpg" alt="" />
-                      <h4>Loumedene Salma</h4>
-                      <p class="text-muted"></p>
-                      <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-google"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                      <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+    
   
     <c:import url="/WEB-INF/footer.jsp"></c:import>
     <script src="inc/js/bootstrap/bootstrap.bundle.min.js"></script>

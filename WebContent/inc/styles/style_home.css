@@ -101,3 +101,26 @@
   .on{
     background-color: rgb(228, 216, 166);
   }
+  
+  .page-nbr{
+  	margin-bottom: 20px;
+  }
+
+  /************************  Profile  ***********************************/
+  span.info{
+    font-weight: bold;
+  }
+
+.corps-profile{
+    margin-top: 40px;
+    padding-left: 20px;
+  }
+
+  .profile-card{
+    background-color: rgb(141, 146, 151, 0.7);
+    margin-right: 20px;
+    margin-top: 80px;
+    margin-bottom: 100px;
+    padding-bottom: 50px;
+    border-radius: 35px;
+  }
