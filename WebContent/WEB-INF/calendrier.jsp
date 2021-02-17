@@ -59,7 +59,7 @@
           <a class="nav-link" href="/ensiasdocs/home"> <i class="fab fa-leanpub"></i> Module </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 menu-centre on">
-          <a class="nav-link" href="#"> <i class="fas fa-calendar-alt"></i> Calendrier </a>
+          <a class="nav-link" href=""> <i class="fas fa-calendar-alt"></i> Calendrier </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 menu-centre">
           <a class="nav-link" href="/ensiasdocs/profile"> <i class="fas fa-user"></i> Profile </a>
@@ -70,7 +70,7 @@
       </nav>
     </div>
     <div class="col-10 corps_globale">
-      <div class="page-header" style="margin-top: 25px;margin-right: 10px;">
+      <div class="page-header">
         <div class="row">
           <div class="col-md-12 col-sm-12">
             <div class="title">
@@ -85,7 +85,7 @@
 
       <div class="pd-ltr-20 xs-pd-20-10">
 
-        <div class="pd-20 card-box mb-30">
+        <div class="pd-20 card-box mb-30" >
           <div class="calendar-wrap">
             <div id='calendar'></div>
           </div>

@@ -1291,4 +1291,15 @@ be a descendant of the grid when it is being dragged.
 .fc-unthemed .fc-list-empty {
   /* theme will provide own background */
   background-color: #eee; }
+  
+ div.card-box{
+ 	box-shadow: 8px 8px 8px 5px grey;
+ }
+ 
+ div.page-header{
+ 	box-shadow: 8px 8px 8px 5px grey;
+ 	margin-top: 25px;margin-right: 10px;
+ }
+  
+  
 
