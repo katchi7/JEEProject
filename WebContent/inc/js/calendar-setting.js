@@ -11,6 +11,84 @@ jQuery(document).ready(function(){
 	});
 });
 
+let ev =  [
+			
+	{
+		title: 'Projet JEE',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+		start: '2021-02-22',
+		end: '2021-02-22',
+		className: 'fc-bg-default',
+		icon : "rocket"
+		
+	},
+	{
+		title: 'Achitecture des ordinateurs',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+		start: '2021-02-22',
+		end: '2021-02-22',
+		className: 'fc-bg-default',
+		icon : "laptop"
+		
+	},
+	{
+		title: 'TCP/IP',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+		start: '2021-02-09',
+		end: '2021-02-09',
+		className: 'fc-bg-default',
+		icon : "network-wired"
+		
+	},
+	{
+		title: 'Technologie Web',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+		start: '2021-02-11',
+		end: '2021-02-11',
+		className: 'fc-bg-blue',
+		icon : "file-code"
+	},
+	{
+		title: 'Compilation',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+		start: '2021-02-17',
+		end: '2021-02-17',
+		className: 'fc-bg-default',
+		icon : "laptop-code"
+	},
+	{
+		title: 'Génie Logiciel',
+		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
+		start: '2021-02-15',
+		end: '2021-02-15',
+		className: 'fc-bg-blue',
+		icon : "map-signs"
+		
+	}
+]
+
+
+function getEvents(){
+	let events = []
+	let i=0
+	$(".user_events").each((index)=>{
+		evt = {
+			title: "'"+$(".event_name").eq(index).text()+"'",
+			description:"'"+$(".event_description").eq(index).text()+"'",
+			start: "'"+$(".event_start").eq(index).text()+"'",
+			end: "'"+$(".event_end").eq(index).text()+"'",
+			className: "'"+$(".event_class").eq(index).text()+"'",
+			icon: "'"+$(".event_icon").eq(index).text()+"'"
+		}
+		events[i]=evt
+		i +=1
+	});
+	return events;
+}
+
+ev = getEvents();
+
+
 (function () {
 	'use strict';
 	// ------------------------------------------------------- //
@@ -31,61 +109,7 @@ jQuery(document).ready(function(){
 				center: 'month,agendaWeek,agendaDay',
 				right: 'today prev,next'
 			},
-			events: [
-			
-			{
-				title: 'Projet JEE',
-				description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-				start: '2021-02-22',
-				end: '2021-02-22',
-				className: 'fc-bg-default',
-				icon : "rocket"
-				
-			},
-			{
-				title: 'Achitecture des ordinateurs',
-				description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-				start: '2021-02-22',
-				end: '2021-02-22',
-				className: 'fc-bg-default',
-				icon : "laptop"
-				
-			},
-			{
-				title: 'TCP/IP',
-				description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-				start: '2021-02-09',
-				end: '2021-02-09',
-				className: 'fc-bg-default',
-				icon : "network-wired"
-				
-			},
-			{
-				title: 'Technologie Web',
-				description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-				start: '2021-02-11',
-				end: '2021-02-11',
-				className: 'fc-bg-blue',
-				icon : "file-code"
-			},
-			{
-				title: 'Compilation',
-				description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-				start: '2021-02-17',
-				end: '2021-02-17',
-				className: 'fc-bg-default',
-				icon : "laptop-code"
-			},
-			{
-				title: 'Génie Logiciel',
-				description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
-				start: '2021-02-15',
-				end: '2021-02-15',
-				className: 'fc-bg-blue',
-				icon : "map-signs"
-				
-			}
-			],
+			events:ev,
 			dayClick: function() {
 				jQuery('#modal-view-event-add').modal();
 			},
