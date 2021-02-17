@@ -82,4 +82,7 @@ public class DaoFactory {
     public ModuleDao getModuleDao() {
     	return new ModuleDao(this);
     }
+    public DaoEvent getDaoEvent() {
+    	return new DaoEvent(this);
+    }
 }

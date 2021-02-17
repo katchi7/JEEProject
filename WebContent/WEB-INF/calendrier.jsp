@@ -39,7 +39,16 @@
 
 <body>
   <c:import url="/WEB-INF/header.jsp"></c:import>
-
+ <c:forEach items="${requestScope.events}" var="event">
+<div class="user_events"  hidden>
+	<span class ="event_name">${event.event_name}</span> 
+	<span class ="event_description">${event.event_description}</span>
+	<span class ="event_start">${event.event_start}</span>
+  <span class = "event_end">${event.event_end}</span>
+  <span class = "event_class">${event.event_class}</span>
+  <span class = "event_icon">${event.event_icon}</span>
+</div>
+</c:forEach>
   <div class="row min-vh-100" style="width: 100%;">
     <div class="col-2 menu-gauche" style="min-height: 100%;">
       <center>
