@@ -50,7 +50,7 @@
                     <a class="nav-link" href="/ensiasdocs/home"> <i class="fab fa-leanpub"></i> Module </a>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 menu-centre">
-                    <a class="nav-link" href="#"> <i class="fas fa-calendar-alt"></i> Calendrier </a>
+                    <a class="nav-link" href="/ensiasdocs/calendrier"> <i class="fas fa-calendar-alt"></i> Calendrier </a>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 menu-centre on">
                     <a class="nav-link" href=""> <i class="fas fa-user"></i> Profile </a>

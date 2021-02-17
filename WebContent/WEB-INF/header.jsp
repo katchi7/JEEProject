@@ -10,7 +10,7 @@
               <a class="btn btn-outline-primary mr-2" href="login"><span><i class="fas fa-user"></i></span>&nbsp;&nbsp;Log In</a>
               <a class="btn btn-primary" href="register"><span><i class="fas fa-user-plus"></i></span>&nbsp;&nbsp;Sign Up</a></div>
           </div>
-            <!--Si l'utilisateur est conecté-->
+            <!--Si l'utilisateur est conectï¿½-->
             <%}else{%>
             <div>
                 <span>
