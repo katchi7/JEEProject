@@ -117,40 +117,27 @@
           <div id="modal-view-event-add" class="modal modal-top fade calendar-modal">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
-                <form id="add-event">
+                <form method="POST" action="/ensiasdocs/nouvelle-tache" id="add-event">
                   <div class="modal-body">
-                    <h4 class="text-blue h4 mb-10">Add Event Detail</h4>
+                    <h4 class="text-blue h4 mb-10">Add Todo Detail</h4>
                     <div class="form-group">
-                      <label>Event name</label>
-                      <input type="text" class="form-control" name="ename">
+                      <label>Todo title</label>
+                      <input type="text" class="form-control" name="todo_name">
                     </div>
                     <div class="form-group">
-                      <label>Event Date</label>
-                      <input type='text' class="datetimepicker form-control" name="edate">
+                      <label>Todo Date</label>
+                      <input type='text' class="datetimepicker form-control" name="todo_date">
                     </div>
                     <div class="form-group">
-                      <label>Event Description</label>
-                      <textarea class="form-control" name="edesc"></textarea>
+                      <label>Todo Description</label>
+                      <textarea class="form-control" name="todo_desc"></textarea>
                     </div>
-                    <div class="form-group">
-                      <label>Event Color</label>
-                      <select class="form-control" name="ecolor">
-                        <option value="fc-bg-default">fc-bg-default</option>
-                        <option value="fc-bg-blue">fc-bg-blue</option>
-                        <option value="fc-bg-lightgreen">fc-bg-lightgreen</option>
-                        <option value="fc-bg-pinkred">fc-bg-pinkred</option>
-                        <option value="fc-bg-deepskyblue">fc-bg-deepskyblue</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>Event Icon</label>
-                      <select class="form-control" name="eicon">
-                        <option value="circle">circle</option>
-                        <option value="cog">cog</option>
-                        <option value="group">group</option>
-                        <option value="suitcase">suitcase</option>
-                        <option value="calendar">calendar</option>
-                      </select>
+                    
+                    <div class="form-check ml-1">
+                      <input class="form-check-input" type="checkbox" value="done" id="flexCheckDefault" name="todo_is_done">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Done
+                      </label>
                     </div>
                   </div>
                   <div class="modal-footer">

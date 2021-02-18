@@ -85,4 +85,8 @@ public class DaoFactory {
     public DaoEvent getDaoEvent() {
     	return new DaoEvent(this);
     }
+    
+    public DAOTodo getDaoTodo() {
+    	return new DAOTodo(this);
+    }
 }

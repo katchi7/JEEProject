@@ -9,7 +9,7 @@ import com.ensias.beans.Event;
 public class DaoEvent {
 
 	private static String element="element";
-	private static String todo = "todo";
+	private static String todo = "todos";
 	private static String elm_id = "elm_id";
 	private static String elm_name = "elm_name";
 	private static String elm_module = "elm_module";
@@ -47,7 +47,7 @@ public class DaoEvent {
 				event.setEvent_icon("laptop-code");
 				ev.add(event);
 			}
-			stm = conn.prepareStatement("SELECT * FROM "+this.todo+" WHERE id_user = ? ;");
+			stm = conn.prepareStatement("SELECT * FROM "+this.todo+" WHERE todo_user = ? ;");
 			stm.setInt(1, id);
 			set = stm.executeQuery();
 			while(set.next()) {

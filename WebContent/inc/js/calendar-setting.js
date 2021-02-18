@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
 	jQuery("#add-event").submit(function(){
-		alert("Submitted");
+		
 		var values = {};
 		$.each($('#add-event').serializeArray(), function(i, field) {
 			values[field.name] = field.value;
@@ -12,7 +12,6 @@ jQuery(document).ready(function(){
 });
 
 let ev =  [
-			
 	{
 		title: 'Projet JEE',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.',
@@ -73,12 +72,12 @@ function getEvents(){
 	let i=0
 	$(".user_events").each((index)=>{
 		evt = {
-			title: "'"+$(".event_name").eq(index).text()+"'",
-			description:"'"+$(".event_description").eq(index).text()+"'",
-			start: "'"+$(".event_start").eq(index).text()+"'",
-			end: "'"+$(".event_end").eq(index).text()+"'",
-			className: "'"+$(".event_class").eq(index).text()+"'",
-			icon: "'"+$(".event_icon").eq(index).text()+"'"
+			title: $(".event_name").eq(index).text(),
+			description:$(".event_description").eq(index).text(),
+			start: $(".event_start").eq(index).text(),
+			end: $(".event_end").eq(index).text(),
+			className: $(".event_class").eq(index).text(),
+			icon: $(".event_icon").eq(index).text()
 		}
 		events[i]=evt
 		i +=1
@@ -88,6 +87,7 @@ function getEvents(){
 
 ev = getEvents();
 
+$(".datetimepicker").datepicker({ dateFormat: 'yy-mm-dd' });
 
 (function () {
 	'use strict';

@@ -18,6 +18,7 @@ import com.ensias.dao.DaoFactory;
 public class Calendrier extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ATT_DAO_FACTORY = "daofactory";
+	public static String TODO_FORM =  "TODO_FORM_SRC";
 	DaoEvent daoEvent;
        
     /**
@@ -42,6 +43,7 @@ public class Calendrier extends HttpServlet {
 		User user = (User)session.getAttribute("user");
 		ArrayList<Event> evs = daoEvent.findUserEvents(user.getId());
 		request.setAttribute("events", evs);
+		session.setAttribute("TODO_FORM_SRC", "/ensiasdocs/calendrier");
 		this.getServletContext().getRequestDispatcher("/WEB-INF/calendrier.jsp").forward(request, response);
 	}
 
