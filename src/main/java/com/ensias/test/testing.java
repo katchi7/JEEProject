@@ -9,8 +9,11 @@ class testing {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
-	}
-
+		JunitTesting t = new JunitTesting();
+		int expected =2;
+		int actual = t.add(3,1);
+		assertEquals(expected, actual);
+		
+}
 }
 
