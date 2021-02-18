@@ -68,6 +68,22 @@
         <servlet-name>Profile</servlet-name>
         <url-pattern>/ensiasdocs/profile</url-pattern>
     </servlet-mapping>
+        <servlet>
+        <servlet-name>Calendrier</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Calendrier</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Calendrier</servlet-name>
+        <url-pattern>/ensiasdocs/calendrier</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>TodoForm</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.TodoFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TodoForm</servlet-name>
+        <url-pattern>/ensiasdocs/nouvelle-tache</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>Error</servlet-name>
         <servlet-class>com.ensias.ProjetJee.Errors</servlet-class>

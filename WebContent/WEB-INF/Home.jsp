@@ -48,13 +48,13 @@
 
       <nav class="navbar menu-gauche-centre ">
         <div class="col-lg-12 col-md-12 col-sm-12 menu-centre on">
-          <a class="nav-link" href="#"> <i class="fab fa-leanpub"></i> Module </a>
+          <a class="nav-link" href=""> <i class="fab fa-leanpub"></i> Module </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 menu-centre">
-          <a class="nav-link" href="#"> <i class="fas fa-calendar-alt"></i> Calendrier </a>
+          <a class="nav-link" href="/ensiasdocs/calendrier"> <i class="fas fa-calendar-alt"></i> Calendrier </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 menu-centre">
-          <a class="nav-link" href="#"> <i class="fas fa-user"></i> Profile </a>
+          <a class="nav-link" href="/ensiasdocs/profile"> <i class="fas fa-user"></i> Profile </a>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 menu-centre">
           <a class="nav-link" href="#"> <i class="fas fa-file-alt"></i> To Do </a>
@@ -67,15 +67,14 @@
           <div class="row justify-content-center">
         <center>
           <img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="340" style="margin-bottom: 20px;"><br />
-          <img src="/inc/images/learning.jpg" alt="ENSIAS-DOC" width="100%" height="400" style="margin-bottom: 60px;">
+          <img class="image-learn" src="/inc/images/learning.jpg" alt="ENSIAS-DOC" width="100%" height="400">
           <img src="/inc/images/rechercher-logo.png" alt="ENSIAS-DOC" width="100"
-            style="margin-bottom: 20px;margin-right:0px;">
-          <img src="/inc/images/rechercher.png" alt="ENSIAS-DOC" width="340"
-            style="margin-bottom: 20px;margin-left:0px;">
-          <div class="input-group" style="width: 50%;">
+            style="margin-bottom: 20px;margin-right:0px; ">
+          <img class="image-recherche" src="/inc/images/rechercher.png" alt="ENSIAS-DOC" width="340">
+          <div class="input-group recherche" style="width: 50%;box-shadow: 5px 5px 5px 5px grey;border-radius:30px;">
             <input type="search" class="form-control rounded" placeholder="Recherche module" aria-label="Search"
               aria-describedby="search-addon" />
-            <button type="button" class="btn btn-outline-primary">Rechercher</button>
+            <button type="button" class="btn btn-outline-primary" style="border: none;">Rechercher</button>
           </div>
 
         </center>
