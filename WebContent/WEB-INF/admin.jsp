@@ -77,11 +77,11 @@
           <div id="Modification" class="tabcontent">
             <h2>Modification d'un module</h2>
             <div>
-              <form action="#" method="POST">
+              <form action="/ensiasdocs/admin/modifier-module" method="POST">
                 <div class="row align-items-center">
                   <div class="input-group col-lg-12 mb-4">
                     <div class="input-group col-lg-12 mb-4" style="margin-top: 50px;">
-                      <select id="cmodule" value="" name="cmodule"
+                      <select id="cmodule" name="elm_module"
                         class="browser-default custom-select champs-form choix">
                         <option value="" disabled selected>Choix du module</option>
                         <c:forEach items ="${requestScope.modules}" var="module">
@@ -92,13 +92,13 @@
 
                     <!-- Nom module -->
                     <div class="input-group col-lg-12 mb-4">
-                      <input type="text" name="nv_module" id="nv_module" class="form-control champs-form"
+                      <input type="text" name="module" id="nv_module" class="form-control champs-form"
                         placeholder="Nouveau nom du module">
                     </div>
 
                     <!-- Année -->
                     <div class="input-group col-lg-6 mb-4">
-                      <select id="nv_annee" value="" name="nv_annee"
+                      <select id="nv_annee" value="" name="annee"
                         class="browser-default custom-select champs-form choix">
                         <option value="" disabled selected>Niveau d'étude</option>
                         <option value="1A">1er année</option>
@@ -122,7 +122,7 @@
 
                     <!-- Description module -->
                     <div class="input-group col-lg-12 mb-4">
-                      <textarea id="nv_dscModule" name="nv_dscModule" class="form-control md-textarea" length="120"
+                      <textarea id="nv_dscModule" name="dscModule" class="form-control md-textarea" length="120"
                         rows="3" placeholder="Description du module"></textarea>
                     </div>
 
@@ -130,42 +130,42 @@
                     <div class="form-check">
                       <div class="input-group col-lg-12 mb-4 custom-control custom-checkbox">
                         <label class="container">
-                          <input type="checkbox">
+                          <input type="checkbox" name="GL" value="GL">
                           <span class="checkmark"></span>
                           Génie Logiciel
                         </label>
                         <label class="container">
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
+                          <input type="checkbox" name="IWIM" value="IWIM">
+                          <span class="checkmark" ></span>
                           Ingénierie du Web et Informatique Mobile
                         </label>
                         <label class="container">
-                          <input type="checkbox">
-                          <span class="checkmark"></span>
+                          <input type="checkbox" name="eMBI" value="eMBI">
+                          <span class="checkmark" ></span>
                           e-Management et Business Intelligence
                         </label>
                         <label class="container">
-                          <input type="checkbox">
+                          <input type="checkbox" name="SSI" value="SSI">
                           <span class="checkmark"></span>
                           Sécurité des Systèmes d'Information
                         </label>
                         <label class="container">
-                          <input type="checkbox">
+                          <input type="checkbox" name="ISEM" value="ISEM">
                           <span class="checkmark"></span>
                           Ingénierie des Systèmes Embarqués, Mobiles
                         </label>
                         <label class="container">
-                          <input type="checkbox">
+                          <input type="checkbox" name="IeL" value="IeL">
                           <span class="checkmark"></span>
                           Ingénierie e-Logistique
                         </label>
                         <label class="container">
-                          <input type="checkbox">
+                          <input type="checkbox" name="2IA" value="2IA">
                           <span class="checkmark"></span>
                           Ingénierie Intélligence Artificielle
                         </label>
                         <label class="container">
-                          <input type="checkbox">
+                          <input type="checkbox" name="IDF" value="IDF">
                           <span class="checkmark"></span>
                           Ingénierie Digitale pour la Finance
                         </label>
@@ -191,14 +191,14 @@
                 <form action="/ensiasdocs/admin/creer-module" method="POST">
                   <div class="row">
 
-                    <!-- Nom module -->
+                    <!-- Nom elm module -->
                     <div class="input-group col-lg-12 mb-4">
                       <input type="text" name="elm_module" id="elm_module" class="form-control champs-form"
                         placeholder="Nom de l'element du module">
                     </div>
                     
                     
-                    <!-- Nom module elm -->
+                    <!-- Nom module -->
                     <div class="input-group col-lg-12 mb-4">
                       <input type="text" name="module" id="module" class="form-control champs-form"
                         placeholder="Nom du module">

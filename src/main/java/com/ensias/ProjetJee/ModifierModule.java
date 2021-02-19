@@ -1,21 +1,20 @@
 package com.ensias.ProjetJee;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+
+import javax.servlet.ServletException;
 import com.ensias.beans.Module;
 import com.ensias.dao.DaoFactory;
 import com.ensias.dao.ModuleDao;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ensias.Forms.ModuleForm;
 
-public class CreerModule extends HttpServlet {
+public class ModifierModule extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ModuleDao daoModule;
 	private static final String ATT_DAO_FACTORY = "daofactory";
@@ -25,11 +24,10 @@ public class CreerModule extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreerModule() {
+    public ModifierModule() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
     
    
     public void init() throws ServletException {
@@ -37,11 +35,8 @@ public class CreerModule extends HttpServlet {
         //Get the Dao
         daoModule = ((DaoFactory) this.getServletContext().getAttribute(ATT_DAO_FACTORY)).getModuleDao();
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.sendRedirect("/ensiasdocs/admin");
 	}
 
@@ -49,14 +44,12 @@ public class CreerModule extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		ModuleForm form = new ModuleForm(request);
-		Module module = form.inscrireModule();
-		ArrayList<String> filieres =  form.getFilieres();
-		if(form.getErrors().isEmpty()) {
-			daoModule.creerModules(module, filieres);
-			File file = new File(this.getServletContext().getRealPath(AssetsRoot)+module.getElm_id());
-			boolean b= file.mkdir();
-			System.out.println(b);
+		Module module = form.validerModule();
+		ArrayList<String> filieres = form.getFilieres();
+		if(module.getElm_id()!=-1 && (module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semster()!=null||filieres.size()>0)) {
+			daoModule.updateModule(module, filieres);	
 		}
 		response.sendRedirect("/ensiasdocs/admin");
 	}

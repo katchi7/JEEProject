@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.ensias.beans.User;
@@ -248,6 +249,57 @@ public Document findDocumentsById(int id){
 			}
 		}
 		return modules;
+		
+	}
+	
+	public void updateModule(Module module,ArrayList<String> filieres) {
+		String query ="";
+		Connection conn=null;
+		try {
+			conn = factory.getConnection();
+			conn.setAutoCommit(false);
+			Statement stm = conn.createStatement();
+		if(module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semster()!=null){
+			query +="UPDATE element SET";
+			if(module.getElm_module()!=null) {
+					module.setElm_module(module.getElm_module().replace("'", "\\'"));
+				System.out.print(module.getElm_module());
+				query+=" elm_module='"+module.getElm_module()+"',";
+				}
+			if(module.getElm_description()!=null) {   query+=" elm_description ='"+module.getElm_description().replace("'", "\\'")+"',"; }
+			if(module.getElm_annee()!=null) query+="elm_annee='"+module.getElm_annee()+"',";
+			if(module.getElm_semster()!=null) query+="elm_semester='"+module.getElm_semster()+"',";
+			query = query.substring(0,query.lastIndexOf(','))+" WHERE elm_id='"+module.getElm_id()+"';\n";
+			System.out.println(query);
+			stm.addBatch(query);
+			query = "";			
+		}
+		if(filieres.size()>0){
+			query += "DELETE FROM filiere_element WHERE id_elm = "+module.getElm_id();
+			System.out.println(query);
+			stm.addBatch(query);
+			query = "INSERT INTO filiere_element VALUES";
+			for (String filiere : filieres) {
+				query += "('"+filiere+"','"+module.getElm_id()+ "'),";
+			}
+			query = query.substring(0,query.lastIndexOf(','))+";";
+			stm.addBatch(query);
+			
+		}
+		stm.executeBatch();
+		conn.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		
 	}
 }
