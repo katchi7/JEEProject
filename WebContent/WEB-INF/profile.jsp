@@ -50,7 +50,7 @@
                 <li><a href="">Profile</a></li>
                 <li><a href="/ensiasdocs/calendrier">Calendrier</a></li>
                 <li><a href="#">To Do</a></li>
-
+                <li><a href="/ensiasdocs/admin">Administrateur</a></li>
                 </li>
             </ul>
             <a class="navbar-brand" href=""><img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="200"

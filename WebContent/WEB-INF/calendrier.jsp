@@ -51,6 +51,7 @@
         <li><a href="/ensiasdocs/profile">Profile</a></li>
         <li><a href="">Calendrier</a></li>
         <li><a href="#">To Do</a></li>
+        <li><a href="/ensiasdocs/admin">Administrateur</a></li>
 
         </li>
       </ul>

@@ -205,7 +205,7 @@
                                     <option value="SSI" ${requestScope.user.filiere=="SSI"?"selected":""}>Sécurité des Systèmes d'Information</option>
                                     <option value="ISEM" ${requestScope.user.filiere=="ISEM"?"selected":""}>Ingénierie des Systèmes Embarqués, Mobiles</option>
                                     <option value="IeL" ${requestScope.user.filiere=="IeL"?"selected":""}>Ingénierie e-Logistique</option>
-                                    <option value="2IA" ${requestScope.user.filiere=="2IA"?"selected":""}>Ingénierie Intélligence Artificielle</option>
+                                    <option value="2IA" ${requestScope.user.filiere=="2IA"?"selected":""}>Ingénierie e-Logistique</option>
                                     <option value="IF" ${requestScope.user.filiere=="IF"?"selected":""}>Ingénierie Digitale pour la Finance</option>
                                 </select>
                                 </div>

@@ -49,10 +49,11 @@
                         <a href="#">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
                     </div>
                 </div>
-                <li><a href="/ensiasdocs/home">Module</a></li>
+                <li><a href="">Module</a></li>
                 <li><a href="/ensiasdocs/profile">Profile</a></li>
-                <li><a href="">Calendrier</a></li>
+                <li><a href="/ensiasdocs/calendrier">Calendrier</a></li>
                 <li><a href="#">To Do</a></li>
+                <li><a href="/ensiasdocs/admin">Administrateur</a></li>
 
                 </li>
             </ul>
