@@ -5,16 +5,22 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
-class ConnexionFormTest {
-	
+class DAOUserTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
 	}
 
 	@Test
-	void testConnexionForm() {
+	@Transactional
+    @Rollback(true)
+	@Mock
+	void testCreate() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testFindUser() {
 		fail("Not yet implemented");
 	}
 
