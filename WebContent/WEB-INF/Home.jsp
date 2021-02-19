@@ -44,19 +44,18 @@
         <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation" style="margin-top: 75px;">
 
             <ul class="nav sidebar-nav" style="list-style-type: none;">
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
-                    </div>
-                </div>
-                <li><a href="">Module</a></li>
-                <li><a href="/ensiasdocs/profile">Profile</a></li>
-                <li><a href="/ensiasdocs/calendrier">Calendrier</a></li>
-                <li><a href="#">To Do</a></li>
-                <li><a href="/ensiasdocs/admin">Administrateur</a></li>
-
-                </li>
-            </ul>
+        <div class="sidebar-header">
+          <div class="sidebar-brand">
+            <a href="#">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
+          </div>
+        </div>
+        <li><a href="/ensiasdocs/home"><i class="fas fa-book" style="margin-right:10px;"></i>Module</a></li>
+        <li><a href="/ensiasdocs/profile"><i class="fas fa-user-graduate" style="margin-right:10px;"></i></i>Profile</a></li>
+        <li><a href="/ensiasdocs/calendrier"><i class="fas fa-calendar-alt" style="margin-right:10px;"></i>Calendrier</a></li>
+        <li><a href="/ensiasdocs/todo"><i class="fas fa-list-alt" style="margin-right:10px;"></i>To Do</a></li>
+        <li><a href="/ensiasdocs/admin" ><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a></li>
+        </li>
+      </ul>
             <a class="navbar-brand" href=""><img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="200"
                     style="position: absolute;bottom: 100px;"></a>
         </nav>
