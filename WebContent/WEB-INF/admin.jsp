@@ -78,11 +78,11 @@
           <div id="Modification" class="tabcontent">
             <h2><i class="fas fa-pencil-alt" style="margin-right: 10px;"></i>Modification d'un module</h2>
             <div>
-              <form action="#" method="POST">
+              <form action="/ensiasdocs/admin/modifier-module" method="POST">
                 <div class="row align-items-center">
                   <div class="input-group col-lg-12 mb-4">
                     <div class="input-group col-lg-12 mb-4" style="margin-top: 50px;">
-                      <select id="cmodule" value="" name="cmodule"
+                      <select id="cmodule" name="elm_module"
                         class="browser-default custom-select champs-form choix">
                         <option value="" disabled selected>Choix du module</option>
                         <c:forEach items ="${requestScope.modules}" var="module">
@@ -93,13 +93,13 @@
 
                     <!-- Nom module -->
                     <div class="input-group col-lg-12 mb-4">
-                      <input type="text" name="nv_module" id="nv_module" class="form-control champs-form"
+                      <input type="text" name="module" id="nv_module" class="form-control champs-form"
                         placeholder="Nouveau nom du module">
                     </div>
 
                     <!-- Année -->
                     <div class="input-group col-lg-6 mb-4">
-                      <select id="nv_annee" value="" name="nv_annee"
+                      <select id="nv_annee" value="" name="annee"
                         class="browser-default custom-select champs-form choix">
                         <option value="" disabled selected>Niveau d'étude</option>
                         <option value="1A">1er année</option>
@@ -123,7 +123,7 @@
 
                     <!-- Description module -->
                     <div class="input-group col-lg-12 mb-4">
-                      <textarea id="nv_dscModule" name="nv_dscModule" class="form-control md-textarea" length="120"
+                      <textarea id="nv_dscModule" name="dscModule" class="form-control md-textarea" length="120"
                         rows="3" placeholder="Description du module"></textarea>
                     </div>
 
@@ -192,14 +192,14 @@
                 <form action="/ensiasdocs/admin/creer-module" method="POST">
                   <div class="row">
 
-                    <!-- Nom module -->
+                    <!-- Nom elm module -->
                     <div class="input-group col-lg-12 mb-4">
                       <input type="text" name="elm_module" id="elm_module" class="form-control champs-form"
                         placeholder="Nom de l'element du module">
                     </div>
                     
                     
-                    <!-- Nom module elm -->
+                    <!-- Nom module -->
                     <div class="input-group col-lg-12 mb-4">
                       <input type="text" name="module" id="module" class="form-control champs-form"
                         placeholder="Nom du module">
@@ -307,12 +307,9 @@
                       <select id="nom_module" value="" name="nom_module"
                         class="browser-default custom-select champs-form choix">
                         <option value="" disabled selected>Choix du module</option>
-                        <option value="M1">Module 1</option>
-                        <option value="M2">Module 2</option>
-                        <option value="M3">Module 3</option>
-                        <option value="M4">Module 4</option>
-                        <option value="M5">Module 5</option>
-                        <option value="M6">Module 5</option>
+                        <c:forEach items ="${requestScope.modules}" var="module">
+                        	<option value="${module.elm_id }">${module.elm_name}</option>
+                        </c:forEach>
                       </select>
                     </div>
 
