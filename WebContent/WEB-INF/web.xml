@@ -92,6 +92,17 @@
         <servlet-name>TodoForm</servlet-name>
         <url-pattern>/ensiasdocs/nouvelle-tache</url-pattern>
     </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>CreerModule</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.CreerModule</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreerModule</servlet-name>
+        <url-pattern>/ensiasdocs/admin/creer-module</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>Error</servlet-name>
         <servlet-class>com.ensias.ProjetJee.Errors</servlet-class>
