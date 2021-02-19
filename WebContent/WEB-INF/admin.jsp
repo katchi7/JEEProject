@@ -307,12 +307,9 @@
                       <select id="nom_module" value="" name="nom_module"
                         class="browser-default custom-select champs-form choix">
                         <option value="" disabled selected>Choix du module</option>
-                        <option value="M1">Module 1</option>
-                        <option value="M2">Module 2</option>
-                        <option value="M3">Module 3</option>
-                        <option value="M4">Module 4</option>
-                        <option value="M5">Module 5</option>
-                        <option value="M6">Module 5</option>
+                        <c:forEach items ="${requestScope.modules}" var="module">
+                        	<option value="${module.elm_id }">${module.elm_name}</option>
+                        </c:forEach>
                       </select>
                     </div>
 
