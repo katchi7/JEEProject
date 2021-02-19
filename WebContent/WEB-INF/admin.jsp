@@ -64,9 +64,9 @@
 
       <div class="container align-self-center" style="margin-top: 140px;">
         <div class="min-vh-100">
-
+		<center><img src="https://fontmeme.com/permalink/210219/311c1cb284951df6ea8c9082e44f276a.png" alt="polices-de-calligraphie" border="0" style="margin-bottom:20px;"></center>
           <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'Module')">Création d'un module</button>
+            <button class="tablinks active" onclick="openCity(event, 'Module')">Création d'un module</button>
             <button class="tablinks" onclick="openCity(event, 'Document')">Ajout des documents</button>
             <button class="tablinks" onclick="openCity(event, 'Modification')">Modification d'un
               module</button>
@@ -75,7 +75,7 @@
 
           <!-- Page Modification module -->
           <div id="Modification" class="tabcontent">
-            <h2>Modification d'un module</h2>
+            <h2><i class="fas fa-pencil-alt" style="margin-right: 10px;"></i>Modification d'un module</h2>
             <div>
               <form action="#" method="POST">
                 <div class="row align-items-center">
@@ -132,43 +132,43 @@
 
                     <!-- Choix des filières -->
                     <div class="form-check">
-                      <div class="input-group col-lg-12 mb-4 custom-control custom-checkbox">
-                        <label class="container">
+                      <div class="input-group col-lg-12 custom-checkbox">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Génie Logiciel
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Ingénierie du Web et Informatique Mobile
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           e-Management et Business Intelligence
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Sécurité des Systèmes d'Information
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Ingénierie des Systèmes Embarqués, Mobiles
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Ingénierie e-Logistique
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Ingénierie Intélligence Artificielle
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Ingénierie Digitale pour la Finance
@@ -190,8 +190,8 @@
 
 
           <!-- Page Création des modules -->
-          <div id="Module" class="tabcontent">
-            <h2>Création d'un module</h2>
+          <div id="Module" class="tabcontent" style="display: block;">
+            <h2><i class="fas fa-folder-plus" style="margin-right: 10px;"></i>Création d'un module</h2>
             <div class="row py-5 align-items-center">
               <div>
                 <form action="#" method="POST">
@@ -235,43 +235,43 @@
 
                     <!-- Choix des filières -->
                     <div class="form-check">
-                      <div class="input-group col-lg-12 mb-4 custom-control custom-checkbox">
-                        <label class="container">
+                      <div class="input-group col-lg-12 custom-checkbox">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Génie Logiciel
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Ingénierie du Web et Informatique Mobile
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           e-Management et Business Intelligence
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Sécurité des Systèmes d'Information
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Ingénierie des Systèmes Embarqués, Mobiles
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Ingénierie e-Logistique
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Ingénierie Intélligence Artificielle
                         </label>
-                        <label class="container">
+                        <label class="container col-lg-6 mb-4">
                           <input type="checkbox">
                           <span class="checkmark"></span>
                           Ingénierie Digitale pour la Finance
@@ -293,9 +293,9 @@
           </div>
 
 
-
+          <!-- Ajout des documents -->
           <div id="Document" class="tabcontent">
-            <h2>Ajout des documents</h2>
+            <h2><i class="fas fa-file-download" style="margin-right: 10px;"></i>Ajout des documents</h2>
             <div>
               <form action="#" method="POST">
                 <div class="row align-items-center">
@@ -368,8 +368,9 @@
           </div>
         </div>
       </div>
-      <c:import url="/WEB-INF/footer.jsp"></c:import>
+      
     </div>
+    <c:import url="/WEB-INF/footer.jsp"></c:import>
     <!-- /#page-content-wrapper -->
   </div>
 
