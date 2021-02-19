@@ -1,5 +1,7 @@
 package com.ensias.dao;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -171,4 +173,81 @@ public Document findDocumentsById(int id){
 		
 	}
 
+	public void creerModules(Module module , ArrayList<String> filieres) {
+			Connection conn = null;
+			try {
+				conn = factory.getConnection();
+				
+				PreparedStatement stm = conn.prepareStatement("INSERT INTO element(elm_name,elm_module,elm_description,elm_annee,elm_semester)VALUES(?,?,?,?,?);",PreparedStatement.RETURN_GENERATED_KEYS);
+				stm.setString(1, module.getElm_name());
+				stm.setString(2, module.getElm_module());
+				stm.setString(3, module.getElm_description());
+				stm.setString(4, module.getElm_annee());
+				stm.setString(5, module.getElm_semster());
+				stm.execute();
+				ResultSet set  = stm.getGeneratedKeys();
+				set.next();
+				int id = set.getInt(1);
+				module.setElm_id(id);
+				if(filieres.size()>0){
+					String query = "INSERT INTO filiere_element VALUES";
+					for (String filiere : filieres) {
+						query += "('"+filiere+"','"+id+ "'),";
+					}
+					query = query.substring(0,query.lastIndexOf(','))+";";
+					stm = conn.prepareStatement(query);
+					stm.execute();
+				}
+				
+						
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}finally {
+				try {
+					conn.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+	}
+	
+	public ArrayList<Module> findAllModules(){
+		ArrayList<Module> modules = new ArrayList<>();
+		Connection conn = null;
+		try {
+			conn =  factory.getConnection();
+			PreparedStatement stm = conn.prepareStatement("SELECT * FROM element;");
+			ResultSet set = stm.executeQuery();
+			while(set.next()) {
+				Module m = new Module();
+				m.setElm_id(set.getInt(this.ID));
+				m.setElm_name( URLDecoder.decode(new String(set.getString(this.name).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				m.setElm_module( URLDecoder.decode(new String(set.getString(this.module_elm).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
+				m.setElm_description(URLDecoder.decode(new String(set.getString(this.description).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8")  );
+				m.setElm_annee(set.getString(this.annee));
+				m.setElm_semester(set.getString(this.semester));
+				modules.add(m);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		return modules;
+		
+	}
 }
