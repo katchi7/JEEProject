@@ -68,7 +68,15 @@
         <servlet-name>Profile</servlet-name>
         <url-pattern>/ensiasdocs/profile</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Admin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/ensiasdocs/admin</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Calendrier</servlet-name>
         <servlet-class>com.ensias.ProjetJee.Calendrier</servlet-class>
     </servlet>
