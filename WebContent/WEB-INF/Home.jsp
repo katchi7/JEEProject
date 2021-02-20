@@ -92,29 +92,35 @@
                     </center>
                   </div>
         
-                  <div class="container align-self-center">
-                    <div class="row justify-content-center" style="padding-top: 100px;">
-                      <% int i=0; %>
-                        <c:forEach items="${ modules }" var="module">
-                          <div class="col-lg-3 col-md-6 col-sm-12 carte">
-                            <div class="card  <%= i!=1?txt[1]:txt[0] %> <%= bgs[i%bgs.length] %> mb-3"
-                              style="max-width: 18rem;">
-                              <div class="card-header"><i class="far fa-bookmark" style="margin-right: 7px;"></i>Module 1</div>
-                              <div class="card-body">
-                                <h5 class="card-title">${module.elm_name }</h5>
-                                <p class="card-text">${module.elm_description }</p>
-                                <div class="card-footer bg-transparent border-dark">
-                                  <center><a href="module/${module.elm_id}" class="btn btn-primary">Accéder</a>
-                                  </center>
+                  <div class="container align-self-center" >
+                    <div class="row justify-content-center">
+                      <div class="grid" >
+                        <div class="grid__item">
+                            <div class="card"><img class="card__img" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2250&amp;q=80" alt="Snowy Mountains">
+                                <div class="card__content">
+                                    <h1 class="card__header">Compilation</h1>
+                                    <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam esse iusto delectus sunt distinctio ipsam, repellendus voluptates impedit! Delectus cumque blanditiis quo mollitia, similique dolorem nesciunt distinctio neque placeat. Expedita? </p><button class="card__btn">Accéder <span>&rarr;</span></button>
                                 </div>
-                              </div>
-        
                             </div>
-                            <% i++; %>
-        
-                          </div>
-                        </c:forEach>
-        
+                        </div>
+                        <div class="grid__item">
+                            <div class="card"><img class="card__img" src="https://images.unsplash.com/photo-1485160497022-3e09382fb310?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2250&amp;q=80" alt="Desert">
+                                <div class="card__content">
+                                    <h1 class="card__header">TCP/IP</h1>
+                                    <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam esse iusto delectus sunt distinctio ipsam, repellendus voluptates impedit! Delectus cumque blanditiis quo mollitia, similique dolorem nesciunt distinctio neque placeat. Expedita?</p><button class="card__btn">Accéder <span>&rarr;</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__item">
+                            <div class="card"><img class="card__img" src="https://images.unsplash.com/photo-1506318164473-2dfd3ede3623?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=3300&amp;q=80" alt="Canyons">
+                                <div class="card__content">
+                                    <h1 class="card__header">Génie logiciel</h1>
+                                    <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam esse iusto delectus sunt distinctio ipsam, repellendus voluptates impedit! Delectus cumque blanditiis quo mollitia, similique dolorem nesciunt distinctio neque placeat. Expedita?</p><button class="card__btn">Accéder <span>&rarr;</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
                     </div>
                   </div>
                 </div>
