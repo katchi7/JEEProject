@@ -161,3 +161,9 @@ nav.haut{
   margin-top: 1.5rem;
   margin-bottom: 0;
 }
+
+a.userName{
+	text-decoration:none;
+	color:black;
+	margin-right:10px;
+}

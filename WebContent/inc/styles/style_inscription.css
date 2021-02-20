@@ -68,3 +68,8 @@ span.first-connect{
     font-weight: bold;
     font-style: italic;
 }
+a.userName{
+	text-decoration:none;
+	color:black;
+	margin-right:10px;
+}

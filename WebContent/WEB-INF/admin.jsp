@@ -62,7 +62,7 @@
     <div id="page-content-wrapper">
       <c:import url="/WEB-INF/header.jsp"></c:import>
 
-      <div class="container align-self-center" style="margin-top: 140px;">
+      <div class="container align-self-center" style="margin-top: 50px;">
         <div class="min-vh-100">
 		      <center>
             <img src="https://fontmeme.com/permalink/210219/311c1cb284951df6ea8c9082e44f276a.png" alt="polices-de-calligraphie" border="0" style="margin-bottom:20px;">
@@ -128,6 +128,7 @@
                     </div>
 
                     <!-- Choix des filières -->
+                    <p style="margin-left:50px;font-weight:bold;"><i class="fas fa-atom" style="margin-right:7px;"></i>Choix des filières :</p>
                     <div class="form-check">
                       <div class="input-group col-lg-12 custom-checkbox">
                         <label class="container col-lg-6 mb-4">
@@ -236,6 +237,7 @@
 
 
                     <!-- Choix des filières -->
+                    <p style="margin-left:50px;font-weight:bold;"><i class="fas fa-atom" style="margin-right:7px;"></i>Choix des filières :</p>
                     <div class="form-check">
                       <div class="input-group col-lg-12 custom-checkbox">
                         <label class="container col-lg-6 mb-4">
@@ -357,8 +359,9 @@
           </div>
         </div>
       </div>
+      <c:import url="/WEB-INF/footer.jsp"></c:import>
     </div>
-    <c:import url="/WEB-INF/footer.jsp"></c:import>
+    
   </div>
 
   <script src="/inc/js/bootstrap/bootstrap.bundle.min.js"></script>
