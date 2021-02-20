@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Connexion extends HttpServlet {
     public static String ROOT = "/WEB-INF/";
     public static String JSP = "connexion.jsp";
-    public static String AFTER_LOGGING = "/";
+    public static String AFTER_LOGGING = "/ensiasdocs/home";
     private static final String ATT_DAO_FACTORY = "daofactory";
     private DAOUser daoUser = null;
     @Override

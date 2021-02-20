@@ -1,11 +1,14 @@
 package com.ensias.dao;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.ensias.beans.User;
@@ -171,4 +174,132 @@ public Document findDocumentsById(int id){
 		
 	}
 
+	public void creerModules(Module module , ArrayList<String> filieres) {
+			Connection conn = null;
+			try {
+				conn = factory.getConnection();
+				
+				PreparedStatement stm = conn.prepareStatement("INSERT INTO element(elm_name,elm_module,elm_description,elm_annee,elm_semester)VALUES(?,?,?,?,?);",PreparedStatement.RETURN_GENERATED_KEYS);
+				stm.setString(1, module.getElm_name());
+				stm.setString(2, module.getElm_module());
+				stm.setString(3, module.getElm_description());
+				stm.setString(4, module.getElm_annee());
+				stm.setString(5, module.getElm_semster());
+				stm.execute();
+				ResultSet set  = stm.getGeneratedKeys();
+				set.next();
+				int id = set.getInt(1);
+				module.setElm_id(id);
+				if(filieres.size()>0){
+					String query = "INSERT INTO filiere_element VALUES";
+					for (String filiere : filieres) {
+						query += "('"+filiere+"','"+id+ "'),";
+					}
+					query = query.substring(0,query.lastIndexOf(','))+";";
+					stm = conn.prepareStatement(query);
+					stm.execute();
+				}
+				
+						
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}finally {
+				try {
+					conn.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+			
+	}
+	
+	public ArrayList<Module> findAllModules(){
+		ArrayList<Module> modules = new ArrayList<>();
+		Connection conn = null;
+		try {
+			conn =  factory.getConnection();
+			PreparedStatement stm = conn.prepareStatement("SELECT * FROM element;");
+			ResultSet set = stm.executeQuery();
+			while(set.next()) {
+				Module m = new Module();
+				m.setElm_id(set.getInt(this.ID));
+				m.setElm_name( URLDecoder.decode(new String(set.getString(this.name).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				m.setElm_module( URLDecoder.decode(new String(set.getString(this.module_elm).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
+				m.setElm_description(URLDecoder.decode(new String(set.getString(this.description).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8")  );
+				m.setElm_annee(set.getString(this.annee));
+				m.setElm_semester(set.getString(this.semester));
+				modules.add(m);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		return modules;
+		
+	}
+	
+	public void updateModule(Module module,ArrayList<String> filieres) {
+		String query ="";
+		Connection conn=null;
+		try {
+			conn = factory.getConnection();
+			conn.setAutoCommit(false);
+			Statement stm = conn.createStatement();
+		if(module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semster()!=null){
+			query +="UPDATE element SET";
+			if(module.getElm_module()!=null) {
+					module.setElm_module(module.getElm_module().replace("'", "\\'"));
+				System.out.print(module.getElm_module());
+				query+=" elm_module='"+module.getElm_module()+"',";
+				}
+			if(module.getElm_description()!=null) {   query+=" elm_description ='"+module.getElm_description().replace("'", "\\'")+"',"; }
+			if(module.getElm_annee()!=null) query+="elm_annee='"+module.getElm_annee()+"',";
+			if(module.getElm_semster()!=null) query+="elm_semester='"+module.getElm_semster()+"',";
+			query = query.substring(0,query.lastIndexOf(','))+" WHERE elm_id='"+module.getElm_id()+"';\n";
+			System.out.println(query);
+			stm.addBatch(query);
+			query = "";			
+		}
+		if(filieres.size()>0){
+			query += "DELETE FROM filiere_element WHERE id_elm = "+module.getElm_id();
+			System.out.println(query);
+			stm.addBatch(query);
+			query = "INSERT INTO filiere_element VALUES";
+			for (String filiere : filieres) {
+				query += "('"+filiere+"','"+module.getElm_id()+ "'),";
+			}
+			query = query.substring(0,query.lastIndexOf(','))+";";
+			stm.addBatch(query);
+			
+		}
+		stm.executeBatch();
+		conn.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+	}
 }

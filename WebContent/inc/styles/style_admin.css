@@ -157,4 +157,7 @@ p
     margin-top: 20px;
 }
 
-  
+button.tablinks{
+  font-weight: bold;
+  font-size: 20px;
+}

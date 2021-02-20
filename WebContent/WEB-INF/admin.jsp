@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ page import="com.ensias.beans.Module" %>
 <%@ page import="com.ensias.beans.User" %>
 <%@ page import="java.util.ArrayList" %>
@@ -46,11 +46,11 @@
             <a href="#">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
           </div>
         </div>
-        <li><a href="/ensiasdocs/home">Module</a></li>
-        <li><a href="/ensiasdocs/profile">Profile</a></li>
-        <li><a href="/ensiasdocs/calendrier">Calendrier</a></li>
-        <li><a href="#">To Do</a></li>
-        <li><a href="">Administrateur</a></li>
+        <li><a href="/ensiasdocs/home"><i class="fas fa-book" style="margin-right:10px;"></i>Module</a></li>
+        <li><a href="/ensiasdocs/profile"><i class="fas fa-user-graduate" style="margin-right:10px;"></i></i>Profile</a></li>
+        <li><a href="/ensiasdocs/calendrier"><i class="fas fa-calendar-alt" style="margin-right:10px;"></i>Calendrier</a></li>
+        <li><a href="/ensiasdocs/todo"><i class="fas fa-list-alt" style="margin-right:10px;"></i>To Do</a></li>
+        <li><a href="/ensiasdocs/admin" ><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a></li>
         </li>
       </ul>
       <a class="navbar-brand" href=""><img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="200"
@@ -64,45 +64,42 @@
 
       <div class="container align-self-center" style="margin-top: 140px;">
         <div class="min-vh-100">
-
+		      <center>
+            <img src="https://fontmeme.com/permalink/210219/311c1cb284951df6ea8c9082e44f276a.png" alt="polices-de-calligraphie" border="0" style="margin-bottom:20px;">
+          </center>
           <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'Module')">Création d'un module</button>
+            <button class="tablinks active" onclick="openCity(event, 'Module')">Création d'un module</button>
             <button class="tablinks" onclick="openCity(event, 'Document')">Ajout des documents</button>
-            <button class="tablinks" onclick="openCity(event, 'Modification')">Modification d'un
-              module</button>
+            <button class="tablinks" onclick="openCity(event, 'Modification')">Modification d'un module</button>
           </div>
 
 
           <!-- Page Modification module -->
           <div id="Modification" class="tabcontent">
-            <h2>Modification d'un module</h2>
+            <h2><i class="fas fa-pencil-alt" style="margin-right: 10px;"></i>Modification d'un module</h2>
             <div>
-              <form action="#" method="POST">
+              <form action="/ensiasdocs/admin/modifier-module" method="POST">
                 <div class="row align-items-center">
-
                   <div class="input-group col-lg-12 mb-4">
                     <div class="input-group col-lg-12 mb-4" style="margin-top: 50px;">
-                      <select id="cmodule" value="" name="cmodule"
+                      <select id="cmodule" name="elm_module"
                         class="browser-default custom-select champs-form choix">
                         <option value="" disabled selected>Choix du module</option>
-                        <option value="M1">Module 1</option>
-                        <option value="M2">Module 2</option>
-                        <option value="M3">Module 3</option>
-                        <option value="M4">Module 4</option>
-                        <option value="M5">Module 5</option>
-                        <option value="M6">Module 5</option>
+                        <c:forEach items ="${requestScope.modules}" var="module">
+                        	<option value="${module.elm_id }">${module.elm_name}</option>
+                        </c:forEach>
                       </select>
                     </div>
 
                     <!-- Nom module -->
                     <div class="input-group col-lg-12 mb-4">
-                      <input type="text" name="nv_module" id="nv_module" class="form-control champs-form"
+                      <input type="text" name="module" id="nv_module" class="form-control champs-form"
                         placeholder="Nouveau nom du module">
                     </div>
 
                     <!-- Année -->
                     <div class="input-group col-lg-6 mb-4">
-                      <select id="nv_annee" value="" name="nv_annee"
+                      <select id="nv_annee" value="" name="annee"
                         class="browser-default custom-select champs-form choix">
                         <option value="" disabled selected>Niveau d'étude</option>
                         <option value="1A">1er année</option>
@@ -126,77 +123,82 @@
 
                     <!-- Description module -->
                     <div class="input-group col-lg-12 mb-4">
-                      <textarea id="nv_dscModule" name="nv_dscModule" class="form-control md-textarea" length="120"
+                      <textarea id="nv_dscModule" name="dscModule" class="form-control md-textarea" length="120"
                         rows="3" placeholder="Description du module"></textarea>
                     </div>
 
                     <!-- Choix des filières -->
                     <div class="form-check">
-                      <div class="input-group col-lg-12 mb-4 custom-control custom-checkbox">
-                        <label class="container">
-                          <input type="checkbox">
+                      <div class="input-group col-lg-12 custom-checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="GL" value="GL">
                           <span class="checkmark"></span>
                           Génie Logiciel
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="IWIM" value="IWIM">
                           <span class="checkmark"></span>
                           Ingénierie du Web et Informatique Mobile
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="eMBI" value="eMBI">
                           <span class="checkmark"></span>
                           e-Management et Business Intelligence
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="SSI" value="SSI">
                           <span class="checkmark"></span>
                           Sécurité des Systèmes d'Information
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="ISEM" value="ISEM">
                           <span class="checkmark"></span>
                           Ingénierie des Systèmes Embarqués, Mobiles
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="IeL" value="IeL">
                           <span class="checkmark"></span>
                           Ingénierie e-Logistique
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="2IA" value="2IA">
                           <span class="checkmark"></span>
                           Ingénierie Intélligence Artificielle
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="IDF" value="IDF">
                           <span class="checkmark"></span>
                           Ingénierie Digitale pour la Finance
                         </label>
                       </div>
-
                     </div>
-
                   </div>
-                  <div class="form-group col-lg-12 mx-auto mb-0" >
+                </div>
+                <div class="form-group col-lg-12 mx-auto mb-0" >
                     <button class="btn btn-primary btn-block py-2 rounded" type="submit" style="margin-bottom: 30px;">
                       <span class="font-weight-bold">Créer un module</span>
                     </button>
                   </div>
-                </div>
               </form>
             </div>
           </div>
 
 
           <!-- Page Création des modules -->
-          <div id="Module" class="tabcontent">
-            <h2>Création d'un module</h2>
+          <div id="Module" class="tabcontent" style="display: block;">
+            <h2><i class="fas fa-folder-plus" style="margin-right: 10px;"></i>Création d'un module</h2>
             <div class="row py-5 align-items-center">
               <div>
-                <form action="#" method="POST">
+                <form action="/ensiasdocs/admin/creer-module" method="POST">
                   <div class="row">
 
+                    <!-- Nom elm module -->
+                    <div class="input-group col-lg-12 mb-4">
+                      <input type="text" name="elm_module" id="elm_module" class="form-control champs-form"
+                        placeholder="Nom de l'element du module">
+                    </div>
+                    
+                    
                     <!-- Nom module -->
                     <div class="input-group col-lg-12 mb-4">
                       <input type="text" name="module" id="module" class="form-control champs-form"
@@ -235,44 +237,44 @@
 
                     <!-- Choix des filières -->
                     <div class="form-check">
-                      <div class="input-group col-lg-12 mb-4 custom-control custom-checkbox">
-                        <label class="container">
-                          <input type="checkbox">
+                      <div class="input-group col-lg-12 custom-checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="GL" value="GL">
                           <span class="checkmark"></span>
                           Génie Logiciel
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="IWIM" value="IWIM">
                           <span class="checkmark"></span>
                           Ingénierie du Web et Informatique Mobile
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="eMBI" value="eMBI">
                           <span class="checkmark"></span>
                           e-Management et Business Intelligence
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="SSI" value="SSI">
                           <span class="checkmark"></span>
                           Sécurité des Systèmes d'Information
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="ISEM" value="ISEM">
                           <span class="checkmark"></span>
                           Ingénierie des Systèmes Embarqués, Mobiles
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="IeL" value="IeL">
                           <span class="checkmark"></span>
                           Ingénierie e-Logistique
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="2IA" value="2IA">
                           <span class="checkmark"></span>
                           Ingénierie Intélligence Artificielle
                         </label>
-                        <label class="container">
-                          <input type="checkbox">
+                        <label class="container col-lg-6 mb-4">
+                          <input type="checkbox" name="IDF" value="IDF">
                           <span class="checkmark"></span>
                           Ingénierie Digitale pour la Finance
                         </label>
@@ -293,9 +295,9 @@
           </div>
 
 
-
+          <!-- Ajout des documents -->
           <div id="Document" class="tabcontent">
-            <h2>Ajout des documents</h2>
+            <h2><i class="fas fa-file-download" style="margin-right: 10px;"></i>Ajout des documents</h2>
             <div>
               <form action="#" method="POST">
                 <div class="row align-items-center">
@@ -305,12 +307,9 @@
                       <select id="nom_module" value="" name="nom_module"
                         class="browser-default custom-select champs-form choix">
                         <option value="" disabled selected>Choix du module</option>
-                        <option value="M1">Module 1</option>
-                        <option value="M2">Module 2</option>
-                        <option value="M3">Module 3</option>
-                        <option value="M4">Module 4</option>
-                        <option value="M5">Module 5</option>
-                        <option value="M6">Module 5</option>
+                        <c:forEach items ="${requestScope.modules}" var="module">
+                        	<option value="${module.elm_id }">${module.elm_name}</option>
+                        </c:forEach>
                       </select>
                     </div>
 
@@ -368,9 +367,8 @@
           </div>
         </div>
       </div>
-      <c:import url="/WEB-INF/footer.jsp"></c:import>
     </div>
-    <!-- /#page-content-wrapper -->
+    <c:import url="/WEB-INF/footer.jsp"></c:import>
   </div>
 
   <script src="/inc/js/bootstrap/bootstrap.bundle.min.js"></script>
