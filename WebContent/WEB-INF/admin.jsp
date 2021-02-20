@@ -299,7 +299,7 @@
           <div id="Document" class="tabcontent">
             <h2><i class="fas fa-file-download" style="margin-right: 10px;"></i>Ajout des documents</h2>
             <div>
-              <form action="#" method="POST">
+              <form action="/ensiasdocs/admin/upload-doc" method="POST" enctype="multipart/form-data">
                 <div class="row align-items-center">
 
                   <div class="input-group col-lg-12 mb-4">
@@ -310,17 +310,6 @@
                         <c:forEach items ="${requestScope.modules}" var="module">
                         	<option value="${module.elm_id }">${module.elm_name}</option>
                         </c:forEach>
-                      </select>
-                    </div>
-
-                    <!-- Année -->
-                    <div class="input-group col-lg-12 mb-4">
-                      <select id="doc_annee" value="" name="doc_annee"
-                        class="browser-default custom-select champs-form choix">
-                        <option value="" disabled selected>Niveau d'étude</option>
-                        <option value="1A">1er année</option>
-                        <option value="2A">2ème année</option>
-                        <option value="3A">3ème année</option>
                       </select>
                     </div>
 
@@ -338,11 +327,11 @@
                                 <div class="fileUpload btn btn-orange">
                                   <img src="https://image.flaticon.com/icons/svg/136/136549.svg" class="icon">
                                   <span class="upl" id="upload">Upload document</span>
-                                  <input type="file" class="upload up" id="up" onchange="readURL(this);" />
+                                  <input type="file" class="upload up" id="up" accept="*" name="file" onchange="readURL(this);" />
                                 </div><!-- btn-orange -->
                               </div><!-- col-3 -->
                               <div class="col-sm-8">
-                                <input type="text" class="form-control" name="" placeholder="Note">
+                                <input type="text" class="form-control" name="type1" placeholder="Note">
                               </div>
                               <!--col-8-->
                               <div class="col-sm-1 align-items-center" ><a class="btn-check"><i class="fa fa-times"></i></a></div>
@@ -353,7 +342,7 @@
                           <!--uploader-->
                           <div class="text-center">
                             <a class="btn btn-new"><i class="fa fa-plus"></i> Ajouter </a>
-                            <a class="btn btn-next"><i class="fa fa-paper-plane"></i> Enregistrer</a>
+                            <button class="btn btn-next" type="submit"><i class="fa fa-paper-plane"></i> Enregistrer</button>
                           </div>
                         </div>
                         <!--one-->
@@ -361,6 +350,7 @@
                       </div><!-- container -->
 
                     </div>
+                  </div>
                   </div>
               </form>
             </div>
