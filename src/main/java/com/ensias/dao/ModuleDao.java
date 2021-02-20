@@ -47,15 +47,18 @@ public class ModuleDao {
 				Module module = new Module();
 				module.setElm_id(set.getInt(ID));
 				System.out.println(set.getString(name));
-				module.setElm_name(set.getString(name));
-				module.setElm_module(set.getString(module_elm));
+				module.setElm_name(URLDecoder.decode(new String(set.getString("elm_name").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				module.setElm_module(URLDecoder.decode(new String(set.getString("elm_module").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
 				module.setElm_annee(set.getString(annee));
 				module.setElm_semester(set.getString(semester));
 				module.setDate_exam(set.getDate(exam));
-				module.setElm_description(set.getString(description));
+				module.setElm_description(URLDecoder.decode(new String(set.getString("elm_description").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
 				modules.add(module);
 			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
@@ -89,8 +92,6 @@ public class ModuleDao {
 				module.setElm_description( URLDecoder.decode(new String(set.getString("elm_description").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
 				return module;
 			}
-			
-			
 		} catch (SQLException | UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
