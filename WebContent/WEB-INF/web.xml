@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     id="WebApp_ID" version="2.5">
     <servlet>
         <servlet-name>Register</servlet-name>
@@ -110,11 +109,27 @@
         <servlet-name>ModifierModule</servlet-name>
         <url-pattern>/ensiasdocs/admin/modifier-module</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UploadDoc</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.UploadDoc</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        <multipart-config>
+			<max-file-size>31457280</max-file-size> <!-- 30 Mo -->
+			<max-request-size>314572800</max-request-size> <!-- 300 Mo -->
+			<file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadDoc</servlet-name>
+        <url-pattern>/ensiasdocs/admin/upload-doc</url-pattern>
+        
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>Error</servlet-name>
         <servlet-class>com.ensias.ProjetJee.Errors</servlet-class>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>Error</servlet-name>
         <url-pattern>/error</url-pattern>
@@ -131,6 +146,16 @@
     <filter-mapping>
     	<filter-name>Auth</filter-name>
     	<url-pattern>/ensiasdocs/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+    	<filter-name>Admin</filter-name>
+    	<filter-class>com.ensias.Filters.AdminFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+    	<filter-name>Admin</filter-name>
+    	<url-pattern>/ensiasdocs/admin</url-pattern>
     </filter-mapping>
     <!-- <error-page>
     	<error-code>404</error-code>

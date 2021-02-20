@@ -81,17 +81,17 @@ public class ModuleDao {
 			if(set.next()) {
 				Module module = new Module();
 				module.setElm_id(Id);
-				module.setElm_name(set.getString("elm_name"));
-				module.setElm_module(set.getString("elm_module"));
+				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				module.setElm_module( URLDecoder.decode(new String(set.getString("elm_module").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
 				module.setElm_annee(set.getString("elm_annee"));
 				module.setElm_semester(set.getString("elm_semester"));
 				module.setDate_exam(set.getDate("date_exam"));
-				module.setElm_description(set.getString("elm_description"));
+				module.setElm_description( URLDecoder.decode(new String(set.getString("elm_description").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
 				return module;
 			}
 			
 			
-		} catch (SQLException e) {
+		} catch (SQLException | UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
@@ -249,6 +249,37 @@ public Document findDocumentsById(int id){
 			}
 		}
 		return modules;
+		
+	}
+	
+	public void CreateDocs(ArrayList<Document> docs) {
+		
+		String query = "INSERT INTO document (doc_name,doc_path,doc_type,doc_mime,doc_elm) VALUES";
+		for(Document doc : docs) {
+			query+="('"+doc.getDoc_name().replace("'", "\\'")+"','"+doc.getDoc_path().replace("'", "\\'")+"','"+doc.getDoc_type().replace("'", "\\'")+"','"+doc.getDoc_mime()+"','"+doc.getDoc_elm()+"'),";
+		}
+		query = query.substring(0,query.lastIndexOf(','))+";";
+		System.out.println(query);
+		
+		Connection conn = null;
+		try {
+			conn = factory.getConnection();
+			PreparedStatement stm = conn.prepareStatement(query); 
+			stm.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
 		
 	}
 	
