@@ -130,6 +130,10 @@ html { height: 100%;}
     width: 100%;
     display: inline-block;
 }
+.logo-user{
+  background:#9e9fa1;
+  background: linear-gradient(to right, #a7a8aa 50%, #9e9fa1 50%);
+}
 .sidebar-brand {
     height: 65px;
     position: relative;
