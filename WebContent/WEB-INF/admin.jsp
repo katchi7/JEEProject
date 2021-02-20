@@ -128,6 +128,7 @@
                     </div>
 
                     <!-- Choix des filières -->
+                    <p style="margin-left:50px;font-weight:bold;"><i class="fas fa-atom" style="margin-right:7px;"></i>Choix des filières :</p>
                     <div class="form-check">
                       <div class="input-group col-lg-12 custom-checkbox">
                         <label class="container col-lg-6 mb-4">
@@ -236,6 +237,7 @@
 
 
                     <!-- Choix des filières -->
+                    <p style="margin-left:50px;font-weight:bold;"><i class="fas fa-atom" style="margin-right:7px;"></i>Choix des filières :</p>
                     <div class="form-check">
                       <div class="input-group col-lg-12 custom-checkbox">
                         <label class="container col-lg-6 mb-4">
@@ -357,8 +359,9 @@
           </div>
         </div>
       </div>
+      <c:import url="/WEB-INF/footer.jsp"></c:import>
     </div>
-    <c:import url="/WEB-INF/footer.jsp"></c:import>
+    
   </div>
 
   <script src="/inc/js/bootstrap/bootstrap.bundle.min.js"></script>

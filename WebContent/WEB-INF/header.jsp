@@ -29,7 +29,7 @@
                 <c:when test="${sessionScope.user.administrator}"><i class="fas fa-user-shield"></i></c:when>
                 <c:otherwise><i class="fas fa-user-circle"></i> </c:otherwise>
                 </c:choose>
-                </span><a href ="/ensiasdocs/profile" style ="text-decoration:none;color:black;"><strong>${sessionScope.user.fname} ${sessionScope.user.lname}</strong></a>
+                </span><a href ="/ensiasdocs/profile" class="userName" ><strong>${sessionScope.user.fname} ${sessionScope.user.lname}</strong></a>
                 <a class="btn btn-danger" href="/logout"><span><i class="fas fa-sign-out-alt"></i></span>&nbsp;&nbsp;Logout</a>
           </div>
         </nav>
