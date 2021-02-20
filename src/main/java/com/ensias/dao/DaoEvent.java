@@ -32,9 +32,10 @@ public class DaoEvent {
 	public ArrayList<Event> findUserEvents(int id){
 		ArrayList<Event> ev = new ArrayList<>();
 		Connection conn = null;
+		PreparedStatement stm = null;
 		try {
 			conn = factory.getConnection();
-			PreparedStatement stm = conn.prepareStatement("SELECT * FROM "+this.element+" JOIN inscrit on id_elm="+elm_id+" WHERE id_user = ? and date_exam is not null; ");
+			stm = conn.prepareStatement("SELECT * FROM "+this.element+" JOIN inscrit on id_elm="+elm_id+" WHERE id_user = ? and date_exam is not null; ");
 			stm.setInt(1, id);
 			ResultSet set = stm.executeQuery();
 			while(set.next()) {
@@ -65,8 +66,9 @@ public class DaoEvent {
 			e.printStackTrace();
 		}finally {
 			try {
+				stm.close();
 				conn.close();
-			} catch (SQLException e) {
+			} catch (SQLException | NullPointerException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

@@ -4,8 +4,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <% ArrayList<Module> modules =(ArrayList<Module>) request.getAttribute("modules"); %>
-<% String[] bgs=new String[]{"bg-success","bg-light","bg-warning","bg-info","bg-info","bg-dark"}; %>
-<% String[] txt=new String[]{"","text-white"}; %>
+<% String[] bgs=new String[]{"card_image1.jpg","card_image2.jpg","card_image3.jpg"}; %>
 <!DOCTYPE html>
 <html>
 
@@ -95,30 +94,22 @@
                   <div class="container align-self-center" >
                     <div class="row justify-content-center">
                       <div class="grid" >
+                      <% int i=0; %>
+                      <c:forEach items="${ modules }" var="module">
+                      
                         <div class="grid__item">
-                            <div class="card"><img class="card__img" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2250&amp;q=80" alt="Snowy Mountains">
+                        <a href="/ensiasdocs/module/${module.elm_id}">
+                        
+                            <div class="card"><img class="card__img" src="/inc/images/<%= bgs[i%bgs.length] %>" alt="Snowy Mountains">
                                 <div class="card__content">
-                                    <h1 class="card__header">Compilation</h1>
-                                    <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam esse iusto delectus sunt distinctio ipsam, repellendus voluptates impedit! Delectus cumque blanditiis quo mollitia, similique dolorem nesciunt distinctio neque placeat. Expedita? </p><button class="card__btn">Accéder <span>&rarr;</span></button>
+                                    <h1 class="card__header">${module.elm_name}</h1>
+                                    <p class="card__text"> ${ module.elm_description } </p><a href="/ensiasdocs/module/${module.elm_id}"> <button class="card__btn">Accéder <span>&rarr;</span></button></a>
                                 </div>
                             </div>
+                            </a>
                         </div>
-                        <div class="grid__item">
-                            <div class="card"><img class="card__img" src="https://images.unsplash.com/photo-1485160497022-3e09382fb310?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2250&amp;q=80" alt="Desert">
-                                <div class="card__content">
-                                    <h1 class="card__header">TCP/IP</h1>
-                                    <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam esse iusto delectus sunt distinctio ipsam, repellendus voluptates impedit! Delectus cumque blanditiis quo mollitia, similique dolorem nesciunt distinctio neque placeat. Expedita?</p><button class="card__btn">Accéder <span>&rarr;</span></button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="grid__item">
-                            <div class="card"><img class="card__img" src="https://images.unsplash.com/photo-1506318164473-2dfd3ede3623?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=3300&amp;q=80" alt="Canyons">
-                                <div class="card__content">
-                                    <h1 class="card__header">Génie logiciel</h1>
-                                    <p class="card__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam esse iusto delectus sunt distinctio ipsam, repellendus voluptates impedit! Delectus cumque blanditiis quo mollitia, similique dolorem nesciunt distinctio neque placeat. Expedita?</p><button class="card__btn">Accéder <span>&rarr;</span></button>
-                                </div>
-                            </div>
-                        </div>
+                        <% i++;  %>
+                        </c:forEach>
                     
                     </div>
                     </div>
