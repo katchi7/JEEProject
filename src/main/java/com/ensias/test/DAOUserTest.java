@@ -69,6 +69,6 @@ class DAOUserTest {
 		User sampleUser = new User();
 		sampleUser.setEmail("anfar99.asmaa@gmail.com");
         when(user.findUser(REGISTRATION_EMAIL)).thenReturn(sampleUser);
-        assertEquals("anfar99.asmaa@gmail.com",REGISTRATION_EMAIL);
+        assertEquals("anfar99.asmaa@gmail.com",user.findUser(REGISTRATION_EMAIL).getEmail());
 	}	
 }
