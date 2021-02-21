@@ -66,7 +66,10 @@ public class DAOTodo {
 				Todo todo = new Todo();
 				todo.setTodo_id(set.getInt("todo_id"));
 				todo.setTodo_title(URLDecoder.decode(new String(set.getString("todo_title").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
-				todo.setTodo_description( URLDecoder.decode(new String(set.getString("todo_description").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				if(set.getString("todo_description")!=null) {
+					todo.setTodo_description( URLDecoder.decode(new String(set.getString("todo_description").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				}
+				
 				todo.setTodo_isdone(set.getBoolean("todo_is_done"));
 				todo.setTodo_delai(set.getDate("todo_delai").toString());
 				todos.add(todo);
