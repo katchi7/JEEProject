@@ -84,12 +84,12 @@ public class ModuleDao {
 			if(set.next()) {
 				Module module = new Module();
 				module.setElm_id(Id);
-				module.setElm_name(set.getString("elm_name") );
+				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes(), "UTF-8"), "UTF-8") );
 				module.setElm_module(set.getString("elm_module"));
 				module.setElm_annee(set.getString("elm_annee"));
 				module.setElm_semester(set.getString("elm_semester"));
 				module.setDate_exam(set.getDate("date_exam"));
-				module.setElm_description( URLDecoder.decode(new String(set.getString("elm_description").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
+				module.setElm_description( URLDecoder.decode(new String(set.getString("elm_description").getBytes(), "UTF-8"), "UTF-8") );
 				return module;
 			}
 		} catch (SQLException | UnsupportedEncodingException e) {
