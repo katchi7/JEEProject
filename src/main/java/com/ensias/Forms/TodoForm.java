@@ -7,7 +7,9 @@ import java.util.Date;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import com.ensias.ProjetJee.Calendrier;
 import com.ensias.beans.Todo;
 
 public class TodoForm {
@@ -29,12 +31,11 @@ public class TodoForm {
 		todo.setTodo_isdone("done".equals(request.getParameter(TODO_DONE)));
 		try {
 			todo.setTodo_delai(this.validerDate(request.getParameter(TODO_DATE)));
-		} catch (ParseException e) {
+		}  catch (Exception e) {
 			errors.put(TODO_DATE, e.getMessage());
 		}
 		
 		try {
-			validerName(request.getParameter(TODO_DESC));
 			todo.setTodo_description(request.getParameter(TODO_DESC));
 		} catch (Exception e) {
 			errors.put(TODO_DESC, e.getMessage());
@@ -56,12 +57,19 @@ public class TodoForm {
 		
 	}
 	
-	private String validerDate(String todo_date)throws ParseException {
+	private String validerDate(String todo_date)throws Exception {
+		HttpSession session = request.getSession();
+		String src = (String)session.getAttribute(Calendrier.TODO_FORM);
+		if(!src.equals("/ensiasdocs/todo")) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMMM yyyy hh:mm a");
 		Date date = dateFormat.parse(todo_date);
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			
 		todo_date =  dateFormat.format(date).toString();
+		}else {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			dateFormat.parse(todo_date);
+		}
 		return todo_date;
 	}
 	

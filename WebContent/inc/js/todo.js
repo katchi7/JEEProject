@@ -8,18 +8,19 @@ window.onload = function () {
 
     function formatDate(date) {
         return (
-            date.getDate() +
-            "/" +
+             date.getFullYear()+
+            "-" +
             (date.getMonth() + 1) +
-            "/" +
-            date.getFullYear()
+            "-" +
+            date.getDate()
+            
         );
     }
 
     var currentDate = formatDate(new Date());
 
     $(".due-date-button").datepicker({
-        format: "dd/mm/yyyy",
+        format: "dd mmmm yyyy",
         autoclose: true,
         todayHighlight: true,
         startDate: currentDate,
@@ -32,6 +33,7 @@ window.onload = function () {
             .on("changeDate", function (dateChangeEvent) {
                 $(".due-date-button").datepicker("hide");
                 $(".due-date-label").text(formatDate(dateChangeEvent.date));
+                $(".date-input").attr("value",formatDate(dateChangeEvent.date));
             });
     });
 };

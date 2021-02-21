@@ -42,6 +42,8 @@ public class TodoFormServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		session.setAttribute(Calendrier.TODO_FORM, "/ensiasdocs/todo");
 		this.getServletContext().getRequestDispatcher("/WEB-INF/todo.jsp").forward(request, response);
 	}
 
@@ -59,6 +61,7 @@ public class TodoFormServlet extends HttpServlet {
 			daoTodo.CreateTodo(todo, user.getId());
 		}
 		else {
+			
 			for(String key :form.getErrors().keySet()) {
 				System.out.println("key : "+form.getErrors().get(key));
 			}
