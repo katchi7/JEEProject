@@ -133,5 +133,35 @@ public class DAOTodo {
 		
 	}
 	
+	public void DeleteTodo(int todo_id) {
+		Connection conn = null;
+		PreparedStatement stm = null;
+		
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("DELETE FROM todos WHERE todo_id=?");
+			stm.setInt(1, todo_id);
+			stm.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	 
 }

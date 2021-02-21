@@ -58,6 +58,7 @@ public class TodoFormServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		User user = (User)session.getAttribute("user");
+		if(request.getParameter("todo_delete_id") == null || request.getParameter("todo_delete_id").equals("null") ) {
 		if(request.getParameter("update_done") == null || request.getParameter("update_done").equals("null") ) {
 			Todo todo= form.inscrireTache();
 			
@@ -85,6 +86,15 @@ public class TodoFormServlet extends HttpServlet {
 				}catch(NumberFormatException ignore) {
 					
 				}
+				
+			}
+		}
+		}else {
+			try {
+				int todo_id = Integer.parseInt(request.getParameter("todo_delete_id"));
+				
+				daoTodo.DeleteTodo(todo_id);
+			}catch(NumberFormatException ignore) {
 				
 			}
 		}

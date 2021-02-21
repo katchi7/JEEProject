@@ -203,10 +203,16 @@
                     <i class="fas fa-pencil-alt text-info m-0 p-0" style="cursor: pointer;width: 20px;"
                       data-toggle="tooltip" data-placement="bottom" title="Edit todo"></i>
                   </h5>
-                  <h5 class="col-5 m-0 p-0 px-2">
+                  <form method="POST" action ="/ensiasdocs/todo" class="col-5" style="display:inline;">
+                  <input name="todo_delete_id" value="${ todo.todo_id }" class="d-none"/>
+                  <h5 class=" m-0 p-0 px-2">
+                  <button type="submit" style=" border:none; background: none; color: inherit;padding: 0;font: inherit;"  >
                     <i class="fas fa-trash-alt text-danger m-0 p-0" style="cursor: pointer;width: 20px;"
                       data-toggle="tooltip" data-placement="bottom" title="Delete todo"></i>
+                      </button>
                   </h5>
+                  
+                  </form>
                 </div>
                 <div class="row todo-created-info">
                   <div class="col-auto d-flex align-items-center pr-2">
