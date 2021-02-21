@@ -1,10 +1,13 @@
 package com.ensias.Forms;
 
-import java.text.ParseException;
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,6 +35,7 @@ public class TodoForm {
 		try {
 			todo.setTodo_delai(this.validerDate(request.getParameter(TODO_DATE)));
 		}  catch (Exception e) {
+			e.printStackTrace();
 			errors.put(TODO_DATE, e.getMessage());
 		}
 		
@@ -53,7 +57,7 @@ public class TodoForm {
 		if(todo_name == null || todo_name.equals("null")) {
 			throw new Exception("Le nom ne doit pas etre null");
 		}
-		if(todo_name.length()<3) throw new Exception("Le nom doit contenir au moin 3 caractéres");
+		if(todo_name.length()<3) throw new Exception("Le nom doit contenir au moin 3 caractï¿½res");
 		
 	}
 	
@@ -62,11 +66,27 @@ public class TodoForm {
 		HttpSession session = request.getSession();
 		String src = (String)session.getAttribute(Calendrier.TODO_FORM);
 		if(!src.equals("/ensiasdocs/todo")) {
-			
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMMM yyyy hh:mm a");
+		
+		DateFormatSymbols DFS = new DateFormatSymbols();
+		DFS.setMonths(new String[] {
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"June",
+				"July",
+				"August",
+				"September",
+				"October",
+				"November",
+				"December"
+		});
+		System.out.println(todo_date);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMMM yyyy hh:mm a",DFS);
 		Date date = dateFormat.parse(todo_date);
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			
+		
 		todo_date =  dateFormat.format(date).toString();
 		}else {
 			System.out.println(todo_date);

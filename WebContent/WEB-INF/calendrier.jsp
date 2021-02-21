@@ -129,7 +129,8 @@
                         </div>
                         <div class="form-group">
                           <label>Todo Date</label>
-                          <input type='text' class="datetimepicker form-control" name="todo_date">
+                          
+                          <input type='text' class="datetimepicker form-control" name="todo_date" >
                         </div>
                         <div class="form-group">
                           <label>Todo Description</label>
