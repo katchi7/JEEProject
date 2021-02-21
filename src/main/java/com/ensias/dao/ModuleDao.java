@@ -124,7 +124,7 @@ public class ModuleDao {
 				doc.setDoc_id(set.getInt("doc_id") );
 				doc.setDoc_name(URLDecoder.decode(new String(set.getString("doc_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				doc.setDoc_mime(set.getString("doc_mime"));
-				doc.setDoc_path(URLDecoder.decode(new String(set.getString("doc_path").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				doc.setDoc_path( URLDecoder.decode(new String(set.getString("doc_path").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				doc.setDoc_type(set.getString("doc_type"));
 				doc.setDoc_elm(set.getInt("doc_elm"));
 				docs.add(doc);
@@ -155,9 +155,9 @@ public Document findDocumentsById(int id){
 			if(set.next()) {
 				Document doc = new Document();
 				doc.setDoc_id(set.getInt("doc_id"));
-				doc.setDoc_name(URLDecoder.decode(new String(set.getString("doc_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
-				doc.setDoc_mime(set.getString("doc_mime"));
-				doc.setDoc_path(URLDecoder.decode(new String(set.getString("doc_path").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				doc.setDoc_name( URLDecoder.decode(new String(set.getString("doc_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				doc.setDoc_mime(set.getString("doc_mime")  );
+				doc.setDoc_path( URLDecoder.decode(new String(set.getString("doc_path").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				doc.setDoc_type(set.getString("doc_type"));
 				doc.setDoc_elm(set.getInt("doc_elm"));
 				return doc;
