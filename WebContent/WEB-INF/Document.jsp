@@ -26,7 +26,7 @@
     </head>
     <body>
         <c:import url="/WEB-INF/header.jsp"></c:import>
-		<embed src="${requestScope.doc.doc_path}" width="100%" height="100%" type="${requestScope.doc.doc_mime}">
+		<div class="min-vh-100" style="margin-top:90px;height:500px;"><embed src="${requestScope.doc.doc_path}" width="100%" height="100%" type="${requestScope.doc.doc_mime}"></div>
  <c:import url="/WEB-INF/footer.jsp"></c:import>
     </body>
 </html>
