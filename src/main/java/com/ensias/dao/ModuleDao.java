@@ -2,6 +2,7 @@ package com.ensias.dao;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -46,16 +47,19 @@ public class ModuleDao {
 			while(set.next()) {
 				Module module = new Module();
 				module.setElm_id(set.getInt(ID));
-				System.out.println(set.getString(name));
-				module.setElm_name(set.getString(name));
-				module.setElm_module(set.getString(module_elm));
-				module.setElm_annee(set.getString(annee));
+				System.out.println(URLDecoder.decode(new String(set.getString(name).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
+				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				module.setElm_module( URLDecoder.decode(new String(set.getString("elm_module").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				module.setElm_annee(set.getString("elm_annee"));
 				module.setElm_semester(set.getString(semester));
 				module.setDate_exam(set.getDate(exam));
-				module.setElm_description(set.getString(description));
+				module.setElm_description(URLDecoder.decode(new String(set.getString("elm_description").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
 				modules.add(module);
 			}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
@@ -81,17 +85,15 @@ public class ModuleDao {
 			if(set.next()) {
 				Module module = new Module();
 				module.setElm_id(Id);
-				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
-				module.setElm_module( URLDecoder.decode(new String(set.getString("elm_module").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8) );
+				module.setElm_module(URLDecoder.decode(new String(set.getString("elm_module").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				module.setElm_annee(set.getString("elm_annee"));
 				module.setElm_semester(set.getString("elm_semester"));
 				module.setDate_exam(set.getDate("date_exam"));
-				module.setElm_description( URLDecoder.decode(new String(set.getString("elm_description").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
+				module.setElm_description( URLDecoder.decode(new String(set.getString("elm_description").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8) );
 				return module;
 			}
-			
-			
-		} catch (SQLException | UnsupportedEncodingException e) {
+		} catch (SQLException e ) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
@@ -118,10 +120,10 @@ public class ModuleDao {
 			ResultSet set = stm.executeQuery();
 			while(set.next()) {
 				Document doc = new Document();
-				doc.setDoc_id(set.getInt("doc_id"));
-				doc.setDoc_name(set.getString("doc_name"));
+				doc.setDoc_id(set.getInt("doc_id") );
+				doc.setDoc_name(URLDecoder.decode(new String(set.getString("doc_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				doc.setDoc_mime(set.getString("doc_mime"));
-				doc.setDoc_path(set.getString("doc_path"));
+				doc.setDoc_path(URLDecoder.decode(new String(set.getString("doc_path").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				doc.setDoc_type(set.getString("doc_type"));
 				doc.setDoc_elm(set.getInt("doc_elm"));
 				docs.add(doc);
@@ -152,9 +154,9 @@ public Document findDocumentsById(int id){
 			if(set.next()) {
 				Document doc = new Document();
 				doc.setDoc_id(set.getInt("doc_id"));
-				doc.setDoc_name(set.getString("doc_name"));
+				doc.setDoc_name(URLDecoder.decode(new String(set.getString("doc_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				doc.setDoc_mime(set.getString("doc_mime"));
-				doc.setDoc_path(set.getString("doc_path"));
+				doc.setDoc_path(URLDecoder.decode(new String(set.getString("doc_path").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				doc.setDoc_type(set.getString("doc_type"));
 				doc.setDoc_elm(set.getInt("doc_elm"));
 				return doc;
@@ -180,9 +182,9 @@ public Document findDocumentsById(int id){
 				conn = factory.getConnection();
 				
 				PreparedStatement stm = conn.prepareStatement("INSERT INTO element(elm_name,elm_module,elm_description,elm_annee,elm_semester)VALUES(?,?,?,?,?);",PreparedStatement.RETURN_GENERATED_KEYS);
-				stm.setString(1, module.getElm_name());
-				stm.setString(2, module.getElm_module());
-				stm.setString(3, module.getElm_description());
+				stm.setString(1, URLDecoder.decode(new String(module.getElm_name().getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				stm.setString(2,  URLDecoder.decode(new String(module.getElm_module().getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				stm.setString(3,URLDecoder.decode(new String(module.getElm_description().getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				stm.setString(4, module.getElm_annee());
 				stm.setString(5, module.getElm_semster());
 				stm.execute();
@@ -198,9 +200,7 @@ public Document findDocumentsById(int id){
 					query = query.substring(0,query.lastIndexOf(','))+";";
 					stm = conn.prepareStatement(query);
 					stm.execute();
-				}
-				
-						
+				}	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

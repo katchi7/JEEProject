@@ -34,14 +34,22 @@
 
 <body>
 
-  <div id="wrapper">
+  <div id="wrapper" class="toggled">
     <div class="overlay"></div>
 
     <!-- Sidebar -->
     <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation" style="margin-top: 75px;">
 
-      <ul class="nav sidebar-nav" style="list-style-type: none;">
+            <ul class="nav sidebar-nav" style="list-style-type: none;">
         <div class="sidebar-header">
+        	<center class="logo-user">
+            	<svg xmlns="http://www.w3.org/2000/svg" width="60%" height="141.747" viewBox="0 0 153 141.747"
+  	              style="margin-bottom: 10px;margin-top: 5%;">
+                  <path id="user-circle-solid"
+                   d="M76.5,8C34.24,8,0,39.722,0,78.874s34.24,70.874,76.5,70.874S153,118.026,153,78.874,118.76,8,76.5,8Zm0,27.435c14.992,0,27.145,11.26,27.145,25.149S91.492,85.732,76.5,85.732,49.355,74.473,49.355,60.584,61.508,35.435,76.5,35.435Zm0,98.309a61.1,61.1,0,0,1-45.191-19.49,34.812,34.812,0,0,1,30.384-17.09,8.1,8.1,0,0,1,2.19.314,41.346,41.346,0,0,0,25.233,0,8.1,8.1,0,0,1,2.19-.314,34.812,34.812,0,0,1,30.384,17.09A61.1,61.1,0,0,1,76.5,133.744Z"
+                   transform="translate(0 -8)" fill="rgba(0,0,0,0.52)" />
+                </svg>
+           </center>
           <div class="sidebar-brand">
             <a href="#">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
           </div>
@@ -62,7 +70,7 @@
     <div id="page-content-wrapper">
       <c:import url="/WEB-INF/header.jsp"></c:import>
 
-      <div class="container align-self-center" style="margin-top: 140px;">
+      <div class="container align-self-center" style="margin-top: 50px;">
         <div class="min-vh-100">
 		      <center>
             <img src="https://fontmeme.com/permalink/210219/311c1cb284951df6ea8c9082e44f276a.png" alt="polices-de-calligraphie" border="0" style="margin-bottom:20px;">
@@ -128,6 +136,7 @@
                     </div>
 
                     <!-- Choix des filières -->
+                    <p style="margin-left:50px;font-weight:bold;"><i class="fas fa-atom" style="margin-right:7px;"></i>Choix des filières :</p>
                     <div class="form-check">
                       <div class="input-group col-lg-12 custom-checkbox">
                         <label class="container col-lg-6 mb-4">
@@ -236,6 +245,7 @@
 
 
                     <!-- Choix des filières -->
+                    <p style="margin-left:50px;font-weight:bold;"><i class="fas fa-atom" style="margin-right:7px;"></i>Choix des filières :</p>
                     <div class="form-check">
                       <div class="input-group col-lg-12 custom-checkbox">
                         <label class="container col-lg-6 mb-4">
@@ -357,8 +367,9 @@
           </div>
         </div>
       </div>
+      <c:import url="/WEB-INF/footer.jsp"></c:import>
     </div>
-    <c:import url="/WEB-INF/footer.jsp"></c:import>
+    
   </div>
 
   <script src="/inc/js/bootstrap/bootstrap.bundle.min.js"></script>

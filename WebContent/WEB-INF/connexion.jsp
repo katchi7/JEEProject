@@ -78,7 +78,7 @@
 
                             <!-- Submit Button -->
                             <div class="form-group col-lg-12 mx-auto mb-0">
-                                <button type="submit" href="#" class="btn btn-primary btn-block py-2">
+                                <button type="submit" href="/ensiasdocs/home" class="btn btn-primary btn-block py-2">
                                     <span class="font-weight-bold">Se connecter</span>
                                 </button>
                             </div>
