@@ -31,7 +31,7 @@ class ModuleDaoTest {
         when(module.findModuleById(0)).thenReturn(sampleModule);
         assertEquals(0,module.findModuleById(0).getElm_id());
 	}
-	@Test
+	//@Test
 	/*void testCreerModules() {
 		
 		ModuleDao module= Mockito.mock(ModuleDao.class);
