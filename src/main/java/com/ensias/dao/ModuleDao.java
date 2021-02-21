@@ -2,6 +2,7 @@ package com.ensias.dao;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -84,7 +85,7 @@ public class ModuleDao {
 			if(set.next()) {
 				Module module = new Module();
 				module.setElm_id(Id);
-				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes(), "UTF-8"), "UTF-8") );
+				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8) );
 				module.setElm_module(set.getString("elm_module"));
 				module.setElm_annee(set.getString("elm_annee"));
 				module.setElm_semester(set.getString("elm_semester"));

@@ -89,7 +89,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>TodoForm</servlet-name>
-        <url-pattern>/ensiasdocs/nouvelle-tache</url-pattern>
+        <url-pattern>/ensiasdocs/todo</url-pattern>
     </servlet-mapping>
     
     
