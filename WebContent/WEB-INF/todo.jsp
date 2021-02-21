@@ -153,12 +153,23 @@
                 <h2 class="m-0 p-0">
                 <c:choose>
                 <c:when test = "${ !todo.todo_isdone }">
-                  <i class="far fa-square text-primary  m-0 p-0" style="cursor: pointer;width: 20px;"
+                <form method="POST" action ="/ensiasdocs/todo">
+                <input name="todo_id" value="${ todo.todo_id }" class="d-none"/>
+                <input name="update_done" value="done" class="d-none"/>
+                  <button type="submit" style=" border:none; background: none; color: inherit;padding: 0;font: inherit;"  > <i class="far fa-square text-primary  m-0 p-0"  style="cursor: pointer;width: 20px;"
                     data-toggle="tooltip" data-placement="bottom" title="Mark as complete"></i>
+                    </button>
+                    </form>
                     </c:when>
                     <c:otherwise>
+                    <form method="POST" action ="/ensiasdocs/todo">
+                <input name="todo_id" value="${ todo.todo_id }" class="d-none"/>
+                <input name="update_done" value="todo" class="d-none"/>
+                  <button type="submit" style=" border:none; background: none; color: inherit;padding: 0;font: inherit;"  > 
                   <i class="far fa-check-square text-primary  m-0 p-0 " style="cursor: pointer;width: 20px;"
                     data-toggle="tooltip" data-placement="bottom" title="Mark as todo"></i>
+                    </button>
+                    </form>
                     </c:otherwise>
                    </c:choose>
                 </h2>
@@ -166,7 +177,7 @@
               <div class="col px-1 m-1 d-flex align-items-center">
                 <input type="text"
                   class="form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3" readonly
-                  value="${ todo.todo_title }" title="Renew car insurance" />
+                  value="${ todo.todo_title }" title="Renew car insurance" />	
                 <input type="text" class="form-control form-control-lg border-0 edit-todo-input rounded px-3 d-none"
                   value="${ todo.todo_title }" />
               </div>

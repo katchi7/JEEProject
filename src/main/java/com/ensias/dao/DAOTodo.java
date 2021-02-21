@@ -103,5 +103,35 @@ public class DAOTodo {
 		return todos;
 	}
 	
+	public void UpdateDone(boolean done,int todo_id) {
+		Connection conn = null;
+		PreparedStatement stm = null;
+		ResultSet set = null;
+		try {
+			conn = this.factory.getConnection();
+			stm = conn.prepareStatement("update todos set todo_is_done = ? where todo_id = ?;");
+			stm.setBoolean(1, done);
+			stm.setInt(2, todo_id);
+			stm.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
 	 
 }
