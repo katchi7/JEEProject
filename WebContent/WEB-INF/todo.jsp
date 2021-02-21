@@ -87,8 +87,8 @@
         <div class="row m-1 p-4">
           <div class="col">
             <div class="p-1 h1 text-primary text-center mx-auto display-inline-block">
-              <i class="fa fa-check bg-primary text-white rounded p-2"></i>
-              <u>My Todo-s</u>
+              <u><img src="https://fontmeme.com/permalink/210221/83652c31f237c65d90c99317abf60eae.png" alt="polices-de-calligraphie" border="0"></u>
+              
             </div>
           </div>
         </div>
@@ -99,11 +99,10 @@
             <div class="row bg-white rounded shadow-sm p-2 add-todo-wrapper align-items-center justify-content-center">
               <div class="col">
                 <input class="form-control form-control-lg border-0 add-todo-input bg-transparent rounded" name="todo_name" type="text"
-                  placeholder="Add new ..">
+                  placeholder="Nouvelle tâche ..">
               </div>
               <div class="col-auto m-0 px-2 d-flex align-items-center">
-                <label class="text-secondary my-2 p-0 px-1 view-opt-label due-date-label d-none">Due date not
-                  set</label>
+                <label class="text-secondary my-2 p-0 px-1 view-opt-label due-date-label d-none">Entrer une date</label>
 				<input hidden class="date-input" value="" name="todo_date" />
                 <i class="far fa-calendar-alt text-primary due-date-button" style="cursor: pointer;width: 20px;"
                   data-toggle="tooltip" data-placement="bottom" title="Set a Due date"></i>
@@ -112,7 +111,7 @@
                   title="Clear Due date"></i>
               </div>
               <div class="col-auto px-0 mx-0 mr-2">
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
               </div>
             </div>
           </div>
@@ -201,14 +200,14 @@
                 <div class="row d-flex align-items-center justify-content-end">
                   <h5 class="col-5 m-0 p-0 px-2">
                     <i class="fas fa-pencil-alt text-info m-0 p-0" style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="Edit todo"></i>
+                      data-toggle="tooltip" data-placement="bottom" title="Modifier la tâche"></i>
                   </h5>
                   <form method="POST" action ="/ensiasdocs/todo" class="col-5" style="display:inline;">
                   <input name="todo_delete_id" value="${ todo.todo_id }" class="d-none"/>
                   <h5 class=" m-0 p-0 px-2">
                   <button type="submit" style=" border:none; background: none; color: inherit;padding: 0;font: inherit;"  >
                     <i class="fas fa-trash-alt text-danger m-0 p-0" style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="Delete todo"></i>
+                      data-toggle="tooltip" data-placement="bottom" title="Supprimer la tâche"></i>
                       </button>
                   </h5>
                   
@@ -216,7 +215,7 @@
                 </div>
                 <div class="row todo-created-info">
                   <div class="col-auto d-flex align-items-center pr-2">
-                    <i class="fa fa-info-circle my-2 px-2 text-black-50" style="cursor: pointer;width: 20px;"
+                    <i class="fas fa-info-circle text-black-50" style="cursor: pointer;width: 20px;margin"
                       data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Created date"></i>
                     <label class="date-label my-2 text-black-50">${ todo.todo_delai }</label>
                   </div>

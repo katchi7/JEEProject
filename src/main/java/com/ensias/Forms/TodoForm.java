@@ -58,15 +58,18 @@ public class TodoForm {
 	}
 	
 	private String validerDate(String todo_date)throws Exception {
+		
 		HttpSession session = request.getSession();
 		String src = (String)session.getAttribute(Calendrier.TODO_FORM);
 		if(!src.equals("/ensiasdocs/todo")) {
+			
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMMM yyyy hh:mm a");
 		Date date = dateFormat.parse(todo_date);
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			
 		todo_date =  dateFormat.format(date).toString();
 		}else {
+			System.out.println(todo_date);
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			dateFormat.parse(todo_date);
 		}
