@@ -47,8 +47,8 @@ public class ModuleDao {
 				Module module = new Module();
 				module.setElm_id(set.getInt(ID));
 				System.out.println(set.getString(name));
-				module.setElm_name(URLDecoder.decode(new String(set.getString("elm_name").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
-				module.setElm_module(URLDecoder.decode(new String(set.getString("elm_module").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				module.setElm_name(set.getString("elm_name"));
+				module.setElm_module(set.getString("elm_module"));
 				module.setElm_annee(set.getString(annee));
 				module.setElm_semester(set.getString(semester));
 				module.setDate_exam(set.getDate(exam));
@@ -84,8 +84,8 @@ public class ModuleDao {
 			if(set.next()) {
 				Module module = new Module();
 				module.setElm_id(Id);
-				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
-				module.setElm_module( URLDecoder.decode(new String(set.getString("elm_module").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				module.setElm_name(set.getString("elm_name") );
+				module.setElm_module(set.getString("elm_module"));
 				module.setElm_annee(set.getString("elm_annee"));
 				module.setElm_semester(set.getString("elm_semester"));
 				module.setDate_exam(set.getDate("date_exam"));
