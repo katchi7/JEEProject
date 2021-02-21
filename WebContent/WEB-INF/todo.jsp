@@ -145,71 +145,47 @@
         <!-- Todo list section -->
         <div class="row mx-1 px-5 pb-3 w-80">
           <div class="col mx-auto">
-            <!-- Todo Item 1 -->
-            <div class="row px-3 align-items-center todo-item rounded">
-              <div class="col-auto m-1 p-0 d-flex align-items-center">
-                <h2 class="m-0 p-0">
-                  <i class="far fa-square text-primary  m-0 p-0 d-none" style="cursor: pointer;width: 20px;"
-                    data-toggle="tooltip" data-placement="bottom" title="Mark as complete"></i>
-                  <i class="far fa-check-square text-primary  m-0 p-0" style="cursor: pointer;width: 20px;"
-                    data-toggle="tooltip" data-placement="bottom" title="Mark as todo"></i>
-                </h2>
-              </div>
-              <div class="col px-1 m-1 d-flex align-items-center">
-                <input type="text"
-                  class="form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3" readonly
-                  value="Buy groceries for next week" title="Buy groceries for next week" />
-                <input type="text" class="form-control form-control-lg border-0 edit-todo-input rounded px-3 d-none"
-                  value="Buy groceries for next week" />
-              </div>
-              <div class="col-auto m-1 p-0 px-3 d-none">
-              </div>
-              <div class="col-auto m-1 p-0 todo-actions">
-                <div class="row d-flex align-items-center justify-content-end">
-                  <h5 class="col-5 m-0 p-0 px-2">
-                    <i class="fas fa-pencil-alt text-info m-0 p-0" style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="Edit todo"></i>
-                  </h5>
-                  <h5 class="col-5 m-0 p-0 px-2">
-                    <i class="fas fa-trash-alt text-danger m-0 p-0" style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="Delete todo"></i>
-                  </h5>
-                </div>
-                <div class="row todo-created-info">
-                  <div class="col-auto d-flex align-items-center pr-2">
-                    <i class="fa fa-info-circle text-black-50" style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Created date"></i>
-                    <label class="date-label my-2 text-black-50">28th Jun 2020</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
             <!-- Todo Item 2 -->
+            <c:forEach items = "${ requestScope.todos }" var="todo">
             <div class="row px-3 align-items-center todo-item rounded">
               <div class="col-auto m-1 p-0 d-flex align-items-center">
                 <h2 class="m-0 p-0">
+                <c:choose>
+                <c:when test = "${ !todo.todo_isdone }">
                   <i class="far fa-square text-primary  m-0 p-0" style="cursor: pointer;width: 20px;"
                     data-toggle="tooltip" data-placement="bottom" title="Mark as complete"></i>
-                  <i class="far fa-check-square text-primary  m-0 p-0 d-none" style="cursor: pointer;width: 20px;"
+                    </c:when>
+                    <c:otherwise>
+                  <i class="far fa-check-square text-primary  m-0 p-0 " style="cursor: pointer;width: 20px;"
                     data-toggle="tooltip" data-placement="bottom" title="Mark as todo"></i>
+                    </c:otherwise>
+                   </c:choose>
                 </h2>
               </div>
               <div class="col px-1 m-1 d-flex align-items-center">
                 <input type="text"
                   class="form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3" readonly
-                  value="Renew car insurance" title="Renew car insurance" />
+                  value="${ todo.todo_title }" title="Renew car insurance" />
                 <input type="text" class="form-control form-control-lg border-0 edit-todo-input rounded px-3 d-none"
-                  value="Renew car insurance" />
+                  value="${ todo.todo_title }" />
               </div>
-              <div class="col-auto m-1 p-0 px-3">
-                <div class="row">
-                  <div class="col-auto d-flex align-items-center rounded bg-white border border-warning">
-                    <i class="fas fa-hourglass-half text-warning " style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Due on date"></i>
-                    <h6 class="text my-2 pr-2">28th Jun 2020</h6>
-                  </div>
-                </div>
-              </div>
+              <c:choose>
+              	<c:when test="${ todo.todo_isclose }">
+				    <div class="col-auto m-1 p-0 px-3">
+				      <div class="row">
+				        <div class="col-auto d-flex align-items-center rounded bg-white border border-warning">
+				          <i class="fas fa-hourglass-half text-warning " style="cursor: pointer;width: 20px;"
+				            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Due on date"></i>
+				          <h6 class="text my-2 pr-2">${ todo.todo_delai }</h6>
+				        </div>
+				      </div>
+				    </div>
+    			</c:when>
+    		<c:otherwise>
+   				<div class="col-auto m-1 p-0 px-3 d-none"></div>
+    		</c:otherwise>
+    		</c:choose>
               <div class="col-auto m-1 p-0 todo-actions">
                 <div class="row d-flex align-items-center justify-content-end">
                   <h5 class="col-5 m-0 p-0 px-2">
@@ -225,50 +201,12 @@
                   <div class="col-auto d-flex align-items-center pr-2">
                     <i class="fa fa-info-circle my-2 px-2 text-black-50" style="cursor: pointer;width: 20px;"
                       data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Created date"></i>
-                    <label class="date-label my-2 text-black-50">28th Jun 2020</label>
+                    <label class="date-label my-2 text-black-50">${ todo.todo_delai }</label>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Todo Item 3 -->
-            <div class="row px-3 align-items-center todo-item editing rounded">
-              <div class="col-auto m-1 p-0 d-flex align-items-center">
-                <h2 class="m-0 p-0">
-                  <i class="far fa-square text-primary m-0 p-0" style="cursor: pointer;width: 20px;"
-                    data-toggle="tooltip" data-placement="bottom" title="Mark as complete"></i>
-                  <i class="far fa-check-square text-primary m-0 p-0 d-none" style="cursor: pointer;width: 20px;"
-                    data-toggle="tooltip" data-placement="bottom" title="Mark as todo"></i>
-                </h2>
-              </div>
-              <div class="col px-1 m-1 d-flex align-items-center">
-                <input type="text"
-                  class="form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3 d-none"
-                  readonly value="Sign up for online course" title="Sign up for online course" />
-                <input type="text" class="form-control form-control-lg border-0 edit-todo-input rounded px-3"
-                  value="Sign up for online course" />
-              </div>
-              <div class="col-auto m-1 p-0 px-3 d-none">
-              </div>
-              <div class="col-auto m-1 p-0 todo-actions">
-                <div class="row d-flex align-items-center justify-content-end">
-                  <h5 class="col-5 m-0 p-0 px-2 edit-icon">
-                    <i class="fas fa-pencil-alt text-info m-0 p-0" style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="Edit todo"></i>
-                  </h5>
-                  <h5 class="col-5 m-0 p-0 px-2">
-                    <i class="fas fa-trash-alt text-danger m-0 p-0" style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="Delete todo"></i>
-                  </h5>
-                </div>
-                <div class="row todo-created-info">
-                  <div class="col-auto d-flex align-items-center pr-2">
-                    <i class="fa fa-info-circle text-black-50" style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Created date"></i>
-                    <label class="date-label my-2 text-black-50">28th Jun 2020</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </c:forEach>
           </div>
         </div>
       </div>

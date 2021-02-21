@@ -1,6 +1,8 @@
 package com.ensias.beans;
 
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Todo {
 	private int todo_id;
@@ -8,6 +10,7 @@ public class Todo {
     private String todo_description;
     private String todo_delai;
     private boolean todo_isdone;
+    private boolean todo_isclose;
     
     
     //Const
@@ -57,6 +60,24 @@ public class Todo {
     public void setTodo_title(String todo_title) {
         this.todo_title = todo_title;
     }
-    
+    public boolean getTodo_isclose() {
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date date = dateFormat.parse(this.todo_delai);
+			Date now = new Date();
+			if(date.getMonth() == now.getMonth() && date.getYear() == now.getYear() ) {
+				this.todo_isclose = (date.getDate() -now.getDate())<2;
+				System.out.println(date.toString());
+				System.out.println(date.getDate());
+				return this.todo_isclose;
+			}else {
+				return false;
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+    }
 
 }

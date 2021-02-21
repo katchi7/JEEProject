@@ -3,6 +3,7 @@ package com.ensias.ProjetJee;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -44,6 +45,9 @@ public class TodoFormServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		session.setAttribute(Calendrier.TODO_FORM, "/ensiasdocs/todo");
+		User user =(User )session.getAttribute("user");
+		ArrayList<Todo> todos = daoTodo.getTodoByUser(user.getId());
+		request.setAttribute("todos", todos);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/todo.jsp").forward(request, response);
 	}
 

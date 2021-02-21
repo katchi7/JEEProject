@@ -2,7 +2,9 @@ package com.ensias.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.ensias.beans.Todo;
 
@@ -46,6 +48,54 @@ public class DAOTodo {
 			}
 		}
 		
+	}
+	public ArrayList<Todo> getTodoByUser(int user_id){
+		ArrayList<Todo> todos = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement stm = null;
+		ResultSet set = null;
+		
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("SELECT * FROM todos WHERE todo_user=?");
+			stm.setInt(1, user_id);
+			set = stm.executeQuery();
+			while(set.next()) {
+				Todo todo = new Todo();
+				todo.setTodo_id(set.getInt("todo_id"));
+				todo.setTodo_title(set.getString("todo_title"));
+				todo.setTodo_description(set.getString("todo_description"));
+				todo.setTodo_isdone(set.getBoolean("todo_is_done"));
+				todo.setTodo_delai(set.getDate("todo_delai").toString());
+				todos.add(todo);
+			}
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}finally {
+			try {
+				set.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
+		return todos;
 	}
 	
 	 
