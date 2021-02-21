@@ -182,9 +182,9 @@ public Document findDocumentsById(int id){
 				conn = factory.getConnection();
 				
 				PreparedStatement stm = conn.prepareStatement("INSERT INTO element(elm_name,elm_module,elm_description,elm_annee,elm_semester)VALUES(?,?,?,?,?);",PreparedStatement.RETURN_GENERATED_KEYS);
-				stm.setString(1, URLDecoder.decode(new String(module.getElm_name().getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
-				stm.setString(2,  URLDecoder.decode(new String(module.getElm_module().getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
-				stm.setString(3,URLDecoder.decode(new String(module.getElm_description().getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				stm.setString(1, module.getElm_name());
+				stm.setString(2, module.getElm_module());
+				stm.setString(3,module.getElm_description());
 				stm.setString(4, module.getElm_annee());
 				stm.setString(5, module.getElm_semster());
 				stm.execute();
