@@ -87,6 +87,7 @@ public class ModuleDao {
 				module.setElm_id(Id);
 				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8) );
 				module.setElm_module(URLDecoder.decode(new String(set.getString("elm_module").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+
 				module.setElm_annee(set.getString("elm_annee"));
 				module.setElm_semester(set.getString("elm_semester"));
 				module.setDate_exam(set.getDate("date_exam"));
