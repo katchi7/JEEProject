@@ -1,5 +1,7 @@
 package com.ensias.dao;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,13 +65,13 @@ public class DAOTodo {
 			while(set.next()) {
 				Todo todo = new Todo();
 				todo.setTodo_id(set.getInt("todo_id"));
-				todo.setTodo_title(set.getString("todo_title"));
-				todo.setTodo_description(set.getString("todo_description"));
+				todo.setTodo_title(URLDecoder.decode(new String(set.getString("todo_title").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				todo.setTodo_description( URLDecoder.decode(new String(set.getString("todo_description").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
 				todo.setTodo_isdone(set.getBoolean("todo_is_done"));
 				todo.setTodo_delai(set.getDate("todo_delai").toString());
 				todos.add(todo);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | UnsupportedEncodingException e) {
 		
 			e.printStackTrace();
 		}finally {

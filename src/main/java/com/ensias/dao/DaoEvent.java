@@ -1,4 +1,6 @@
 package com.ensias.dao;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,8 +42,8 @@ public class DaoEvent {
 			ResultSet set = stm.executeQuery();
 			while(set.next()) {
 				Event event = new Event();
-				event.setEvent_name(set.getString(elm_name));
-				event.setEvent_description(set.getString(elm_description));
+				event.setEvent_name( URLDecoder.decode(new String(set.getString(elm_name).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				event.setEvent_description(URLDecoder.decode(new String(set.getString(elm_description).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
 				event.setEvent_start(set.getDate(elm_exam).toString());
 				event.setEvent_end(set.getDate(elm_exam).toString());
 				event.setEvent_class("fc-bg-blue");
@@ -53,15 +55,15 @@ public class DaoEvent {
 			set = stm.executeQuery();
 			while(set.next()) {
 				Event event = new Event();
-				event.setEvent_name(set.getString(todo_title));
-				event.setEvent_description(set.getString(todo_description));
+				event.setEvent_name(URLDecoder.decode(new String(set.getString(todo_title).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				event.setEvent_description(URLDecoder.decode(new String(set.getString(todo_description).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
 				event.setEvent_start(set.getDate(todo_delai).toString());
 				event.setEvent_end(set.getDate(todo_delai).toString());
 				event.setEvent_class("fc-bg-default");
 				event.setEvent_icon("laptop-code");
 				ev.add(event);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
