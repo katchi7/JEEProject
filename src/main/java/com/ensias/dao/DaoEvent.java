@@ -43,6 +43,7 @@ public class DaoEvent {
 			while(set.next()) {
 				Event event = new Event();
 				event.setEvent_name( URLDecoder.decode(new String(set.getString(elm_name).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				
 				event.setEvent_description(URLDecoder.decode(new String(set.getString(elm_description).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
 				event.setEvent_start(set.getDate(elm_exam).toString());
 				event.setEvent_end(set.getDate(elm_exam).toString());
@@ -55,8 +56,11 @@ public class DaoEvent {
 			set = stm.executeQuery();
 			while(set.next()) {
 				Event event = new Event();
+				
 				event.setEvent_name(URLDecoder.decode(new String(set.getString(todo_title).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				if(set.getString("todo_description")!=null) {
 				event.setEvent_description(URLDecoder.decode(new String(set.getString(todo_description).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
+				}
 				event.setEvent_start(set.getDate(todo_delai).toString());
 				event.setEvent_end(set.getDate(todo_delai).toString());
 				event.setEvent_class("fc-bg-default");
