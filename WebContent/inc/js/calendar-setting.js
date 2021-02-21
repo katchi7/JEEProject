@@ -9,7 +9,7 @@ jQuery(document).ready(function(){
 			values
 		);
 	});
-});
+});  
 
 let ev =  [
 	{
@@ -86,6 +86,8 @@ function getEvents(){
 }
 
 ev = getEvents();
+
+
 
 $(".datetimepicker").datepicker({ dateFormat: 'yy-mm-dd' });
 
