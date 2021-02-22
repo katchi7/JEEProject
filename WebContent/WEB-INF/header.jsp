@@ -22,7 +22,7 @@
             <span class="hamb-bottom"></span>
           </button>
           <div class="container">
-            <a class="navbar-brand" href="/"><img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
+            <a class="navbar-brand" href="/ensiasdocs/home"><img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="200"></a>
             <div>
                 <span>
                 <c:choose>

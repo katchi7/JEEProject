@@ -399,4 +399,64 @@ public Document findDocumentsById(int id){
 		}
 		return modules;
 	}
+	public boolean userIsInscrit(int user_id,int elm_id) {
+		Connection conn = null;
+		PreparedStatement stm = null;
+		ResultSet set = null;
+		boolean inscrit=false;
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("SELECT * FROM inscrit WHERE id_elm=? and id_user=?");
+			stm.setInt(1, elm_id);
+			stm.setInt(2, user_id);
+			set = stm.executeQuery();
+			inscrit = set.next();
+			set.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stm!=null)stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return inscrit;
+	}
+	public void inscrireUser(int user_id,int elm_id) {
+		Connection conn = null;
+		PreparedStatement stm = null;
+		ResultSet set = null;
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("INSERT INTO inscrit VALUES(?,?)");
+			stm.setInt(1, elm_id);
+			stm.setInt(2, user_id);
+			stm.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stm!=null)stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }
