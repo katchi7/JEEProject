@@ -58,11 +58,12 @@ public class TodoForm {
 		if(todo_name == null || todo_name.equals("null")) {
 			throw new Exception("Le nom ne doit pas etre null");
 		}
-		if(todo_name.length()<3) throw new Exception("Le nom doit contenir au moin 3 caractéres");
+		if(todo_name.length()<3) throw new Exception("Le nom doit contenir au moin 3 caractï¿½res");
 		
 	}
 	
 	private String validerDate(String todo_date)throws Exception {
+		
 		HttpSession session = request.getSession();
 		String src = (String)session.getAttribute(Calendrier.TODO_FORM);
 		if(!src.equals("/ensiasdocs/todo")) {
@@ -89,6 +90,7 @@ public class TodoForm {
 	    LocalDate date = LocalDate.parse(todo_date, dateFormatter);
 	    todo_date = date.toString();
 		}else {
+			System.out.println(todo_date);
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			dateFormat.parse(todo_date);
 		}
