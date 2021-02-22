@@ -81,6 +81,25 @@
                       </center>
                     </div>
                   </div>
+                  
+                  <!-- Si l'étudiant n'est pas inscrit au module -->
+                  <div class="col-lg-12 col-md-12 col-sm-12 carte">
+                    <div class="card text-white mb-3">
+                      <div class="card-header section-header"><i class="far fa-plus-square" style="margin-right: 15px;"></i>Ajouter à mes modules</div>
+                      <div class="card-body bg-warning" style="padding-left: 100px;padding-right: 100px;font-size: 18px;">
+                        <center>
+                          <p>
+                            Vous ne pouvez pas accéder à ce module car vous n'êtes pas encore inscrit. 
+                            Afin de bénéficier des documents de ce module et avoir un accès totale sur tous ses ressources pédagogiques, 
+                            <br/><strong style="font-size: 22px;">veuillez s'abonner rapidement !!!</strong>
+                          </p>
+                          <button type="button" class="btn btn-success"><i class="fas fa-star" style="margin-right: 15px;"></i>S'abonner</button>
+                        </center>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Si l'étudiant est inscrit au module -->
                   <div class="col-lg-12 col-md-12 col-sm-12 carte">
                     <div class="card text-white bg-secondary mb-3">
                       <div class="card-header section-header"><i class="fas fa-graduation-cap"
