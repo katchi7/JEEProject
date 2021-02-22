@@ -17,6 +17,9 @@
     integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css"
     integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous" />
+    <link href="/inc/styles/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/inc/styles/daterangepicker.css" rel="stylesheet" media="all">
+
   <link rel="stylesheet" type="text/css" href="/inc/styles/core.css">
   <link rel="stylesheet" type="text/css" href="/inc/styles/style.css">
   <link rel="stylesheet" href="/inc/styles/style_inscription.css">
@@ -90,6 +93,44 @@
             <button class="tablinks active" onclick="openCity(event, 'Module')">Création d'un module</button>
             <button class="tablinks" onclick="openCity(event, 'Document')">Ajout des documents</button>
             <button class="tablinks" onclick="openCity(event, 'Modification')">Modification d'un module</button>
+            <button class="tablinks" onclick="openCity(event, 'Exams')">Ajout d'un examen</button>
+          </div>
+
+
+          <!-- Page Ajout d'examen -->
+          <div id="Exams" class="tabcontent">
+            <h2><i class="fas fa-cubes" style="margin-right: 10px;"></i>Ajouter un examen</h2>
+            <div>
+              <form action="/ensiasdocs/admin/modifier-module" method="POST">
+                <div class="row align-items-center">
+                  <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group col-lg-12 mb-4" style="margin-top: 50px;">
+                      <select id="cmodule" name="elm_module"
+                        class="browser-default custom-select champs-form choix">
+                        <option value="" disabled selected>Choix du module</option>
+                        <c:forEach items ="${requestScope.modules}" var="module">
+                        	<option value="${module.elm_id }">${module.elm_name}</option>
+                        </c:forEach>
+                      </select>
+                    </div>
+
+                    <div class="col-6">
+                      <div class="input-group">
+                          <input class="input--style-2 js-datepicker" type="text" placeholder="Date d'examen" name="examen">
+                          <i class="far fa-calendar-alt  input-icon js-btn-calendar"></i>
+                      </div>
+                  </div>
+
+                    
+                  </div>
+                </div>
+                <div class="form-group col-lg-12 mx-auto mb-0" >
+                    <button class="btn btn-primary btn-block py-2 rounded" type="submit" style="margin-bottom: 30px;">
+                      <span class="font-weight-bold">Ajouter un examen</span>
+                    </button>
+                  </div>
+              </form>
+            </div>
           </div>
 
 
@@ -388,6 +429,11 @@
   <script src="/inc/js/barre.js"></script>
   <script src="/inc/js/admin.js"></script>
   <script src="/inc/js/upload.js"></script>
+
+  <script src="/inc/js/jquery/jquery.min.js"></script>
+  <script src="/inc/js/moment.min.js"></script>
+  <script src="/inc/js/daterangepicker.js"></script>
+  <script src="/inc/js/global.js"></script>
 </body>
 
 </html>
