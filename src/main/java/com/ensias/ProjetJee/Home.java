@@ -24,6 +24,7 @@ public class Home extends HttpServlet {
 	    
 	 private static final String ATT_DAO_FACTORY = "daofactory";
 	private static final long serialVersionUID = 1L;
+	private static int TAILLE_PAGE = 4;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,10 +46,34 @@ public class Home extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		User user = (User) request.getSession().getAttribute("user");
-		ArrayList<Module> module = getUserModules(user);
-		request.setAttribute("modules", module);
-		this.getServletContext().getRequestDispatcher(ROOT+JSP).forward(request, response);
+		String elm_name = request.getParameter("find");
+		System.out.println(elm_name);
+		if(elm_name == null || elm_name.equals("null")||elm_name.trim().equals("")) {
+			ArrayList<Module> module = getUserModules(user);
+			request.setAttribute("nbpages", (module.size()%this.TAILLE_PAGE));
+			request.setAttribute("search", false);
+			int requestedPage=0;
+			try {
+			  requestedPage = Integer.parseInt(request.getParameter("page"));
+			}catch(NumberFormatException e) {
+				requestedPage=0;
+			}
+			request.setAttribute("requestedPage", (requestedPage*TAILLE_PAGE>module.size())?0:requestedPage);
+			module = this.getDisplayedModules(module, TAILLE_PAGE, requestedPage*TAILLE_PAGE);
+			
+			request.setAttribute("modules", module);
+			this.getServletContext().getRequestDispatcher(ROOT+JSP).forward(request, response);
+		}
+		else {
+			//Search procedure
+			request.setAttribute("search", true);
+			ArrayList<Module> module = daoModule.findModuleByName(elm_name);
+			System.out.println(module.size());
+			request.setAttribute("modules", module);
+			this.getServletContext().getRequestDispatcher(ROOT+JSP).forward(request, response);
+		}
 	}
 
 	/**
@@ -69,6 +94,16 @@ public class Home extends HttpServlet {
 		module.setElm_name("Analyse de données");
 		module.setElm_module("Statistique et analyse de données");
 		return module;	
+	}
+	private ArrayList<Module> getDisplayedModules(ArrayList<Module> modules,int taille,int index){
+		ArrayList<Module> mod = new ArrayList<>();
+		if(modules.size()<index) index =0;
+		for(int i =index;i<(index+taille);i++) {
+			if(i<modules.size()) {
+				mod.add(modules.get(i));
+			}
+		}
+		return mod;
 	}
 
 }

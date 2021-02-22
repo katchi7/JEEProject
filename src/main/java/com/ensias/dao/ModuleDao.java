@@ -1,7 +1,9 @@
 package com.ensias.dao;
 
 import java.io.UnsupportedEncodingException;
+import static java.nio.charset.StandardCharsets.*;
 import java.net.URLDecoder;
+import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.Date;
@@ -333,5 +335,68 @@ public Document findDocumentsById(int id){
 		}
 		
 		
+	}
+	public ArrayList<Module> findModuleByName(String name) {
+		ArrayList<Module> modules = new ArrayList<Module>();
+		
+		Connection conn=null;
+		PreparedStatement stm = null;
+		ResultSet set = null;
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("SET NAMES utf8;");
+			stm.execute();
+			stm.close();
+			
+			stm = conn.prepareStatement("SELECT * FROM element;");
+			
+			System.out.println(stm);
+			System.out.println(name);
+			set = stm.executeQuery();
+			while(set.next()) {
+				Module m = new Module();
+				m.setElm_id(set.getInt(this.ID));
+				m.setElm_name( URLDecoder.decode(new String(set.getString(this.name).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				m.setElm_module( URLDecoder.decode(new String(set.getString(this.module_elm).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
+				m.setElm_description(URLDecoder.decode(new String(set.getString(this.description).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8")  );
+				m.setElm_annee(set.getString(this.annee));
+				m.setElm_semester(set.getString(this.semester));
+				modules.add(m);
+			}
+			ArrayList<Module> temp = new ArrayList<Module>();
+			for(int i=0;i<modules.size();i++) {
+				if(modules.get(i).getElm_name().equals(name)) temp.add(modules.get(i));
+			}
+			modules.clear();
+			modules = temp;
+			
+		} catch (SQLException | UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(set!=null)
+				set.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if(stm!=null)
+				stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+				try {
+					if(conn!=null)
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		return modules;
 	}
 }
