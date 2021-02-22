@@ -195,6 +195,7 @@ public Document findDocumentsById(int id){
 				set.next();
 				int id = set.getInt(1);
 				module.setElm_id(id);
+				stm.close();
 				if(filieres.size()>0){
 					String query = "INSERT INTO filiere_element VALUES";
 					for (String filiere : filieres) {
@@ -203,7 +204,36 @@ public Document findDocumentsById(int id){
 					query = query.substring(0,query.lastIndexOf(','))+";";
 					stm = conn.prepareStatement(query);
 					stm.execute();
-				}	
+					stm.close();
+					query = "SELECT user_id from  user  WHERE ";
+					for (String filiere : filieres) {
+						query += "user_filiere = '"+filiere+"' . ";
+					}
+					query = query.substring(0,query.lastIndexOf('.'))+";";
+					query = query.replace(".","or");
+					System.out.println(query);
+					stm = conn.prepareStatement(query);
+					set = stm.executeQuery();
+					ArrayList<Integer> users = new ArrayList<>();
+					while(set.next()) {
+						users.add(set.getInt("user_id"));
+					}
+					set.close();
+					stm.close();
+					query = "INSERT INTO inscrit VALUES";
+					for (int user : users) {
+						query += "('"+id+"','"+user+ "'),";
+					}
+					query = query.substring(0,query.lastIndexOf(','))+";";
+					System.out.println(query);
+					stm = conn.prepareStatement(query);
+					stm.execute();
+					stm.close();
+					
+				}
+				
+				
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

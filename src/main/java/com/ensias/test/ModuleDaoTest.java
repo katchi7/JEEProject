@@ -66,7 +66,7 @@ class ModuleDaoTest {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		//Connection conn = Mockito.mock(Connection.class);
 		//PreparedStatement stm= Mockito.mock(PreparedStatement.class);
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ensias_doc","root","bac2017bac.");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/ensias_doc","root","yeHuchahp6oYo1shug9Vishiokei7bae");
 		stm = conn.prepareStatement("SELECT * FROM element;");
 		
 		ModuleDao module= Mockito.mock(ModuleDao.class);

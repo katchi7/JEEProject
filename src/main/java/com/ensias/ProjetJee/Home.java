@@ -52,7 +52,7 @@ public class Home extends HttpServlet {
 		
 		if(elm_name == null || elm_name.equals("null")||elm_name.trim().equals("")) {
 			ArrayList<Module> module = getUserModules(user);
-			request.setAttribute("nbpages", (module.size()/this.TAILLE_PAGE));
+			request.setAttribute("nbpages", ((module.size()-1)/this.TAILLE_PAGE));
 			request.setAttribute("search", false);
 			int requestedPage=0;
 			try {
