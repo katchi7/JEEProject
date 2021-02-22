@@ -18,3 +18,25 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
   }
+  $("#cmodule").on("change",function() {
+  	var elm_id = $(this).val();
+  	$(".modules").each((index)=>{
+		
+			if($(".elm_id").eq(index).text()===elm_id){
+				$("#nv_module").attr("value",$(".elm_module").eq(index).text());
+				$("#nv_dscModule").attr("value",$(".elm_description").eq(index).text());
+				$("#nv_dscModule").text($(".elm_description").eq(index).text());
+				 $('#nv_annee').find('option').each(function(i,e){
+        			if($(e).val() == $(".elm_annee").eq(index).text() ){
+            		$('#nv_annee').prop('selectedIndex',i);
+        		}
+          });
+        		$('#nv_semestre').find('option').each(function(i,e){
+        			if($(e).val() == $(".elm_semester").eq(index).text() ){
+            		$('#nv_semestre').prop('selectedIndex',i);
+        }
+    });
+				
+			}
+	});
+});

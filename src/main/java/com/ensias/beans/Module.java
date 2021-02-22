@@ -34,7 +34,7 @@ public class Module {
 		return this.elm_annee;
 	}
 	
-	public String getElm_semster() {
+	public String getElm_semester() {
 		return this.elm_semester;
 	}
 	

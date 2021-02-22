@@ -62,7 +62,9 @@
         <li><a href="/ensiasdocs/calendrier"><i class="fas fa-calendar-alt"
               style="margin-right:10px;"></i>Calendrier</a></li>
         <li><a href="/ensiasdocs/todo"><i class="fas fa-list-alt" style="margin-right:10px;"></i>To Do</a></li>
-        <li><a href="/ensiasdocs/admin"><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a>
+        <c:if test="${sessionScope.user.administrator }">
+        <li><a href="/ensiasdocs/admin" ><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a></li>
+        </c:if>
         </li>
         </li>
       </ul>
@@ -106,12 +108,14 @@
 
                         <div class="card"><img class="card__img" src="/inc/images/<%= bgs[i%bgs.length] %>"
                             alt="Snowy Mountains">
+                            <a href="/ensiasdocs/module/${module.elm_id}">
                           <div class="card__content">
                             <h1 class="card__header">${module.elm_name}</h1>
                             <p class="card__text"> ${ module.elm_description } </p><a
                               href="/ensiasdocs/module/${module.elm_id}"> <button class="card__btn">Accéder
                                 <span>&rarr;</span></button></a>
                           </div>
+                          </a>
                         </div>
                       </a>
                     </div>

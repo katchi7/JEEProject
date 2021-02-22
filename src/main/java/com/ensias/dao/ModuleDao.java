@@ -189,12 +189,13 @@ public Document findDocumentsById(int id){
 				stm.setString(2, module.getElm_module());
 				stm.setString(3,module.getElm_description());
 				stm.setString(4, module.getElm_annee());
-				stm.setString(5, module.getElm_semster());
+				stm.setString(5, module.getElm_semester());
 				stm.execute();
 				ResultSet set  = stm.getGeneratedKeys();
 				set.next();
 				int id = set.getInt(1);
 				module.setElm_id(id);
+				stm.close();
 				if(filieres.size()>0){
 					String query = "INSERT INTO filiere_element VALUES";
 					for (String filiere : filieres) {
@@ -203,7 +204,36 @@ public Document findDocumentsById(int id){
 					query = query.substring(0,query.lastIndexOf(','))+";";
 					stm = conn.prepareStatement(query);
 					stm.execute();
-				}	
+					stm.close();
+					query = "SELECT user_id from  user  WHERE ";
+					for (String filiere : filieres) {
+						query += "user_filiere = '"+filiere+"' . ";
+					}
+					query = query.substring(0,query.lastIndexOf('.'))+";";
+					query = query.replace(".","or");
+					System.out.println(query);
+					stm = conn.prepareStatement(query);
+					set = stm.executeQuery();
+					ArrayList<Integer> users = new ArrayList<>();
+					while(set.next()) {
+						users.add(set.getInt("user_id"));
+					}
+					set.close();
+					stm.close();
+					query = "INSERT INTO inscrit VALUES";
+					for (int user : users) {
+						query += "('"+id+"','"+user+ "'),";
+					}
+					query = query.substring(0,query.lastIndexOf(','))+";";
+					System.out.println(query);
+					stm = conn.prepareStatement(query);
+					stm.execute();
+					stm.close();
+					
+				}
+				
+				
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -293,7 +323,7 @@ public Document findDocumentsById(int id){
 			conn = factory.getConnection();
 			conn.setAutoCommit(false);
 			Statement stm = conn.createStatement();
-		if(module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semster()!=null){
+		if(module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semester()!=null){
 			query +="UPDATE element SET";
 			if(module.getElm_module()!=null) {
 					module.setElm_module(module.getElm_module().replace("'", "\\'"));
@@ -302,7 +332,7 @@ public Document findDocumentsById(int id){
 				}
 			if(module.getElm_description()!=null) {   query+=" elm_description ='"+module.getElm_description().replace("'", "\\'")+"',"; }
 			if(module.getElm_annee()!=null) query+="elm_annee='"+module.getElm_annee()+"',";
-			if(module.getElm_semster()!=null) query+="elm_semester='"+module.getElm_semster()+"',";
+			if(module.getElm_semester()!=null) query+="elm_semester='"+module.getElm_semester()+"',";
 			query = query.substring(0,query.lastIndexOf(','))+" WHERE elm_id='"+module.getElm_id()+"';\n";
 			System.out.println(query);
 			stm.addBatch(query);
@@ -398,5 +428,65 @@ public Document findDocumentsById(int id){
 				}
 		}
 		return modules;
+	}
+	public boolean userIsInscrit(int user_id,int elm_id) {
+		Connection conn = null;
+		PreparedStatement stm = null;
+		ResultSet set = null;
+		boolean inscrit=false;
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("SELECT * FROM inscrit WHERE id_elm=? and id_user=?");
+			stm.setInt(1, elm_id);
+			stm.setInt(2, user_id);
+			set = stm.executeQuery();
+			inscrit = set.next();
+			set.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stm!=null)stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return inscrit;
+	}
+	public void inscrireUser(int user_id,int elm_id) {
+		Connection conn = null;
+		PreparedStatement stm = null;
+		ResultSet set = null;
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("INSERT INTO inscrit VALUES(?,?)");
+			stm.setInt(1, elm_id);
+			stm.setInt(2, user_id);
+			stm.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stm!=null)stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

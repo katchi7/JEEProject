@@ -61,7 +61,9 @@
         <li><a href="/ensiasdocs/calendrier"><i class="fas fa-calendar-alt"
               style="margin-right:10px;"></i>Calendrier</a></li>
         <li><a href="/ensiasdocs/todo"><i class="fas fa-list-alt" style="margin-right:10px;"></i>To Do</a></li>
-        <li><a href="/ensiasdocs/admin"><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a>
+        <c:if test="${sessionScope.user.administrator }">
+        <li><a href="/ensiasdocs/admin" ><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a></li>
+        </c:if>
         </li>
         </li>
       </ul>
@@ -105,7 +107,7 @@
                 <div class="col-4" style="margin-top: 30px;">
                   <center>
                     <h2>${sessionScope.user.fname } ${sessionScope.user.lname }</h2>
-                    <h4>${sessionScope.user.filiere }</h4>
+                    <h4>${sessionScope.user.full_filiere}</h4>
                   </center>
 
                 </div>
@@ -127,7 +129,7 @@
                       ${sessionScope.user.niveau }</span>
                   </p>
                   <p><span class="info">Filière &nbsp;&nbsp; : </span><span>&nbsp;&nbsp;
-                      ${sessionScope.user.filiere }</span></p>
+                      ${sessionScope.user.full_filiere }</span></p>
                   <p><span class="info">N° de téléphone &nbsp;&nbsp; : </span><span>&nbsp;&nbsp;
                       ${sessionScope.user.num }</span></p>
                 </div>

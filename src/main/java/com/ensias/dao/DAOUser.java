@@ -72,7 +72,8 @@ public class DAOUser {
 		Connection connection = null;
 		try {
 			connection = factory.getConnection();
-			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM "+TABLE_NAME+" WHERE "+EMAIL+"=?;");
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM "+TABLE_NAME+" JOIN filiere ON user_filiere=filiere_name WHERE "+EMAIL+"=?;");
+			System.out.println(preparedStatement);
 			preparedStatement.setString(1, User_email);
 			ResultSet set = preparedStatement.executeQuery();
 			if(set.next()) {
@@ -96,6 +97,7 @@ public class DAOUser {
 				user.setNum(set.getString(index));
 				index = set.findColumn(FILIERE);
 				user.setFiliere(set.getString(index));
+				user.setFull_filiere(set.getString("filiere_abs"));
 				connection.close();
 				return user;
 			}

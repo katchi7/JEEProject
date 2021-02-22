@@ -19,7 +19,7 @@ public class DaoFactory {
 	private String password;
 	private static DaoFactory instance = null ;
 	
-	private DaoFactory( String url, String username, String password ) {
+	public DaoFactory( String url, String username, String password ) {
         this.url = url;
         this.username = username;
         this.password = password;

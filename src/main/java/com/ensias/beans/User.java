@@ -14,6 +14,7 @@ public class User {
     private String num;
     private String niveau;
     private String filiere;
+    private String full_filiere;
     
    
     public int getId() {
@@ -65,9 +66,16 @@ public class User {
     public String getFiliere() {
         return filiere;
     }
+    public String getFull_filiere() {
+        return this.full_filiere;
+    }
+
 
     public void setFiliere(String filiere) {
         this.filiere = filiere;
+    }
+    public void setFull_filiere(String filiere) {
+        this.full_filiere = filiere;
     }
 
     public String getNiveau() {

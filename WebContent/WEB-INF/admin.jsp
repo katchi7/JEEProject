@@ -58,8 +58,9 @@
         <li><a href="/ensiasdocs/profile"><i class="fas fa-user-graduate" style="margin-right:10px;"></i></i>Profile</a></li>
         <li><a href="/ensiasdocs/calendrier"><i class="fas fa-calendar-alt" style="margin-right:10px;"></i>Calendrier</a></li>
         <li><a href="/ensiasdocs/todo"><i class="fas fa-list-alt" style="margin-right:10px;"></i>To Do</a></li>
+        <c:if test="${sessionScope.user.administrator }">
         <li><a href="/ensiasdocs/admin" ><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a></li>
-        </li>
+        </c:if>
       </ul>
       <a class="navbar-brand" href=""><img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="200"
           style="position: absolute;bottom: 100px;"></a>
@@ -67,6 +68,16 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
+    <c:forEach items="${requestScope.modules}" var="module">
+        <div class="modules" hidden>
+          <span class="elm_id">${module.elm_id}</span>
+          <span class="elm_name">${module.elm_name}</span>
+          <span class="elm_module">${module.elm_module}</span>
+          <span class="elm_annee">${module.elm_annee}</span>
+          <span class="elm_semester">${module.elm_semester}</span>
+          <span class="elm_description">${module.elm_description}</span>
+        </div>
+      </c:forEach>
     <div id="page-content-wrapper">
       <c:import url="/WEB-INF/header.jsp"></c:import>
 

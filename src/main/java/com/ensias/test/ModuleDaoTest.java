@@ -1,28 +1,46 @@
 package com.ensias.test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.stubbing.OngoingStubbing;
+import org.mockito.MockitoAnnotations;
 
-import com.ensias.beans.User;
+import com.ensias.config.InitDaoFactory;
+import com.ensias.dao.DAOConfigurationException;
 import com.ensias.dao.DAOUser;
+import com.ensias.dao.DaoFactory;
 import com.ensias.dao.ModuleDao;
+import com.mysql.cj.Query;
 import com.ensias.beans.Module;
-import com.ensias.beans.Document;
+import static org.mockito.Mockito.verify;
 
 class ModuleDaoTest {
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-
+	
+	private static final String PROPERTIES_FILE = "/projectJee/resources/mysql.properties";
+	private static final String PROPERTY_URL ="url";
+	private static final String PROPERTY_DRIVER ="driver";
+	private static final String PROPERTY_USERNAME = "username";
+    private static final String PROPERTY_PASSWORD    = "password";
+	    
 	@Test
 	void testFindModuleById() {
 		ModuleDao module= Mockito.mock(ModuleDao.class);
@@ -31,45 +49,37 @@ class ModuleDaoTest {
         when(module.findModuleById(0)).thenReturn(sampleModule);
         assertEquals(0,module.findModuleById(0).getElm_id());
 	}
-	//@Test
-	/*void testCreerModules() {
-		
-		ModuleDao module= Mockito.mock(ModuleDao.class);
-		Module sampleModule = new Module();
-		Module sampleModule1 = new Module();
-		
-		ArrayList<String> filieres = new ArrayList<String>();
-		filieres.add("gl");
-		List<Module> moduleMap = new ArrayList<>();
-		when(module.creerModule(sampleModule, filieres)).thenAnswer(i -> {
-		    Module module2 = i.getArgument(0);
-		   moduleMap.add(module2., user1);
-		    return null;
-		});
-		when(module.findModuleById(sampleModule1.getElm_id())).thenAnswer(i -> {
-		    int id = i.getArgument(0);
-		    return moduleMap.get(id);
-		});
-	}
+	
+	@Mock
+    private Connection conn; 
+	
+	@Mock
+    private PreparedStatement stm; 
+	
+	@Mock
+    private ResultSet dResult; 
+	
 	@Test
-	void testCreateDocs() {
+	void testfindAllModules() throws SQLException, ClassNotFoundException, IOException {
+
+    //DaoFactory instance = new DaoFactory( url, nomUtilisateur, motDePasse );
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		//Connection conn = Mockito.mock(Connection.class);
+		//PreparedStatement stm= Mockito.mock(PreparedStatement.class);
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/ensias_doc","root","yeHuchahp6oYo1shug9Vishiokei7bae");
+		stm = conn.prepareStatement("SELECT * FROM element;");
 		
 		ModuleDao module= Mockito.mock(ModuleDao.class);
-		Module sampleModule = new Module();
-		Module sampleModule1 = new Module();
-	
-		ArrayList<Document> docs = new ArrayList<>();
-		Document doc1= new Document();
-		List<ArrayList<Document>> moduleMap = new ArrayList<>();
-		when(module.CreateDocs(docs)).thenAnswer(i -> {
-		   Document doc = i.getArgument(0);
-		   moduleMap.add(doc.getDoc_id(),sampleModule1);
-		    return null;		});
-		when(module.findModuleById(sampleModule1.getElm_id())).thenAnswer(i -> {
-		    int id = i.getArgument(0);
-		    return moduleMap.get(id);
-		});
-	}*/
-	
-
+       	
+        when(stm.executeQuery()).thenReturn(dResult);
+       
+        ArrayList<Module> result = module.findAllModules();
+        result= null;
+        
+        //verify(conn).prepareStatement("SELECT * FROM element;");
+       
+        //verify(stm).executeQuery();
+       
+        assertSame(dResult, result);
+	}
 }

@@ -48,7 +48,7 @@ public class ModifierModule extends HttpServlet {
 		ModuleForm form = new ModuleForm(request);
 		Module module = form.validerModule();
 		ArrayList<String> filieres = form.getFilieres();
-		if(module.getElm_id()!=-1 && (module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semster()!=null||filieres.size()>0)) {
+		if(module.getElm_id()!=-1 && (module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semester()!=null||filieres.size()>0)) {
 			daoModule.updateModule(module, filieres);	
 		}
 		response.sendRedirect("/ensiasdocs/admin");
