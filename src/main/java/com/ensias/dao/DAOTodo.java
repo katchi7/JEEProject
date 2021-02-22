@@ -1,8 +1,12 @@
 package com.ensias.dao;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.ensias.beans.Todo;
 
@@ -38,6 +42,119 @@ public class DAOTodo {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	public ArrayList<Todo> getTodoByUser(int user_id){
+		ArrayList<Todo> todos = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement stm = null;
+		ResultSet set = null;
+		
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("SELECT * FROM todos WHERE todo_user=?");
+			stm.setInt(1, user_id);
+			set = stm.executeQuery();
+			while(set.next()) {
+				Todo todo = new Todo();
+				todo.setTodo_id(set.getInt("todo_id"));
+				todo.setTodo_title(URLDecoder.decode(new String(set.getString("todo_title").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				if(set.getString("todo_description")!=null) {
+					todo.setTodo_description( URLDecoder.decode(new String(set.getString("todo_description").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				}
+				
+				todo.setTodo_isdone(set.getBoolean("todo_is_done"));
+				todo.setTodo_delai(set.getDate("todo_delai").toString());
+				todos.add(todo);
+			}
+		} catch (SQLException | UnsupportedEncodingException e) {
+		
+			e.printStackTrace();
+		}finally {
+			try {
+				try {
+					set.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					stm.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}catch(NullPointerException e) {}
+			
+		}
+		
+		
+		return todos;
+	}
+	
+	public void UpdateDone(boolean done,int todo_id) {
+		Connection conn = null;
+		PreparedStatement stm = null;
+		ResultSet set = null;
+		try {
+			conn = this.factory.getConnection();
+			stm = conn.prepareStatement("update todos set todo_is_done = ? where todo_id = ?;");
+			stm.setBoolean(1, done);
+			stm.setInt(2, todo_id);
+			stm.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	public void DeleteTodo(int todo_id) {
+		Connection conn = null;
+		PreparedStatement stm = null;
+		
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("DELETE FROM todos WHERE todo_id=?");
+			stm.setInt(1, todo_id);
+			stm.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			try {
 				conn.close();
 			} catch (SQLException e) {

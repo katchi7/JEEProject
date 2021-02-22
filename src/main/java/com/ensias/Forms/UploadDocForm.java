@@ -36,7 +36,7 @@ public class UploadDocForm {
 				String doc_name = getNomFichier(part);
 				if(doc_name !=null) {
 					partsAl.add(part);
-					doc.setDoc_name(URLDecoder.decode(new String(doc_name.replace("\"", "").getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));  
+					doc.setDoc_name(doc_name.replace("\"", ""));  
 					try {
 						doc.setDoc_type(validate_type(request.getParameter("type"+i)));
 					

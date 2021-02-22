@@ -120,7 +120,7 @@
               <div id="modal-view-event-add" class="modal modal-top fade calendar-modal">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
-                    <form method="POST" action="/ensiasdocs/nouvelle-tache" id="add-event">
+                    <form method="POST" action="/ensiasdocs/todo" id="add-event">
                       <div class="modal-body">
                         <h4 class="text-blue h4 mb-10">Add Todo Detail</h4>
                         <div class="form-group">
@@ -129,7 +129,8 @@
                         </div>
                         <div class="form-group">
                           <label>Todo Date</label>
-                          <input type='text' class="datetimepicker form-control" name="todo_date">
+                          
+                          <input type='text' class="datetimepicker form-control" name="todo_date" >
                         </div>
                         <div class="form-group">
                           <label>Todo Description</label>

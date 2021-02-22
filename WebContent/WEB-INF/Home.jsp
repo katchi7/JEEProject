@@ -81,13 +81,14 @@
                       <img src="/inc/images/rechercher-logo.png" alt="ENSIAS-DOC" width="50"
                         style="margin-bottom: 20px;margin-right:0px; ">
                       <img class="image-recherche" src="/inc/images/rechercher.png" alt="ENSIAS-DOC" width="340">
+                      <form action="/ensiasdocs/home" method="get">
                       <div class="input-group recherche"
                         style="width: 50%;box-shadow: 5px 5px 5px 5px grey;border-radius:30px;">
                         <input type="search" class="form-control rounded" placeholder="Recherche module" aria-label="Search"
-                          aria-describedby="search-addon" />
-                        <button type="button" class="btn btn-outline-primary" style="border: none;">Rechercher</button>
+                          aria-describedby="search-addon" name ="find" />
+                        <button type="submit" class="btn btn-outline-primary" style="border: none;">Rechercher</button>
                       </div>
-        
+        			</form>
                     </center>
                   </div>
         
@@ -115,19 +116,47 @@
                     </div>
                   </div>
                 </div>
+                <c:choose>
+                <c:when test="${!requestScope.search }">
+                
                 <nav class="page-nbr" aria-label="Page navigation example">
                   <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
+                    
+                    <c:choose>
+                    	<c:when test="${ requestScope.requestedPage==0 }">
+                    	<li class="page-item disabled">
+                    		<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    		</li>
+                    	</c:when>
+                    	<c:otherwise>
+                    	<li class="page-item">
+                    		<a class="page-link" href="/ensiasdocs/home?page=${requestScope.requestedPage-1 }" >Previous</a>
+                    		</li>
+                    	</c:otherwise>
+                    </c:choose>
+                      
+                    
+                    <c:forEach var="i" begin="0" end="${requestScope.nbpages}">
+                    <li class="page-item"><a class="page-link" href="/ensiasdocs/home?page=${i }">${i+1}</a></li>
+                    </c:forEach>
+                    <c:choose>
+                    	<c:when test="${ requestScope.requestedPage==requestScope.nbpages }">
+                    	<li class="page-item disabled">
                       <a class="page-link" href="#">Next</a>
                     </li>
+                    	</c:when>
+                    	<c:otherwise>
+                    	<li class="page-item">
+                      <a class="page-link" href="/ensiasdocs/home?page=${requestScope.requestedPage+1 }">Next</a>
+                    </li>
+                    	</c:otherwise>
+                    </c:choose>
+                   
                   </ul>
-                </nav>
+                  </nav>
+                  </c:when>
+                  </c:choose>
+                
               </div>
             <c:import url="/WEB-INF/footer.jsp"></c:import>
         </div>

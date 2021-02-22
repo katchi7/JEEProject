@@ -22,6 +22,7 @@ public class InitDaoFactory implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent sce)  { 
+    	System.setProperty( "file.encoding", "UTF-8" );
          ServletContext servletContext = sce.getServletContext();
          
          this.daoFactory = DaoFactory.getInstance();

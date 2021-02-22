@@ -5,6 +5,7 @@ import java.io.BufferedOutputStream;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -94,7 +95,7 @@ public class UploadDoc extends HttpServlet {
 	
 	private void save_file(Part part,String path) throws IOException {
 		BufferedInputStream in = new BufferedInputStream(part.getInputStream());
-		BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(path));
+		BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream( URLDecoder.decode(new String(path.getBytes("ISO-8859-1"), "UTF-8"), "UTF-8")) );
 		
 		byte[] buffer = new byte[1024];
 		int size = 0;
