@@ -2,6 +2,7 @@ package com.ensias.Forms;
 
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -65,7 +66,8 @@ public class TodoForm {
 		HttpSession session = request.getSession();
 		String src = (String)session.getAttribute(Calendrier.TODO_FORM);
 		if(!src.equals("/ensiasdocs/todo")) {
-		
+			String[] date_splitted =  todo_date.split(" ");
+			todo_date = date_splitted[0]+" " + date_splitted[1] +" "+ date_splitted[2];
 		DateFormatSymbols DFS = new DateFormatSymbols();
 		DFS.setMonths(new String[] {
 				"January",
@@ -82,11 +84,10 @@ public class TodoForm {
 				"December"
 		});
 		System.out.println(todo_date);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMMM yyyy hh:mm a",DFS);
-		Date date = dateFormat.parse(todo_date);
-		dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
-		todo_date =  dateFormat.format(date).toString();
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d MMMM u", Locale.ENGLISH);
+	    LocalDate date = LocalDate.parse(todo_date, dateFormatter);
+	    todo_date = date.toString();
 		}else {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			dateFormat.parse(todo_date);
