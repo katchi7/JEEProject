@@ -189,7 +189,7 @@ public Document findDocumentsById(int id){
 				stm.setString(2, module.getElm_module());
 				stm.setString(3,module.getElm_description());
 				stm.setString(4, module.getElm_annee());
-				stm.setString(5, module.getElm_semster());
+				stm.setString(5, module.getElm_semester());
 				stm.execute();
 				ResultSet set  = stm.getGeneratedKeys();
 				set.next();
@@ -323,7 +323,7 @@ public Document findDocumentsById(int id){
 			conn = factory.getConnection();
 			conn.setAutoCommit(false);
 			Statement stm = conn.createStatement();
-		if(module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semster()!=null){
+		if(module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semester()!=null){
 			query +="UPDATE element SET";
 			if(module.getElm_module()!=null) {
 					module.setElm_module(module.getElm_module().replace("'", "\\'"));
@@ -332,7 +332,7 @@ public Document findDocumentsById(int id){
 				}
 			if(module.getElm_description()!=null) {   query+=" elm_description ='"+module.getElm_description().replace("'", "\\'")+"',"; }
 			if(module.getElm_annee()!=null) query+="elm_annee='"+module.getElm_annee()+"',";
-			if(module.getElm_semster()!=null) query+="elm_semester='"+module.getElm_semster()+"',";
+			if(module.getElm_semester()!=null) query+="elm_semester='"+module.getElm_semester()+"',";
 			query = query.substring(0,query.lastIndexOf(','))+" WHERE elm_id='"+module.getElm_id()+"';\n";
 			System.out.println(query);
 			stm.addBatch(query);

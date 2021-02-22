@@ -68,6 +68,16 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
+    <c:forEach items="${requestScope.modules}" var="module">
+        <div class="modules" hidden>
+          <span class="elm_id">${module.elm_id}</span>
+          <span class="elm_name">${module.elm_name}</span>
+          <span class="elm_module">${module.elm_module}</span>
+          <span class="elm_annee">${module.elm_annee}</span>
+          <span class="elm_semester">${module.elm_semester}</span>
+          <span class="elm_description">${module.elm_description}</span>
+        </div>
+      </c:forEach>
     <div id="page-content-wrapper">
       <c:import url="/WEB-INF/header.jsp"></c:import>
 
