@@ -42,7 +42,7 @@ public class DaoEvent {
 			ResultSet set = stm.executeQuery();
 			while(set.next()) {
 				Event event = new Event();
-				event.setEvent_name( URLDecoder.decode(new String(set.getString(elm_name).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
+				event.setEvent_name("Exam : "+ URLDecoder.decode(new String(set.getString(elm_name).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
 				
 				event.setEvent_description(URLDecoder.decode(new String(set.getString(elm_description).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
 				event.setEvent_start(set.getDate(elm_exam).toString());
