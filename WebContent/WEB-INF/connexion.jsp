@@ -86,7 +86,6 @@
                             <!-- Already Registered -->
                             <div class="text-center w-100">
                                 <br/>
-                                <p class="text-muted font-weight-bold">Mot de passe oublié ? <a href="#" class="text-primary ml-2">Password</a></p>
                                 <p class="text-muted font-weight-bold">Créer un nouveau compte ? <a href="register" class="text-primary ml-2">Sign up</a></p>
                             </div>
 
