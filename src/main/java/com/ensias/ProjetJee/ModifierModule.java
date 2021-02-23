@@ -1,6 +1,8 @@
 package com.ensias.ProjetJee;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -45,12 +47,29 @@ public class ModifierModule extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		ModuleForm form = new ModuleForm(request);
-		Module module = form.validerModule();
-		ArrayList<String> filieres = form.getFilieres();
-		if(module.getElm_id()!=-1 && (module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semester()!=null||filieres.size()>0)) {
-			daoModule.updateModule(module, filieres);	
+		if(request.getParameter("examen")==null || request.getParameter("examen").equals("null")||request.getParameter("examen").equals("")) {
+			ModuleForm form = new ModuleForm(request);
+			Module module = form.validerModule();
+			ArrayList<String> filieres = form.getFilieres();
+			if(module.getElm_id()!=-1 && (module.getElm_description()!=null || module.getElm_module()!=null ||module.getElm_annee()!=null || module.getElm_semester()!=null||filieres.size()>0)) {
+				daoModule.updateModule(module, filieres);	
+			}
+		}else {
+			try {
+			String exam = request.getParameter("examen");
+			int id = Integer.parseInt(request.getParameter("elm_module"));
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			dateFormat.parse(exam);
+			daoModule.ajouterExam(exam, id);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		
 		response.sendRedirect("/ensiasdocs/admin");
 	}
 

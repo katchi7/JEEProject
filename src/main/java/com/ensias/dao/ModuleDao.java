@@ -489,4 +489,31 @@ public Document findDocumentsById(int id){
 			}
 		}
 	}
+	public void ajouterExam(String date_exam,int elm_id) {
+		Connection conn = null;
+		PreparedStatement stm = null;
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("UPDATE element SET date_exam = ? WHERE elm_id =?");
+			stm.setString(1, date_exam);
+			stm.setInt(2, elm_id);
+			stm.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stm!=null)stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }
