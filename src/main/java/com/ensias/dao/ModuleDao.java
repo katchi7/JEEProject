@@ -516,4 +516,30 @@ public Document findDocumentsById(int id){
 			}
 		}
 	}
+	public void supprimerExam(int elm_id) {
+		Connection conn = null;
+		PreparedStatement stm = null;
+		try {
+			conn = factory.getConnection();
+			stm = conn.prepareStatement("UPDATE element SET date_exam = NULL WHERE elm_id =?");
+			stm.setInt(1, elm_id);
+			stm.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(stm!=null)stm.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				if(conn!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }

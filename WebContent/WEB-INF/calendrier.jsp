@@ -70,12 +70,15 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
+    <div class="d-none" id="acc">${ sessionScope.user.administrator }</div>
     <div id="page-content-wrapper">
       <c:import url="/WEB-INF/header.jsp"></c:import>
       <c:forEach items="${requestScope.events}" var="event">
         <div class="user_events" hidden>
+        <span class="event_id">${event.event_id}</span>
           <span class="event_name">${event.event_name}</span>
           <span class="event_description">${event.event_description}</span>
+          <span class="event_type">${event.event_type}</span>
           <span class="event_start">${event.event_start}</span>
           <span class="event_end">${event.event_end}</span>
           <span class="event_class">${event.event_class}</span>
@@ -113,9 +116,9 @@
                       <div class="event-body"></div>
                     </div>
                     <div class="modal-footer">
-                      <form action="" method="POST">
-                        <input class="d-none" value="">
-                        <button type="submit" class="btn btn-danger" data-dismiss="modal">Supprimer</button>
+                      <form action="" class="delete_form" method="POST">
+                        <input class="d-none suppr" value="" name="">
+                        <button type="submit" class="btn btn-danger" >Supprimer</button>
                       </form>
                       <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
                     </div>

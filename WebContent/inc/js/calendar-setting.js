@@ -72,12 +72,16 @@ function getEvents(){
 	let i=0
 	$(".user_events").each((index)=>{
 		evt = {
+		id: $(".event_id").eq(index).text(),
 			title: $(".event_name").eq(index).text(),
 			description:$(".event_description").eq(index).text(),
+			type: $(".event_type").eq(index).text(),
 			start: $(".event_start").eq(index).text(),
 			end: $(".event_end").eq(index).text(),
 			className: $(".event_class").eq(index).text(),
 			icon: $(".event_icon").eq(index).text()
+			
+			
 		}
 		events[i]=evt
 		i +=1
@@ -120,6 +124,22 @@ $(".datetimepicker").datepicker({ dateFormat: 'yy-mm-dd' });
 				jQuery('.event-title').html(event.title);
 				jQuery('.event-body').html(event.description);
 				jQuery('.eventUrl').attr('href',event.url);
+				
+				if(event.type==="todo"){
+					jQuery('.delete_form').removeClass("d-none");
+					jQuery('.suppr').attr('name','todo_delete_id');
+					jQuery('.delete_form').attr('action','/ensiasdocs/todo');
+				}
+				else{
+					if(jQuery('#acc').text()==='true'){
+						jQuery('.suppr').attr('name',event.type);
+						jQuery('.delete_form').attr('action','/ensiasdocs/calendrier');
+					}
+					else{
+						jQuery('.delete_form').addClass("d-none");
+					}
+				}
+				jQuery('.suppr').attr('value',event.id);
 				jQuery('#modal-view-event').modal();
 			},
 		})
