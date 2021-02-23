@@ -113,7 +113,7 @@
                       <div class="event-body"></div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
                     </div>
                   </div>
                 </div>
@@ -124,18 +124,18 @@
                   <div class="modal-content">
                     <form method="POST" action="/ensiasdocs/todo" id="add-event">
                       <div class="modal-body">
-                        <h4 class="text-blue h4 mb-10">Add Todo Detail</h4>
+                        <h4 class="text-blue h4 mb-10">Ajouter un tâche</h4>
                         <div class="form-group">
-                          <label>Todo title</label>
+                          <label>Titre de la tâche</label>
                           <input type="text" class="form-control" name="todo_name">
                         </div>
                         <div class="form-group">
-                          <label>Todo Date</label>
+                          <label>Date</label>
                           
                           <input type='text' class="datetimepicker form-control" name="todo_date" >
                         </div>
                         <div class="form-group">
-                          <label>Todo Description</label>
+                          <label>Description</label>
                           <textarea class="form-control" name="todo_desc"></textarea>
                         </div>
 
@@ -148,8 +148,8 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
                       </div>
                     </form>
                   </div>

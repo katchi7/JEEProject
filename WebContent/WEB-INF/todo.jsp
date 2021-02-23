@@ -200,10 +200,6 @@
     		</c:choose>
               <div class="col-auto m-1 p-0 todo-actions">
                 <div class="row d-flex align-items-center justify-content-end">
-                  <h5 class="col-5 m-0 p-0 px-2">
-                    <i class="fas fa-pencil-alt text-info m-0 p-0" style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="Modifier la tâche"></i>
-                  </h5>
                   <form method="POST" action ="/ensiasdocs/todo" class="col-5" style="display:inline;">
                   <input name="todo_delete_id" value="${ todo.todo_id }" class="d-none"/>
                   <h5 class=" m-0 p-0 px-2">
@@ -217,8 +213,8 @@
                 </div>
                 <div class="row todo-created-info">
                   <div class="col-auto d-flex align-items-center pr-2">
-                    <i class="fas fa-info-circle text-black-50" style="cursor: pointer;width: 20px;margin"
-                      data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Created date"></i>
+                    <i class="fas fa-info-circle text-black-50" style="cursor: pointer;width: 20px;margin-right: 10px;"
+                      data-toggle="tooltip" data-placement="bottom" title="" data-original-title="${ todo.todo_delai }"></i>
                     <label class="date-label my-2 text-black-50">${ todo.todo_delai }</label>
                   </div>
                 </div>
