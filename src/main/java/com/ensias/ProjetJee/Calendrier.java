@@ -13,6 +13,7 @@ import com.ensias.beans.Event;
 import com.ensias.beans.User;
 import com.ensias.dao.DaoEvent;
 import com.ensias.dao.DaoFactory;
+import com.ensias.dao.ModuleDao;
 
 
 public class Calendrier extends HttpServlet {
@@ -20,6 +21,7 @@ public class Calendrier extends HttpServlet {
 	private static final String ATT_DAO_FACTORY = "daofactory";
 	public static String TODO_FORM =  "TODO_FORM_SRC";
 	DaoEvent daoEvent;
+	ModuleDao daoModule;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -32,6 +34,7 @@ public class Calendrier extends HttpServlet {
         super.init();
         //Get the Dao
         daoEvent = ((DaoFactory) this.getServletContext().getAttribute(ATT_DAO_FACTORY)).getDaoEvent();
+        daoModule = ((DaoFactory) this.getServletContext().getAttribute(ATT_DAO_FACTORY)).getModuleDao();
     }
 
 	/**
@@ -51,8 +54,16 @@ public class Calendrier extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		User user = (User)request.getSession().getAttribute("user");
+		if(user.isAdministrator()) {
+			try {
+				int elm_id = Integer.parseInt(request.getParameter("exam"));
+				daoModule.supprimerExam(elm_id);
+			}catch(NumberFormatException ignore) {}
+			
+			
+		}
+		response.sendRedirect("/ensiasdocs/calendrier");
 	}
 
 }

@@ -49,6 +49,8 @@ public class DaoEvent {
 				event.setEvent_end(set.getDate(elm_exam).toString());
 				event.setEvent_class("fc-bg-blue");
 				event.setEvent_icon("laptop-code");
+				event.setEvent_id(set.getInt("elm_id"));
+				event.setEvent_type("exam");
 				ev.add(event);
 			}
 			stm = conn.prepareStatement("SELECT * FROM "+this.todo+" WHERE todo_user = ? ;");
@@ -56,7 +58,6 @@ public class DaoEvent {
 			set = stm.executeQuery();
 			while(set.next()) {
 				Event event = new Event();
-				
 				event.setEvent_name(URLDecoder.decode(new String(set.getString(todo_title).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
 				if(set.getString("todo_description")!=null) {
 				event.setEvent_description(URLDecoder.decode(new String(set.getString(todo_description).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
@@ -64,6 +65,8 @@ public class DaoEvent {
 				event.setEvent_start(set.getDate(todo_delai).toString());
 				event.setEvent_end(set.getDate(todo_delai).toString());
 				event.setEvent_class("fc-bg-default");
+				event.setEvent_id(set.getInt("todo_id"));
+				event.setEvent_type("todo");
 				event.setEvent_icon("laptop-code");
 				ev.add(event);
 			}

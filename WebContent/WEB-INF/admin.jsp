@@ -105,6 +105,7 @@
                 <div class="row align-items-center">
                   <div class="input-group col-lg-12 mb-4">
                     <div class="input-group col-lg-12 mb-4" style="margin-top: 50px;">
+
                       <select name="elm_module"
                         class="browser-default custom-select champs-form choix">
                         <option value="" disabled selected>Choix du module</option>

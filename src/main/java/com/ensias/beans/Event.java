@@ -1,13 +1,18 @@
 package com.ensias.beans;
 
 public class Event {
+	private int event_id;
 	private String event_name;
 	private String event_description;
+	private String event_type;
 	private String event_start;
 	private String event_end;
 	private String event_class;
 	private String event_icon;
 	
+	public int getEvent_id() {
+		return this.event_id;
+	}
 	public String getEvent_class() {
         return event_class;
     }
@@ -15,7 +20,10 @@ public class Event {
     public String getEvent_description() {
         return event_description;
     }
-
+    
+    public String getEvent_type() {
+        return event_type;
+    }
     public String getEvent_end() {
         return event_end;
     }
@@ -31,7 +39,9 @@ public class Event {
     public String getEvent_start() {
         return event_start;
     }
-
+    public void setEvent_id(int id) {
+    	this.event_id = id;
+    }
     public void setEvent_class(String event_class) {
         this.event_class = event_class;
     }
@@ -50,6 +60,9 @@ public class Event {
 
     public void setEvent_name(String event_name) {
         this.event_name = event_name;
+    }
+    public void setEvent_type(String event_type) {
+        this.event_type = event_type;
     }
 
     public void setEvent_start(String event_start) {
