@@ -295,7 +295,8 @@
                             </div>
                             <!-- Already Registered -->
                             <div class="text-center w-100">
-                                <p class="text-muted font-weight-bold">Vous avez déjà un compte ? <a href="#" class="text-primary ml-2">Login</a></p>
+                                <br/>
+                                <p class="text-muted font-weight-bold">Vous avez déjà un compte ? <a href="/login" class="text-primary ml-2">Login</a></p>
                             </div>
 
                         </div>

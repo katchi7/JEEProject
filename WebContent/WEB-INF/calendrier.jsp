@@ -52,7 +52,7 @@
                 </svg>
            </center>
           <div class="sidebar-brand">
-            <a href="#">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
+            <a href="/ensiasdocs/profile">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
           </div>
         </div>
         <li><a href="/ensiasdocs/home"><i class="fas fa-book" style="margin-right:10px;"></i>Module</a></li>
@@ -113,6 +113,10 @@
                       <div class="event-body"></div>
                     </div>
                     <div class="modal-footer">
+                      <form action="" method="POST">
+                        <input class="d-none" value="">
+                        <button type="submit" class="btn btn-danger" data-dismiss="modal">Supprimer</button>
+                      </form>
                       <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
                     </div>
                   </div>
