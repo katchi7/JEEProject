@@ -49,10 +49,10 @@ public class Home extends HttpServlet {
 		
 		User user = (User) request.getSession().getAttribute("user");
 		String elm_name = request.getParameter("find");
-		System.out.println(elm_name);
+		
 		if(elm_name == null || elm_name.equals("null")||elm_name.trim().equals("")) {
 			ArrayList<Module> module = getUserModules(user);
-			request.setAttribute("nbpages", (module.size()%this.TAILLE_PAGE));
+			request.setAttribute("nbpages", ((module.size()-1)/this.TAILLE_PAGE));
 			request.setAttribute("search", false);
 			int requestedPage=0;
 			try {
@@ -87,14 +87,7 @@ public class Home extends HttpServlet {
 		ArrayList<Module> modules = daoModule.findModuleByUser(user);
 		return modules;
 	}
-	//TEMP
-	private Module generateModule() {
-		Module module = new Module();
-		module.setElm_id((int)(Math.random()*1000));
-		module.setElm_name("Analyse de données");
-		module.setElm_module("Statistique et analyse de données");
-		return module;	
-	}
+	
 	private ArrayList<Module> getDisplayedModules(ArrayList<Module> modules,int taille,int index){
 		ArrayList<Module> mod = new ArrayList<>();
 		if(modules.size()<index) index =0;
@@ -102,7 +95,7 @@ public class Home extends HttpServlet {
 			if(i<modules.size()) {
 				mod.add(modules.get(i));
 			}
-		}
+		}	
 		return mod;
 	}
 

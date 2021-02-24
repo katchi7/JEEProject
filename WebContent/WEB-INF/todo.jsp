@@ -60,7 +60,7 @@
           </center>
           <div class="sidebar-brand">
 
-            <a href="#">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
+            <a href="/ensiasdocs/profile">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
           </div>
         </div>
         <li><a href="/ensiasdocs/home"><i class="fas fa-book" style="margin-right:10px;"></i>Module</a></li>
@@ -69,7 +69,9 @@
         <li><a href="/ensiasdocs/calendrier"><i class="fas fa-calendar-alt"
               style="margin-right:10px;"></i>Calendrier</a></li>
         <li><a href="/ensiasdocs/todo"><i class="fas fa-list-alt" style="margin-right:10px;"></i>To Do</a></li>
-        <li><a href="/ensiasdocs/admin"><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a>
+        <c:if test="${sessionScope.user.administrator }">
+        <li><a href="/ensiasdocs/admin" ><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a></li>
+        </c:if>
         </li>
         </li>
       </ul>
@@ -118,34 +120,14 @@
         </div>
         </form>
         <div class="p-2 mx-4 border-black-25 border-bottom"></div>
-        <!-- View options section -->
-        <div class="row m-1 p-3 px-5 justify-content-end">
-          <div class="col-auto d-flex align-items-center">
-            <label class="text-secondary my-2 pr-2 view-opt-label">Filter</label>
-            <select class="custom-select custom-select-sm btn my-2">
-              <option value="all" selected>All</option>
-              <option value="completed">Completed</option>
-              <option value="active">Active</option>
-              <option value="has-due-date">Has due date</option>
-            </select>
-          </div>
-          <div class="col-auto d-flex align-items-center px-1 pr-3">
-            <label class="text-secondary my-2 pr-2 view-opt-label">Sort</label>
-            <select class="custom-select custom-select-sm btn my-2" style="padding-right: 30px;">
-              <option value="added-date-asc" selected>Added date</option>
-              <option value="due-date-desc">Due date</option>
-            </select>
-            <i class="fas fa-sort-amount-down-alt text-info  mx-0 px-0 pl-1" style="cursor: pointer;width: 20px;"
-              data-toggle="tooltip" data-placement="bottom" title="Ascending"></i>
-            <i class="fas fa-sort-amount-up-alt text-info  mx-0 px-0 pl-1 d-none" style="cursor: pointer;width: 20px;"
-              data-toggle="tooltip" data-placement="bottom" title="Descending"></i>
-          </div>
-        </div>
+        
         <!-- Todo list section -->
         <div class="row mx-1 px-5 pb-3 w-80">
           <div class="col mx-auto">
             
             <!-- Todo Item 2 -->
+            <br/><br/>
+            <h4 class="text-primary" style="margin-bottom: 10px;"><i class="fas fa-briefcase" style="margin-right: 15px;"></i>Mes tâches :</h4>
             <c:forEach items = "${ requestScope.todos }" var="todo">
             <div class="row px-3 align-items-center todo-item rounded">
               <div class="col-auto m-1 p-0 d-flex align-items-center">
@@ -185,8 +167,8 @@
 				    <div class="col-auto m-1 p-0 px-3">
 				      <div class="row">
 				        <div class="col-auto d-flex align-items-center rounded bg-white border border-warning">
-				          <i class="fas fa-hourglass-half text-warning " style="cursor: pointer;width: 20px;"
-				            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Due on date"></i>
+				          <i class="fas fa-hourglass-half text-warning " style="cursor: pointer;width: 20px;margin-right: 7px;"
+				            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Il vous reste moins d'une journée"></i>
 				          <h6 class="text my-2 pr-2">${ todo.todo_delai }</h6>
 				        </div>
 				      </div>
@@ -198,10 +180,6 @@
     		</c:choose>
               <div class="col-auto m-1 p-0 todo-actions">
                 <div class="row d-flex align-items-center justify-content-end">
-                  <h5 class="col-5 m-0 p-0 px-2">
-                    <i class="fas fa-pencil-alt text-info m-0 p-0" style="cursor: pointer;width: 20px;"
-                      data-toggle="tooltip" data-placement="bottom" title="Modifier la tâche"></i>
-                  </h5>
                   <form method="POST" action ="/ensiasdocs/todo" class="col-5" style="display:inline;">
                   <input name="todo_delete_id" value="${ todo.todo_id }" class="d-none"/>
                   <h5 class=" m-0 p-0 px-2">
@@ -215,8 +193,8 @@
                 </div>
                 <div class="row todo-created-info">
                   <div class="col-auto d-flex align-items-center pr-2">
-                    <i class="fas fa-info-circle text-black-50" style="cursor: pointer;width: 20px;margin"
-                      data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Created date"></i>
+                    <i class="fas fa-info-circle text-black-50" style="cursor: pointer;width: 20px;margin-right: 10px;"
+                      data-toggle="tooltip" data-placement="bottom" title="" data-original-title="${ todo.todo_delai }"></i>
                     <label class="date-label my-2 text-black-50">${ todo.todo_delai }</label>
                   </div>
                 </div>

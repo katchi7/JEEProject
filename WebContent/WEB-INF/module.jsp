@@ -52,14 +52,16 @@
            </center>
           <div class="sidebar-brand" >
           	
-            <a href="#">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
+            <a href="/ensiasdocs/profile">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
           </div>
         </div>
         <li><a href="/ensiasdocs/home"><i class="fas fa-book" style="margin-right:10px;"></i>Module</a></li>
         <li><a href="/ensiasdocs/profile"><i class="fas fa-user-graduate" style="margin-right:10px;"></i></i>Profile</a></li>
         <li><a href="/ensiasdocs/calendrier"><i class="fas fa-calendar-alt" style="margin-right:10px;"></i>Calendrier</a></li>
         <li><a href="/ensiasdocs/todo"><i class="fas fa-list-alt" style="margin-right:10px;"></i>To Do</a></li>
+        <c:if test="${sessionScope.user.administrator }">
         <li><a href="/ensiasdocs/admin" ><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a></li>
+        </c:if>
         </li>
       </ul>
             <a class="navbar-brand" href=""><img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="200"
@@ -81,7 +83,8 @@
                       </center>
                     </div>
                   </div>
-                  
+                  <c:choose>
+                  <c:when test="${!requestScope.inscrit }">
                   <!-- Si l'étudiant n'est pas inscrit au module -->
                   <div class="col-lg-12 col-md-12 col-sm-12 carte">
                     <div class="card text-white mb-3">
@@ -93,12 +96,16 @@
                             Afin de bénéficier des documents de ce module et avoir un accès totale sur tous ses ressources pédagogiques, 
                             <br/><strong style="font-size: 22px;">veuillez s'abonner rapidement !!!</strong>
                           </p>
-                          <button type="button" class="btn btn-success"><i class="fas fa-star" style="margin-right: 15px;"></i>S'abonner</button>
+                          <form action="" method="post">
+                          <input name = "id" value="${ requestScope.module.elm_id }" class ="d-none" />
+                          <button type="submit" class="btn btn-success"><i class="fas fa-star" style="margin-right: 15px;"></i>S'abonner</button>
+                          </form>
                         </center>
                       </div>
                     </div>
                   </div>
-
+				</c:when>
+				<c:otherwise>
                   <!-- Si l'étudiant est inscrit au module -->
                   <div class="col-lg-12 col-md-12 col-sm-12 carte">
                     <div class="card text-white bg-secondary mb-3">
@@ -128,9 +135,13 @@
                         </c:forEach>
                       </div>
                     </div>
-                  </div>     
+                  </div>   
+                  </c:otherwise>
+                  </c:choose>  
                 </div>
+                
               </div>
+              
             </div>
             
             <c:import url="/WEB-INF/footer.jsp"></c:import>

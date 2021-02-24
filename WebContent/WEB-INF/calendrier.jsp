@@ -52,14 +52,16 @@
                 </svg>
            </center>
           <div class="sidebar-brand">
-            <a href="#">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
+            <a href="/ensiasdocs/profile">${sessionScope.user.fname } ${sessionScope.user.lname }</a>
           </div>
         </div>
         <li><a href="/ensiasdocs/home"><i class="fas fa-book" style="margin-right:10px;"></i>Module</a></li>
         <li><a href="/ensiasdocs/profile"><i class="fas fa-user-graduate" style="margin-right:10px;"></i></i>Profile</a></li>
         <li><a href="/ensiasdocs/calendrier"><i class="fas fa-calendar-alt" style="margin-right:10px;"></i>Calendrier</a></li>
         <li><a href="/ensiasdocs/todo"><i class="fas fa-list-alt" style="margin-right:10px;"></i>To Do</a></li>
+        <c:if test="${sessionScope.user.administrator }">
         <li><a href="/ensiasdocs/admin" ><i class="fas fa-user-cog" style="margin-right:10px;"></i>Administrateur</a></li>
+        </c:if>
         </li>
       </ul>
       <a class="navbar-brand" href=""><img src="/inc/images/logo.png" alt="ENSIAS-DOC" width="200"
@@ -68,12 +70,15 @@
     <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
+    <div class="d-none" id="acc">${ sessionScope.user.administrator }</div>
     <div id="page-content-wrapper">
       <c:import url="/WEB-INF/header.jsp"></c:import>
       <c:forEach items="${requestScope.events}" var="event">
         <div class="user_events" hidden>
+        <span class="event_id">${event.event_id}</span>
           <span class="event_name">${event.event_name}</span>
           <span class="event_description">${event.event_description}</span>
+          <span class="event_type">${event.event_type}</span>
           <span class="event_start">${event.event_start}</span>
           <span class="event_end">${event.event_end}</span>
           <span class="event_class">${event.event_class}</span>
@@ -111,7 +116,11 @@
                       <div class="event-body"></div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                      <form action="" class="delete_form" method="POST">
+                        <input class="d-none suppr" value="" name="">
+                        <button type="submit" class="btn btn-danger" >Supprimer</button>
+                      </form>
+                      <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
                     </div>
                   </div>
                 </div>
@@ -122,18 +131,18 @@
                   <div class="modal-content">
                     <form method="POST" action="/ensiasdocs/todo" id="add-event">
                       <div class="modal-body">
-                        <h4 class="text-blue h4 mb-10">Add Todo Detail</h4>
+                        <h4 class="text-blue h4 mb-10">Ajouter un tâche</h4>
                         <div class="form-group">
-                          <label>Todo title</label>
+                          <label>Titre de la tâche</label>
                           <input type="text" class="form-control" name="todo_name">
                         </div>
                         <div class="form-group">
-                          <label>Todo Date</label>
+                          <label>Date</label>
                           
                           <input type='text' class="datetimepicker form-control" name="todo_date" >
                         </div>
                         <div class="form-group">
-                          <label>Todo Description</label>
+                          <label>Description</label>
                           <textarea class="form-control" name="todo_desc"></textarea>
                         </div>
 
@@ -146,8 +155,8 @@
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
                       </div>
                     </form>
                   </div>

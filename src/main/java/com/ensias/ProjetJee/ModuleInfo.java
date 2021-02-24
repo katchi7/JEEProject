@@ -37,13 +37,26 @@ public class ModuleInfo extends HttpServlet {
 			User user =(User) request.getSession().getAttribute("user");
 			int id = Integer.parseInt( request.getRequestURI().split("/")[3]);
 			Module module= daoModule.findModuleById(id);
-			ArrayList<Document> docs = this.getDocs(id,module);
-			request.setAttribute("module", module);
-			request.setAttribute("docs", docs);
-			request.setAttribute("types",this.getTypes(docs));
-			this.getServletContext().getRequestDispatcher("/WEB-INF/module.jsp").forward(request,response);
+			if(module!=null) {
+				request.setAttribute("module", module);
+				boolean inscrit = daoModule.userIsInscrit(user.getId(), id);
+				if(inscrit) {
+					ArrayList<Document> docs = this.getDocs(id,module);
+					
+					request.setAttribute("docs", docs);
+					request.setAttribute("types",this.getTypes(docs));
+				}
+				
+				
+				request.setAttribute("inscrit", inscrit);
+				
+				this.getServletContext().getRequestDispatcher("/WEB-INF/module.jsp").forward(request,response);
+			}else {
+				response.sendRedirect("/ensiasdocs/home");
+			}
+			
 		}catch(Exception e) {
-			response.sendRedirect("/error");
+			response.sendRedirect("/ensiasdocs/home");
 		}
 		
 	}
@@ -65,7 +78,20 @@ public class ModuleInfo extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		try {
+			int id = Integer.parseInt(request.getParameter("id")); 
+			User user =(User) request.getSession().getAttribute("user");
+			Module module = daoModule.findModuleById(id);
+			if(module==null) {
+				response.sendRedirect("/ensiasdocs/home");
+			}else {
+				daoModule.inscrireUser(user.getId(), id);
+				response.sendRedirect(request.getRequestURL().toString());
+			}
+		}catch(NumberFormatException e){
+			response.sendRedirect("/ensiasdocs/home");
+		}
+		 
 	}
 
 }
