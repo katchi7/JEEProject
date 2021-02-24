@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DaoFactory {
-	private static final String PROPERTIES_FILE = "/mysql.properties";
+	private static final String PROPERTIES_FILE = "mysql.properties";
 	private static final String PROPERTY_URL ="url";
 	private static final String PROPERTY_DRIVER ="driver";
 	private static final String PROPERTY_USERNAME = "username";
