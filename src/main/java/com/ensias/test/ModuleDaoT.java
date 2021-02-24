@@ -61,7 +61,6 @@ class ModuleDaoT {
 	 
 	 /*@Inject
 	 private ModuleDao module;*/
-
 	@BeforeEach
 	void setUp() throws Exception {
 	}
