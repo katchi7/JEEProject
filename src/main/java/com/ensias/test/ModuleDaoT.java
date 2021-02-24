@@ -50,7 +50,7 @@ class ModuleDaoT {
 	
 	@Resource(mappedName = "/Daofactory")
 
-	   private DaoFactory factory;
+	   private static DaoFactory factory;
 
 	 @Deployment
 	    public static JavaArchive createDeployment() {
@@ -67,8 +67,10 @@ class ModuleDaoT {
 
 	@Test
 	void testFindeAllModules() throws SQLException, UnsupportedEncodingException {
+		factory=factory.getInstance();
+		Connection conn = null;
 		ArrayList<Module> modules = new ArrayList<>();
-		Connection conn = factory.getConnection();
+	    conn = factory.getConnection();
 		PreparedStatement stm = conn.prepareStatement("SELECT * FROM element;");
 		ResultSet set = stm.executeQuery();
 		while(set.next()) {
@@ -85,7 +87,7 @@ class ModuleDaoT {
 		assertTrue(!modules.isEmpty());
 		//System.out.println(String.format("Total of Cars %d", module.findAllModules().size()));
 
-        assertEquals(31, modules.size());
+        assertEquals(3, modules.size());
 		Assert.assertTrue(true);
 	}
 	 
