@@ -5,31 +5,17 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Properties;
-
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
-import com.ensias.config.InitDaoFactory;
-import com.ensias.dao.DAOConfigurationException;
-import com.ensias.dao.DAOUser;
-import com.ensias.dao.DaoFactory;
 import com.ensias.dao.ModuleDao;
-import com.mysql.cj.Query;
 import com.ensias.beans.Module;
 import static org.mockito.Mockito.verify;
 
@@ -62,7 +48,6 @@ class ModuleDaoTest {
 	@Test
 	void testfindAllModules() throws SQLException, ClassNotFoundException, IOException {
 
-    //DaoFactory instance = new DaoFactory( url, nomUtilisateur, motDePasse );
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		//Connection conn = Mockito.mock(Connection.class);
 		//PreparedStatement stm= Mockito.mock(PreparedStatement.class);
@@ -77,7 +62,6 @@ class ModuleDaoTest {
         result= null;
         
         //verify(conn).prepareStatement("SELECT * FROM element;");
-       
         //verify(stm).executeQuery();
        
         assertSame(dResult, result);
