@@ -141,7 +141,6 @@
     <artifactId>arquillian-junit-core</artifactId>
     <version>1.7.0.Alpha7</version>
 </dependency>
-
 		<dependency>
     <groupId>org.glassfish.embedded</groupId>
     <artifactId>gf-embedded-api</artifactId>
