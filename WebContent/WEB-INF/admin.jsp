@@ -238,7 +238,7 @@
                 </div>
                 <div class="form-group col-lg-12 mx-auto mb-0" >
                     <button class="btn btn-primary btn-block py-2 rounded" type="submit" style="margin-bottom: 30px;">
-                      <span class="font-weight-bold">Créer un module</span>
+                      <span class="font-weight-bold">Modifier</span>
                     </button>
                   </div>
               </form>
