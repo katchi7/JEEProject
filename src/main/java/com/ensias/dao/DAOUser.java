@@ -21,7 +21,7 @@ public class DAOUser {
 	public static String NV = "user_nv";
 	public static String FILIERE = "user_filiere";
 	
-	DAOUser(DaoFactory factory){
+	public DAOUser(DaoFactory factory){
 		this.factory = factory;
 	}
 	public boolean Create(User user) {

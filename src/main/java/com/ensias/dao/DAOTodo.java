@@ -25,7 +25,7 @@ public class DAOTodo {
 		this.factory = factory;
 	}
 	
-	public void CreateTodo(Todo todo,int id) {
+	public int CreateTodo(Todo todo,int id) {
 		
 		Connection conn = null;
 		
@@ -38,6 +38,7 @@ public class DAOTodo {
 			stm.setString(4,todo.getTodo_delai());
 			stm.setInt(5,id);
 			stm.execute();
+			return 0;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +50,7 @@ public class DAOTodo {
 				e.printStackTrace();
 			}
 		}
-		
+		return 0;
 	}
 	public ArrayList<Todo> getTodoByUser(int user_id){
 		ArrayList<Todo> todos = new ArrayList<>();
