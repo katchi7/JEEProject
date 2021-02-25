@@ -59,37 +59,53 @@ class ModuleDaoT {
 	                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
 	    }
 	 
-	 /*@Inject
-	 private ModuleDao module;*/
+	@Inject
+	private ModuleDao module;
+	 
 	@BeforeEach
 	void setUp() throws Exception {
 	}
-
+	
 	@Test
 	void testFindeAllModules() throws SQLException, UnsupportedEncodingException {
 		factory=factory.getInstance();
-		Connection conn = null;
+		ModuleDao m=new ModuleDao(factory);
 		ArrayList<Module> modules = new ArrayList<>();
-	    conn = factory.getConnection();
-		PreparedStatement stm = conn.prepareStatement("SELECT * FROM element;");
-		ResultSet set = stm.executeQuery();
-		while(set.next()) {
-			Module m = new Module();
-			m.setElm_id(set.getInt(this.ID));
-			m.setElm_name( URLDecoder.decode(new String(set.getString(this.name).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8"));
-			m.setElm_module( URLDecoder.decode(new String(set.getString(this.module_elm).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8") );
-			m.setElm_description(URLDecoder.decode(new String(set.getString(this.description).getBytes("ISO-8859-1"), "UTF-8"), "UTF-8")  );
-			m.setElm_annee(set.getString(this.annee));
-			m.setElm_semester(set.getString(this.semester));
-			modules.add(m);
-		}
-		//ArrayList<Module> result =module.findAllModules();
+		modules=m.findAllModules();
+		
 		assertTrue(!modules.isEmpty());
-		//System.out.println(String.format("Total of Cars %d", module.findAllModules().size()));
-
-        assertEquals(3, modules.size());
-		Assert.assertTrue(true);
+        assertEquals(10, modules.size());
+		//Assert.assertTrue(true);
 	}
+	
+	@Test
+    public void testAddModule(){
+		
+        
+        factory=factory.getInstance();
+		ModuleDao mdao=new ModuleDao(factory);
+		
+		ArrayList<Module> modules = new ArrayList<>();
+		modules=mdao.findAllModules();
+        Module m = new Module();
+        m.setElm_id(22);
+        m.setElm_name("test");
+        m.setElm_description("......");
+        m.setElm_annee("2020");
+        m.setElm_semester("S3");
+        m.setElm_module("trstt");
+
+		ArrayList<String> filieres= new ArrayList<String>();
+		filieres.add("gl");
+		filieres.add("bi");
+		mdao.creerModules(m,filieres );
+		
+		ArrayList<Module> modulesAdd = new ArrayList<>();
+		modulesAdd=mdao.findAllModules();
+		assertEquals(modulesAdd.size(), modules.size()+1);
+		
+		
+    }
 	 
 
 }
