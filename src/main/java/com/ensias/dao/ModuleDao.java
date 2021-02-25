@@ -87,8 +87,8 @@ public class ModuleDao {
 			if(set.next()) {
 				Module module = new Module();
 				module.setElm_id(Id);
-				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8) );
-				module.setElm_module(URLDecoder.decode(new String(set.getString("elm_module").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				module.setElm_name( URLDecoder.decode(new String(set.getString("elm_name").getBytes("ISO-8859-1"), StandardCharsets.UTF_8), StandardCharsets.UTF_8) );
+				module.setElm_module(URLDecoder.decode(new String(set.getString("elm_module").getBytes("ISO-8859-1"), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 
 				module.setElm_annee(set.getString("elm_annee"));
 				module.setElm_semester(set.getString("elm_semester"));
@@ -97,6 +97,9 @@ public class ModuleDao {
 				return module;
 			}
 		} catch (SQLException e ) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
@@ -124,9 +127,9 @@ public class ModuleDao {
 			while(set.next()) {
 				Document doc = new Document();
 				doc.setDoc_id(set.getInt("doc_id") );
-				doc.setDoc_name(URLDecoder.decode(new String(set.getString("doc_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				doc.setDoc_name(set.getString("doc_name"));
 				doc.setDoc_mime(set.getString("doc_mime"));
-				doc.setDoc_path( URLDecoder.decode(new String(set.getString("doc_path").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				doc.setDoc_path( set.getString("doc_path"));
 				doc.setDoc_type(set.getString("doc_type"));
 				doc.setDoc_elm(set.getInt("doc_elm"));
 				docs.add(doc);
@@ -157,14 +160,14 @@ public Document findDocumentsById(int id){
 			if(set.next()) {
 				Document doc = new Document();
 				doc.setDoc_id(set.getInt("doc_id"));
-				doc.setDoc_name( URLDecoder.decode(new String(set.getString("doc_name").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				doc.setDoc_name( URLDecoder.decode(new String(set.getString("doc_name").getBytes("ISO-8859-1"), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				doc.setDoc_mime(set.getString("doc_mime")  );
-				doc.setDoc_path( URLDecoder.decode(new String(set.getString("doc_path").getBytes(), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
+				doc.setDoc_path( URLDecoder.decode(new String(set.getString("doc_path").getBytes("ISO-8859-1"), StandardCharsets.UTF_8), StandardCharsets.UTF_8));
 				doc.setDoc_type(set.getString("doc_type"));
 				doc.setDoc_elm(set.getInt("doc_elm"));
 				return doc;
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {

@@ -95,7 +95,7 @@ public class UploadDoc extends HttpServlet {
 	
 	private void save_file(Part part,String path) throws IOException {
 		BufferedInputStream in = new BufferedInputStream(part.getInputStream());
-		BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream( URLDecoder.decode(new String(path.getBytes("ISO-8859-1"), "UTF-8"), "UTF-8")) );
+		BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream( new String(path.getBytes("ISO-8859-1")) ));
 		
 		byte[] buffer = new byte[1024];
 		int size = 0;
