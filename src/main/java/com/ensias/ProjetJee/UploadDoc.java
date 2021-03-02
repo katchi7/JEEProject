@@ -72,7 +72,7 @@ public class UploadDoc extends HttpServlet {
 					ArrayList<Part> parts = form.getParts();
 					int i=0;
 					for(Document doc : docs) {
-						save_file(parts.get(i),this.getServletContext().getRealPath(doc.getDoc_path()));
+						save_file(parts.get(i),this.getServletContext().getRealPath(doc.getDoc_path()));i++;
 					}
 					response.sendRedirect("/ensiasdocs/admin");
 				}
