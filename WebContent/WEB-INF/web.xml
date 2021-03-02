@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+    id="WebApp_ID" version="2.5">
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Inscription</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    <servlet-name>Connexion</servlet-name>
+    <servlet-class>com.ensias.ProjetJee.Connexion</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>Connexion</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ModuleInfo</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.ModuleInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModuleInfo</servlet-name>
+        <url-pattern>/ensiasdocs/module/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Home</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/ensiasdocs/home</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Download</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Download</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Download</servlet-name>
+        <url-pattern>/ensiasdocs/download/*</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>Document</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.DocServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Document</servlet-name>
+        <url-pattern>/ensiasdocs/document/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Profile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/ensiasdocs/profile</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Admin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/ensiasdocs/admin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Calendrier</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Calendrier</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Calendrier</servlet-name>
+        <url-pattern>/ensiasdocs/calendrier</url-pattern>
+    </servlet-mapping>
+        <servlet>
+        <servlet-name>TodoForm</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.TodoFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TodoForm</servlet-name>
+        <url-pattern>/ensiasdocs/todo</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>CreerModule</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.CreerModule</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreerModule</servlet-name>
+        <url-pattern>/ensiasdocs/admin/creer-module</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ModifierModule</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.ModifierModule</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifierModule</servlet-name>
+        <url-pattern>/ensiasdocs/admin/modifier-module</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UploadDoc</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.UploadDoc</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        <multipart-config>
+			<max-file-size>31457280</max-file-size> <!-- 30 Mo -->
+			<max-request-size>314572800</max-request-size> <!-- 300 Mo -->
+			<file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadDoc</servlet-name>
+        <url-pattern>/ensiasdocs/admin/upload-doc</url-pattern>
+        
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Error</servlet-name>
+        <servlet-class>com.ensias.ProjetJee.Errors</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Error</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+  
+    <listener>
+    	<listener-class>com.ensias.config.InitDaoFactory</listener-class>
+    </listener>
+    <filter>
+    	<filter-name>Auth</filter-name>
+    	<filter-class>com.ensias.Filters.AuthFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+    	<filter-name>Auth</filter-name>
+    	<url-pattern>/ensiasdocs/*</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+    	<filter-name>Admin</filter-name>
+    	<filter-class>com.ensias.Filters.AdminFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+    	<filter-name>Admin</filter-name>
+    	<url-pattern>/ensiasdocs/admin</url-pattern>
+    </filter-mapping>
+    <!-- <error-page>
+    	<error-code>404</error-code>
+    	<location>/error</location>
+    </error-page> -->
+     
+   
+
+</web-app>

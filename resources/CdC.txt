@@ -1,0 +1,15 @@
+Le projet s'inscrit dans le cadre de la réalisation d'une plateforme dédier aux étudiant de l'ENSIAS afin de facilité leur manière de gérer leurs travaux (exam, formation, cours, TD, TP...).
+Alors la plateforme est capable de subvenir à tous ces exigences en étant apte à :
+-- Afficher les modules et les éléments de module qui appartient à la filière de l’étudiant ;
+-- Afficher la liste des documents d'un élément de module selon la catégorie (TD, TP, Cours, Résumé);
+-- Visualiser ou télécharger les documents d'un élément de module ;
+-- Afficher le profil de chaque étudiant ;
+-- Avoir un calendrier de tâche personnalisé pour chaque utilisateur selon sa filière et ses tâches ;
+-- Le calendrier à pour objective de jouer le rôle d'un emploi du temps des travaux d'un étudiant ;
+-- Avoir un espace "TODO" qui permet à l'utilisateur d'ajouter, de lister et de maquer comme réaliser ses tâches en les ajoutant à son calendrier ;
+-- Être capable d'indiquer la date et la durée de la tâche
+-- Avoir un espace "Administrateur" pour gérer les fonctionnalités de la plateforme ;
+-- L'administrateur à la possibilité de créer un module et un élément de module et l'affecter à une filière ;
+-- L'administrateur à la possibilité d'ajouter les documents à un élément de module selon ses catégories ;
+-- L'administrateur à la possibilité de modifier les information d'un module ;
+-- L'administrateur à la possibilité d'ajouter les dates des examens pour chaque module ;
