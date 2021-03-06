@@ -41,7 +41,7 @@ class DAOUserT {
 		DAOUser userdao=new DAOUser(factory);
 		User user= new User();
 		user.setAdministrator(false);
-		user.setEmail("test0@gmail.com");
+		user.setEmail("test20@gmail.com");
 		user.setFiliere("GL");
 		user.setFname("Douaa");
 		user.setLname("ANFAR");
