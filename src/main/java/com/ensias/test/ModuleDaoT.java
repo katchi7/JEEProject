@@ -74,7 +74,7 @@ class ModuleDaoT {
 		modules=m.findAllModules();
 		
 		assertTrue(!modules.isEmpty());
-        assertEquals(13, modules.size());
+        assertEquals(14, modules.size());
 		//Assert.assertTrue(true);
 	}
 	

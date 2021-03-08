@@ -2,6 +2,8 @@ package com.ensias.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import javax.inject.Inject;
+
 import org.jboss.arquillian.api.Deployment;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
@@ -16,6 +18,7 @@ import com.ensias.dao.DaoFactory;
 import com.ensias.dao.ModuleDao;
 
 import jakarta.annotation.Resource;
+import jakarta.ejb.EJB;
 
 class DAOUserT {
 	
@@ -23,12 +26,18 @@ class DAOUserT {
 
 	   private static DaoFactory factory;
 
-	 @Deployment
+	@Deployment
 	    public static JavaArchive createDeployment() {
 	        return ShrinkWrap.create(JavaArchive.class)
 	                .addClasses(User.class, DAOUser.class)
 	                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
 	    }
+	 
+	@Inject
+	    User user;
+	    
+	@EJB
+	    DAOUser daouser;
 
 	@BeforeEach
 	void setUp() throws Exception {
@@ -41,15 +50,13 @@ class DAOUserT {
 		DAOUser userdao=new DAOUser(factory);
 		User user= new User();
 		user.setAdministrator(false);
-		user.setEmail("test20@gmail.com");
+		user.setEmail("test789@gmail.com");
 		user.setFiliere("GL");
 		user.setFname("Douaa");
 		user.setLname("ANFAR");
-		//user.setId(55);
 		user.setNiveau("1A");
 		user.setNum("0626597845");
 		user.setPassword("testpassword");
-		//user.setFull_filiere("Génie Logiciel");
 		boolean b = userdao.Create(user);
 		assertEquals(true,b);
 		

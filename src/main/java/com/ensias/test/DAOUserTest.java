@@ -2,7 +2,7 @@ package com.ensias.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+import org.apache.tools.ant.types.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +22,9 @@ import com.ensias.Forms.InsricptionForm;
 //import org.mockito.junit.jupiter.MockitoExtension;
 import com.ensias.beans.User;
 import com.ensias.dao.DAOUser;
+import com.ensias.dao.DaoFactory;
+
+import jakarta.annotation.Resource;
 
 @RunWith(MockitoJUnitRunner.class)
 class DAOUserTest {
@@ -35,24 +38,30 @@ class DAOUserTest {
 	@Mock
     private DAOUser daouser; 
 	
+	@Resource(mappedName = "/Daofactory")
+
+	   private static DaoFactory factory;
+	
 	@Test
 	void testCreate() {
-		
-		User sampleUser = new User();
-		User user1 =new User();
-		
-		List<User> userMap = new ArrayList<>();
-		DAOUser dao = Mockito.mock(DAOUser.class);
-		when(dao.Create(sampleUser)).thenAnswer(i -> {
-		    User user2 = i.getArgument(0);
-		    userMap.add(user2.getId(), user1);
-		    return null;
-		});
-		when(dao.findUser(user1.getEmail())).thenAnswer(i -> {
-		    int id = i.getArgument(0);
-		    return userMap.get(id);
-		});
 
+        factory=factory.getInstance();
+		DAOUser userdao=new DAOUser(factory);
+		User user= new User();
+		user.setAdministrator(false);
+		user.setEmail("test287@gmail.com");
+		user.setFiliere("GL");
+		user.setFname("Douaa");
+		user.setLname("ANFAR");
+		//user.setId(55);
+		user.setNiveau("1A");
+		user.setNum("0626597845");
+		user.setPassword("testpassword");
+		//user.setFull_filiere("Génie Logiciel");
+		userdao.Create(user);
+		Integer id = user.getId();
+		assertTrue(id>0);
+		System.out.println("The user:"+user.getFname()+" "+"of id : "+id+" "+"and email : "+user.getEmail()+" is created succefully!");
 	}
 		
 	@Test
